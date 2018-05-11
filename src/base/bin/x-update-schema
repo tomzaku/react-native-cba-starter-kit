@@ -1,0 +1,60 @@
+#!/usr/bin/env node
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var program = require('commander');
+var rp = require('request-promise');
+var chalk = require('chalk');
+var graphql_1 = require("graphql");
+var fs = require("fs");
+var path = require("path");
+
+var request = require('request');
+
+var j = request.jar();
+var cookie = request.cookie('session="\\073OVBNCz?guss*mIX\\073W6W1pE$n2S-Kzx_Lf9Kk+iq"; Domain=demo.trackitforlife.com; Path=/; Secure; HttpOnly; session=true; HostOnly=true');
+
+program
+    .version('0.0.1');
+program
+    .arguments('<url>')
+    .option('-f, --filename <name>', 'File to save the schema in')
+    .action(function (url) {
+    if (!url) {
+        console.log(chalk.red('Please provide a url to your GraphQL API'));
+        process.exit(1);
+    }
+    j.setCookie(cookie, url);
+    rp({
+        uri: url,
+        method: 'POST',
+        jar: j,
+        headers: {
+            // Authorization:
+            // Cookie: 'session=""PMq{roIgO7mG5r@7<%+1qk9xNEnrNHnS%W?Wzorv""'
+            // Cookie: String.raw`session = "PMq{roIgO7mG5r@7<%+1qk9xNEnrNHnS%W?Wzorv";`
+        },
+        body: {
+            query: graphql_1.introspectionQuery
+        },
+        json: true
+    }).then(function (res) {
+        var schema = graphql_1.buildClientSchema(res.data);
+        if (program.filename) {
+            var p = path.join(process.cwd(), program.filename);
+            console.log(chalk.cyan("Saving schema to " + p));
+            fs.writeFileSync(p, graphql_1.printSchema(schema));
+        }
+        else {
+            console.log(chalk.cyan(graphql_1.printSchema(schema)));
+        }
+    });
+});
+
+program.parse(process.argv);
+
+if (program.args.length === 0) {
+    console.log(chalk.red('Please provide a url that points to a GraphQL API'));
+    process.exit(1);
+}

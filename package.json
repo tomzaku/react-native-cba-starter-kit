@@ -1,0 +1,31 @@
+{
+  "name": "react-native-module-starter-kit",
+  "version": "1.0.0",
+  "description": "react native starter kit and seperate module",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomzaku/react-native-module-starter-kit.git"
+  },
+  "keywords": [
+    "starter",
+    "kit",
+    "react",
+    "native"
+  ],
+  "author": "Zaku",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tomzaku/react-native-module-starter-kit/issues"
+  },
+  "homepage": "https://github.com/tomzaku/react-native-module-starter-kit#readme",
+  "dependencies": {
+    "gluegun": "^2.0.0-beta.10",
+    "minimist": "^1.2.0",
+    "pretty-error": "^2.1.1",
+    "ramda": "^0.25.0"
+  }
+}
