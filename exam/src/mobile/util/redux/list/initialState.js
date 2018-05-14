@@ -8,7 +8,7 @@ export const createInitialState = () => {
     },
     result: [],
     selectedId: '',
-
+    local: [],
     // Restful Handling for server
     isFetching: false, //Check if client using restful 
     ok: true, //Check status 

@@ -19,12 +19,12 @@
   {
     NSURL *jsCodeLocation;
     #ifdef DEBUG
-      jsCodeLocation = [NSURL URLWithString:@"http://192.168.100.122:8081/index.bundle?platform=ios&dev=true"];
+      jsCodeLocation = [NSURL URLWithString:@"http://192.168.100.125:8081/index.bundle?platform=ios&dev=true"];
     #else
       jsCodeLocation = [[NSBundle mainBundle] URLWithStringLForResource:@"main" withExtension:@"jsbundle"];
     #endif
     // jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
-    //  jsCodeLocation = [NSURL URLWithString:@"http://192.168.100.122:8081/index.bundle?platform=ios&dev=true"];
+    //  jsCodeLocation = [NSURL URLWithString:@"http://192.168.100.125:8081/index.bundle?platform=ios&dev=true"];
     RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                         moduleName:@"exam"
                                                 initialProperties:nil

@@ -14,13 +14,12 @@ import { DEVICE_TYPE } from 'AppSetting'
 import { PersistGate } from 'redux-persist/es/integration/react'
 import { Provider } from 'react-redux'
 import { StyleSheet, NetInfo, View, Platform } from 'react-native';
-import NavigationApp from './app/navigation/view/NavigationApp'
+import NavigationApp from './router/NavigationApp'
 
 
 const { persistor, store } = configureStore()
 
 const onBeforeLift = () => {
-  // take some action before the gate lifts
   console.debug(':onBeforeLift: called')
 }
 
@@ -32,26 +31,8 @@ class App extends Component {
     };
   }
 
-  callDropDown = (data, startDelta, endDelta) => {
-    this.dropdown.alertWithType('success', 'Updated', '');
-  }
-
-  getChildContext() {
-    return {
-      dropdown: this.dropdown,
-      callDropDown: this.callDropDown,
-    };
-  }
 
   onComplete = (error, store) => {
-    // let session = '';
-    // let isAuthenticated = false;
-    // try {
-    //   isAuthenticated = store.authentication.get('isAuthenticated');
-    //   session = store.authentication.get('session');
-    // } catch (err) {
-    //   console.log('ERR', err);
-    // }
     this.setState({ isLoading: false });
   }
 
@@ -62,12 +43,10 @@ class App extends Component {
   componentDidMount = () => {
     switch(DEVICE_TYPE) {
       case 'tablet': {
-        // console.log('TABLET')
         Orientation.lockToLandscapeRight();
         break;
       }
       case 'phone': {
-        // console.log('PHONE')
         Orientation.lockToPortrait();
         break;
       }
@@ -91,7 +70,6 @@ class App extends Component {
     );
   }
   render() {
-    // return null;
     return (
       <View style={styles.container}>
         {this.renderApp()}
@@ -99,10 +77,7 @@ class App extends Component {
     );
   }
 }
-App.childContextTypes = {
-  dropdown: PropTypes.object,
-  callDropDown: PropTypes.func,
-};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

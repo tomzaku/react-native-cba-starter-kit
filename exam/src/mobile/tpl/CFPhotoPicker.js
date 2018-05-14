@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import CFButton from './CFButton';
+import AppButton from './AppButton';
 import { image } from 'AppTheme';
 
 // create a component
@@ -74,7 +74,7 @@ class CFPhotoPicker extends Component {
         <TouchableOpacity onPress={this.onChangeImage}>
           {this.renderPhotoContainer()}
         </TouchableOpacity>
-        {/* <CFButton
+        {/* <AppButton
           onPress={this.onChangeImage}
           success
           large

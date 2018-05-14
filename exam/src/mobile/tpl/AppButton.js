@@ -4,9 +4,9 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import PropTypes from 'prop-types';
 import rdColor from 'randomcolor';
 
-import styles from './style/CFButtonStyle'
+import styles from './style/AppButtonStyle'
 
-export default class Button extends React.PureComponent {
+export default class AppButton extends React.PureComponent {
   constructor(props) {
     super(props);
   }
@@ -79,13 +79,13 @@ export default class Button extends React.PureComponent {
       );
   }
 }
-Button.defaultProps = {
+AppButton.defaultProps = {
   leftStyle: {},
   rightStyle: {},
   leftComponent: null,
   rightComponent: null,
 }
-Button.propTypes = {
+AppButton.propTypes = {
   style: PropTypes.any,
   textStyle: PropTypes.any,
   onPress: PropTypes.func,

@@ -12,7 +12,7 @@ import { createInitialState } from './initialState';
 const mergeObject = (obj1, obj2) => {
   return Immutable.merge(obj1, obj2)
 }
-const mergeArray = (arr1, arr2) => {
+const mergeArray = (arr1 = [], arr2) => {
   return arr1.concat(arr2)
 }
 const isTheSameDataResponse = (data1, data2) =>{
@@ -27,14 +27,21 @@ const reducerFactory = (type, options = {}) => {
 
   return function(state = initialStateGenerate, action) {
     switch(action.type) {
-      case actionType.UPDATE_ALL : {
+      case actionType.GET_ALL : {
         if (isTheSameDataResponse(action.data.entities, state.entities)) return state
         return state.merge(action.data)
       }
-      case actionType.UPDATE_MORE : {
-        // return Immutable.merge(state, action.data, {deep: true})
-        // return state.merge( action.data, {deep: true})
+      case actionType.GET_MORE : {
         return state.updateIn(['entities', 'data'], mergeObject, action.data.entities.data).updateIn(['result'], mergeArray, action.data.result )
+      }
+      
+      case actionType.ADD_MORE: {
+        // Add data(from local/ server)
+        // Show status if local => update done
+        return state.updateIn(['entities', 'data'], mergeObject, action.data.entites.data).updateIn(['result'], mergeArray, action.data.result )
+      }
+      case actionType.CHANGE_STATUS_UPDATE_FINISH: {
+
       }
       case actionType.UDPATE_SINGLE : {
         return state.updateIn(['entities', 'data', action._id], action.data)
@@ -45,9 +52,16 @@ const reducerFactory = (type, options = {}) => {
       case actionType.UPDATE_RESPONSE_STATUS : {
         return state.set('isFetching', false).set('message', action.message).set('showAlert', true).set('ok', action.ok)
       }
-      // case actionType.UPDATE_QUERY_SUCCESS : {
-      //   return state.set('isFetching', false).set('message', action.message).set('showAlert', true)
-      // }
+      // ─── ADD MORE DATA ───────────────────────────────────────────────
+      case actionType.ADD_MORE_LOCAL: {
+        return state.updateIn(['entities', 'data'], mergeObject, action.data.entities.data).updateIn(['local'], mergeArray, action.data.result)
+      }
+      case actionType.ADD_MORE_SERVER: {
+        // return state.updateIn(['entities', 'data'], mergeObject, action.data.entites.data).updateIn(['result'], mergeArray, action.data.result )
+        // This way only remove id of local
+        return state.updateIn(['result'],mergeArray, state.local).set('local', [])
+      }
+      // ─── END OF ADD MORE DATA ────────────────────────────────────────
       case actionType.UPDATE_ALERT : {
         return state.set('showAlert', action.showAlert)
       }

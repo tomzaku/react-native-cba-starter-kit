@@ -3,12 +3,15 @@ const getRuleByGroup = (group) => {
   switch (group) {
     case 'FULL': {
       return [
-        'UPDATE_ALL',
-        'UPDATE_MORE',
+        'GET_ALL',
+        'GET_MORE',
         'UDPATE_SINGLE',
         'UPDATE_FETCHING',
         'UPDATE_RESPONSE_STATUS',
         'UPDATE_ALERT',
+        'ADD_MORE',
+        'ADD_MORE_LOCAL',
+        'ADD_MORE_SERVER',
       ]
     }
     //TODO: Add more group to filter action

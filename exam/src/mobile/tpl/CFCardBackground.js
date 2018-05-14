@@ -1,7 +1,7 @@
 //import liraries
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
-import { CFButton, AppAvatar } from 'AppComponent';
+import { AppButton, AppAvatar } from 'AppComponent';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { metric, color, applicationStyle, font, image, animation } from 'AppTheme';
 

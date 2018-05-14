@@ -72,7 +72,7 @@ const metrics = {
   TOOLBAR_HEIGHT: em(2.5),
 
   // INPUT
-  INPUT_HIGHT: em(3),
+  INPUT_HEIGHT: em(3),
 
   // LINE
   LINE_HEIGHT: 3,

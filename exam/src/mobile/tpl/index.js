@@ -3,9 +3,12 @@
 */
 
 import AppAlphabet from './AppAlphabet';
+import AppText from './AppText';
 import AppAvatar from './AppAvatar';
 import AppAvatarPicker from './AppAvatarPicker';
-import CFButton from './CFButton';
+import AppButton from './AppButton';
+import AppIcon from './AppIcon';
+import AppTextInput from './AppTextInput';
 import CFCard from './CFCard.js';
 import CFCardDiff from './CFCardDiff';
 import CFCardMerge from './CFCardMerge';
@@ -38,9 +41,12 @@ import CFHeaderProfile from './CFHeaderProfile';
 
 export {
   AppAlphabet,
+  AppText,
   AppAvatar,
   AppAvatarPicker,
-  CFButton,
+  AppButton,
+  AppIcon,
+  AppTextInput,
   CFCard,
   CFCardDiff,
   CFCardMerge,

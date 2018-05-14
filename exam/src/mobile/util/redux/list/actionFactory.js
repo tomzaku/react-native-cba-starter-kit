@@ -21,12 +21,17 @@ const actionFactory = (type, options ) => {
   const actionTypes = createListActionType(type, options)
   const callActionTypes = checkIfExist(actionTypes)
 
-  const getInitialData = callActionTypes('UPDATE_ALL', () =>({
-    type: addSaga(actionTypes.UPDATE_ALL)
+  const getInitialData = callActionTypes('GET_ALL', () =>({
+    type: addSaga(actionTypes.GET_ALL)
   }))
 
-  const getMoreData = callActionTypes('UPDATE_MORE', () => ({
-    type: addSaga(actionTypes.UPDATE_MORE)
+  const getMoreData = callActionTypes('GET_MORE', () => ({
+    type: addSaga(actionTypes.GET_MORE)
+  }))
+
+  const addMoreData = callActionTypes('ADD_MORE', (data) => ({
+    type: addSaga(actionTypes.ADD_MORE),
+    data
   }))
 
   const updateSingle = callActionTypes('UDPATE_SINGLE', (data) => ({
@@ -59,6 +64,7 @@ const actionFactory = (type, options ) => {
   return {
     getInitialData,
     getMoreData,
+    addMoreData,
     updateSingle,
     updateFetching,
     updateQuerySuccess,

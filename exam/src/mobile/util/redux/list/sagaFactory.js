@@ -1,20 +1,22 @@
 import { call, put, takeEvery, select, all } from 'redux-saga/effects';
 import logger from 'react-consola'
-import { createListActionType } from "../actionType";
 import { normalize, schema } from 'normalizr';
+import { v1 as uuid } from 'uuid'
+
+import { createListActionType } from "../actionType";
 
 // ─── NORMALIZING DATA ───────────────────────────────────────────────────────────
-const objectSchema = new schema.Entity('data', {}, {
-  // photos: photoSchema,
-  idAttribute: '_id'
-})
-const listSchema = [objectSchema]
-const curryFunc = (schema, options) => {
-  return function(data) {
-    return normalize(data, schema, options)
-  }
+const getObjectSchema = (options = {}) => {
+  console.log('DATA OPTIONS', options)
+  return new schema.Entity('data', {}, {
+    idAttribute: 'id',
+    ...options
+  })
 }
-const normalizeDataFunc = curryFunc(listSchema)
+
+const normalizeData = (data, options = {}) => {
+  return normalize(data, [getObjectSchema(options.schemaOptions)])
+}
 // ────────────────────────────────────────────────────────────────────────────────
 
 function* handleRESTFUL(fetching, fetchServer, updateDataLocal, updateSuccess, updateFailure) {
@@ -86,32 +88,60 @@ const failureAction = (type, message) => ({
   message: message || 'Update done'
 })
 
+function* addMoreSaga(actions, type, options = {}) {
+  const { data = [] } = actions;
+  const { addMore } = options;
+  
+  const actionTypes = createListActionType(type)
+  const { schemaOptions= {} } = options;
+  const { idAttribute = 'id' } = schemaOptions;
+  // Update local
+  const dataWithLocal = data.map((item) => { item[idAttribute] = uuid() ; return item })
+  idList = dataWithLocal.map(item => item[idAttribute])
+  yield put ({
+    type: actionTypes.ADD_MORE_LOCAL,
+    data: normalizeData(dataWithLocal),
+    local: idList,
+  })
+  const addMoreAction = (data = []) => ({
+    type: actionTypes.ADD_MORE_SERVER,
+    local: idList,
+    data: normalizeData(data),
+  })
+  // Update online
+  const fetchGeneral = makeFetchGeneral(type)
+  yield fetchGeneral(() => addMore(data), addMoreAction)()
+}
 
 const sagaFactory = (type, options) => {
   const sagaActionTypes = createListActionType(type, { isSaga: true })
   const actionTypes = createListActionType(type)
 
   const updateAllAction = (data) => ({
-    type: actionTypes.UPDATE_ALL,
-    data: normalizeDataFunc(data), 
+    type: actionTypes.GET_ALL,
+    data: normalizeData(data, options), 
   })
 
   const updateMoreAction = (data) => ({
-    type: actionTypes.UPDATE_MORE,
-    data: normalizeDataFunc(data),
+    type: actionTypes.GET_MORE,
+    data: normalizeData(data, options),
   })
 
   const { getAll, getMore, updateSingle } = options;
   
   const fetchGeneral = makeFetchGeneral(type)
   const watch = Object.keys(sagaActionTypes).map(actionType => {
-    // Check key is same as update_all
+    // Check key is same as GET_ALL
     switch(actionType) {
-      case 'UPDATE_ALL':
-        return takeEvery(sagaActionTypes.UPDATE_ALL, fetchGeneral(getAll, updateAllAction))
-        // return takeEvery(sagaActionTypes.UPDATE_ALL, test)
-      case 'UPDATE_MORE': 
-        return takeEvery(sagaActionTypes.UPDATE_MORE, fetchGeneral(getMore, updateMoreAction))
+      case 'GET_ALL':
+        return takeEvery(sagaActionTypes.GET_ALL, fetchGeneral(getAll, updateAllAction))
+        // return takeEvery(sagaActionTypes.GET_ALL, test)
+      case 'GET_MORE': 
+        return takeEvery(sagaActionTypes.GET_MORE, fetchGeneral(getMore, updateMoreAction))
+      case 'ADD_MORE':
+        return takeEvery(sagaActionTypes.ADD_MORE, function* (actions) {
+          yield addMoreSaga(actions, type, options)
+        })
     }
   })
   console.log('WATCH', watch)

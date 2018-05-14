@@ -6,7 +6,7 @@
 
   type: string (will create action by type)
   group: string (Ex: 'FULL', will related to rule property)
-  rule: array (Ex: ['UPDATE_ALL'], array of rules of reducer)
+  rule: array (Ex: ['GET_ALL'], array of rules of reducer)
   initialState: Object
   reducer: Function
 
@@ -17,7 +17,7 @@ Example patient:
 ``` js
 const patientOptions = {
   type: 'patient',
-  rule: ['UPDATE_ALL']
+  rule: ['GET_ALL']
 }
 const patientReducerFactory = reducerFactory(patientOptions)
 ```

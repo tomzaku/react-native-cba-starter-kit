@@ -15,15 +15,15 @@ async function init(nameProject) {
   print.info('DEFAULT FOLDER ' + process.cwd())
   print.info(`Creating new react-native called ${nameProject}... Will take 5 minutes`)
   
-  await installReactNative(nameProject)
+  // await installReactNative(nameProject)
   print.info('Creating react-native successfully')
   print.info('Now install dependence package')
-  await installPackageDependence(nameProject)
+  // await installPackageDependence(nameProject)
   print.info('Copying base component')
   await copyBaseToProject(nameProject)
    // Link package
   print.info('Linking package...')
-  await linkingPackage(nameProject)
+  // await linkingPackage(nameProject)
   print.info('Done!. Run IOS now')
    
 }
@@ -67,25 +67,24 @@ async function installPackage(nameProject, namePackage) {
 
 async function copyBin(nameProject) {
   print.info('Copy bin and Makefile')
-  const changeIp = String.raw`
-  #!/usr/bin/env python3
-  import re
-  import socket
+  const changeIp = String.raw`#!/usr/bin/env python3
+import re
+import socket
 
-  s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-  s.connect(("8.8.8.8", 80))
-  ip = s.getsockname()[0]
-  s.close()
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.connect((\"8.8.8.8\", 80))
+ip = s.getsockname()[0]
+s.close()
 
-  FILE_IOS = './ios/${nameProject}/AppDelegate.m'
-  with open(FILE_IOS) as f:
-      content = f.read()
-  content_new = re.sub(r'(http:\/\/).*\/', r'http://' + ip + ':8081/', content)
+FILE_IOS = './ios/${nameProject}/AppDelegate.m'
+with open(FILE_IOS) as f:
+    content = f.read()
+content_new = re.sub(r'(http:\/\/).*\/', r'http://' + ip + ':8081/', content)
 
-  f = open(FILE_IOS, 'w')
-  f.write(content_new)
+f = open(FILE_IOS, 'w')
+f.write(content_new)
 
-  print('Change IP to ' + ip + ' successfuly')
+print('Change IP to ' + ip + ' successfuly')
   `
   await exec(`mkdir ${process.cwd()}/${nameProject}/bin && echo "${changeIp}" > ${process.cwd()}/${nameProject}/bin/x-change-ip`)
   await exec(`cp  ${__dirname}/../base/Makefile ${process.cwd()}/${nameProject}/`)
@@ -139,6 +138,7 @@ async function copyAppDelegate(nameProject) {
 
 async function installPackageDependence(nameProject) {
   const dependences = [
+    'uuid',
     'react-native-vector-icons',
     'react-redux',
     'redux',
@@ -179,6 +179,7 @@ async function installPackageDependence(nameProject) {
 async function linkingPackage(nameProject) {
   await exec(`cd ${process.cwd()}/${nameProject} && react-native link`)
 } 
+
 async function remove(nameProject) {
   if(!nameProject) {
     print.error('Try this zkrn remove <nameApp>')
@@ -209,5 +210,4 @@ module.exports = async function run (argv) {
     default:
       help()
   }
-  
 }
