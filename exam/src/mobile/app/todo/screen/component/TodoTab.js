@@ -7,8 +7,8 @@ import { connect } from 'react-redux'
 
 import { IconTextInput, Button, Icon } from 'AppComponent'
 import { todo as todoAction } from 'AppAction'
-
 import { todo as todoReselect } from 'AppReselect';
+
 import TodoBase from './TodoBase'
 import R from 'ramda'
 import { compareListByStatus } from './helper'

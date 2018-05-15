@@ -5,11 +5,12 @@ import { connect } from 'react-redux';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 import { todo } from 'AppAction'
+import I18n from 'AppI18n'
+import { AppTabView } from 'AppComponent'
 
 import TodoTab from './component/TodoTab';
-// import DoingTab from './component/DoingTab';
-// import DoneTab from './component/DoneTab';
-
+import DoingTab from './component/DoingTab';
+import DoneTab from './component/DoneTab';
 // create a component
 class TodoScreen extends Component {
   componentDidMount = () => {
@@ -19,12 +20,12 @@ class TodoScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <ScrollableTabView>
-          <TodoTab tabLabel="To-do" />
-          {/* <DoingTab tabLabel="Doing" />
-          <DoneTab tabLabel="Done" /> */}
+        <AppTabView>
+          <TodoTab tabLabel={'To do'} keyLang={'todo'} />
+          <DoingTab tabLabel={'Doing'} keyLang={'doing'} />
+          <DoneTab tabLabel="Done" keyLang={'done'} />
           {/* <View/> */}
-        </ScrollableTabView>
+        </AppTabView>
       </View>
     );
   }

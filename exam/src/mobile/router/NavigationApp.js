@@ -13,16 +13,12 @@ import getStackNavigator from '@conf/navigation/index';
 import MainScreen from './MainScreen'
 
 class NavigatorApp extends Component {
-  clearnApp() {
-    this.props.dispatch(authentication.cleanApp());
-  }
-
   componentWillMount() {
-
   }
   render() {
     const { isAuthenticated } = this.props;
-    const LoginContainer = getStackNavigator('Login');
+    // const LoginContainer = getStackNavigator('Login');
+    const LoginContainer = getStackNavigator('Main');
     if (!isAuthenticated) {
       return <LoginContainer />;
     }

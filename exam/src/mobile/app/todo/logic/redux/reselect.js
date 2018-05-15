@@ -1,5 +1,6 @@
 
 import { createSelector } from 'reselect'
+import logger from 'react-consola';
 
 const getTodoList = (state, props) =>
   state.todo.result
@@ -15,8 +16,8 @@ export const getNewTodo = createSelector(
   getLocalTodo,
   getTodoEntity,
   (todo, localTodo, entitiesData) => {
-    todo.concat(localTodo)
-    return todo.filter(id => entitiesData[id].status === 'to-do' && !entitiesData[id].locked)
+    const mergeTodo = todo.concat(localTodo)
+    return mergeTodo.filter(id => entitiesData[id].status === 'to-do' && !entitiesData[id].locked)
   }
 )
 const getItem = (state, props) => state.todo.entities.data[props.id]
@@ -31,16 +32,22 @@ export const getItemSelector = createSelector(
   })
 )
 export const getInProgressTodo = createSelector(
-  [ getTodoList ],
-  (todo) => {
-    return todo.filter(todo => todo.status === 'doing' && !todo.locked)
+  getTodoList,
+  getLocalTodo,
+  getTodoEntity,
+  (todo, localTodo, entitiesData) => {
+    const mergeTodo = todo.concat(localTodo)
+    return mergeTodo.filter(id => entitiesData[id].status === 'doing' && !entitiesData[id].locked)
   }
 )
 
 export const getFinishedTodo = createSelector(
-  [ getTodoList ],
-  (todo) => {
-    return todo.filter(todo => todo.status === 'done' && !todo.locked)
+  getTodoList,
+  getLocalTodo,
+  getTodoEntity,
+  (todo, localTodo, entitiesData) => {
+    const mergeTodo = todo.concat(localTodo)
+    return mergeTodo.filter(id => entitiesData[id].status === 'done' && !entitiesData[id].locked)
   }
 )
 

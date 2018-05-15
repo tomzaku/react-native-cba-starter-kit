@@ -6,15 +6,31 @@ import PropTypes from 'prop-types';
 import { metric, color, applicationStyle, font } from "AppTheme";
 
 export default class Line extends PureComponent {
+  getHightLine(type) {
+    console.log('TYPE', type)
+    if (type === 'thin'){
+      return metric.LINE_HEIGHT_S
+    }
+    if (type == 'thick'){
+      return metric.LINE_HEIGHT_L
+    }
+    return metric.LINE_HEIGHT
+  }
   render() {
-    const { containerStyle, style } = this.props
+    const { containerStyle, style, type} = this.props
+    const heightLine = this.getHightLine(type)
     return (
-      <View style={[styles.container, containerStyle]}>
+      <View style={[styles.container, containerStyle, {
+        height: heightLine
+      }]}>
         <View style={[styles.line, style]} />
       </View>
 
     );
   }
+}
+Line.defaultProps = {
+  type: 'normal'
 }
 
 Line.propTypes = {
@@ -24,10 +40,6 @@ Line.propTypes = {
 const styles = StyleSheet.create({
   container: {
     // height: metric.LINE_HEIGHT,
-    // backgroundColor: color.LINE_BORDER,
-    // flex: 1,
-    // overflow: 'hidden',
-    height: metric.LINE_HEIGHT,
     backgroundColor: color.LINE_BORDER
   },
   line: {

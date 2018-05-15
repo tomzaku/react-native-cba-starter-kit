@@ -2,6 +2,7 @@
 import React, { Component, PureComponent } from 'react';
 import { View, Text, StyleSheet, FlatList, TextInput, KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
+import logger from 'react-consola';
 
 import { IconTextInput, AppButton, AppIcon, AppTextInput } from 'AppComponent'
 import { metric, color, applicationStyle, font } from "AppTheme";
@@ -16,7 +17,7 @@ class ItemCard extends PureComponent {
   renderMoveDoing = () => {
     const { isLocal } = this.props 
     return (
-      <AppIcon name={isLocal ? 'ios-cloud-upload-outline' : 'ios-arrow-dropright-outline'} color={'white'} size={metric.ICON_S} />
+      <AppIcon name={isLocal ? 'ios-cloud-upload-outline' : 'ios-arrow-dropright-outline'} color={'white'} size={metric.ICON_S} style={{ marginLeft: metric.MARGIN_XS }}/>
     )
   }
   render() {
@@ -62,18 +63,13 @@ const ItemCardRedux = connect(mapStateToProps)(ItemCard)
 class TodoBase extends PureComponent {
   constructor() {
     super();
-    // this.ref = firebase.firestore().collection('todo');
-    // this.unsubscribe = null;
 
   }
  
   componentDidMount() {
-    // this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate) 
   }
 
-  componentWillUnmount() {
-      // this.unsubscribe();
-  }
+ 
   renderItem = ({ item, index }) => {
     // return null;
     // const { name, status } = item;

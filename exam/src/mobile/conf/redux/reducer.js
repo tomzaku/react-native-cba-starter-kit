@@ -5,12 +5,16 @@ import { reducer as formReducer } from 'redux-form'
 import { REHYDRATE, PURGE, persistCombineReducers, persistReducer } from 'redux-persist'
 import reduxPersist from './ReduxPersist';
 
+// Add language
+import { reducer as i18n } from 'react-native-redux-i18n'
+
 
 const rootModule = getSpecificModuleRedux('reducer')
 
 const reducer = combineReducers({
   ...rootModule,
   form: formReducer,
+  i18n,
 })
 
 const rootReducer = (state, action) => {

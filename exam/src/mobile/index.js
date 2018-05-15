@@ -1,7 +1,6 @@
 /* @flow */
 
-console.disableYellowBox = true;
-
+import './conf/index'
 import configureStore from './conf/redux/index';
 // import Main from './main'
 // import NavigatorApp from './config/navigation/';
@@ -15,7 +14,6 @@ import { PersistGate } from 'redux-persist/es/integration/react'
 import { Provider } from 'react-redux'
 import { StyleSheet, NetInfo, View, Platform } from 'react-native';
 import NavigationApp from './router/NavigationApp'
-
 
 const { persistor, store } = configureStore()
 

@@ -12,10 +12,8 @@ import getStackNavigator from '@conf/navigation/index';
 // create a component
 class MainScreen extends Component {
   componentDidMount = () => {
-    // this.props.dispatch(alexa.initMQTT())
   }
-  componentWillUnmount() {
-  }
+
   
   render() {
     const TabScreen = getStackNavigator('Main')

@@ -2,21 +2,22 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Switch } from 'react-native';
 
-import styles from './style/CFSwitchStyle';
+import styles from './style/AppSwitchStyle';
 import { color } from 'AppTheme'
+import { AppText } from './index'
 // create a component
-class CFSwitch extends Component {
+class AppSwitch extends Component {
   render() {
-    const { onPress, label, desc ='', value } = this.props;
+    const { onPress, label, labelKeyLang, desc ='', descKeyLang, value } = this.props;
     return (
       <View style={styles.switchComponent}>
         <View>
-          <Text style={styles.label}>
+          <AppText style={styles.label} keyLang={labelKeyLang} >
             {label}
-          </Text>
-          <Text>
+          </AppText>
+          <AppText keyLang={descKeyLang} >
             {desc}
-          </Text>
+          </AppText>
         </View>
         <Switch
           onValueChange={onPress}
@@ -28,9 +29,9 @@ class CFSwitch extends Component {
     );
   }
 }
-CFSwitch.defaultProps = {
+AppSwitch.defaultProps = {
   label: '',
   desc: '',
 }
 //make this component available to the app
-export default CFSwitch;
+export default AppSwitch;

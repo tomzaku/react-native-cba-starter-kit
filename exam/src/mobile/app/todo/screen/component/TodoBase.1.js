@@ -59,9 +59,6 @@ class TodoBase extends PureComponent {
     // this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate) 
   }
 
-  componentWillUnmount() {
-      // this.unsubscribe();
-  }
   renderItem = ({ item, index }) => {
     return null;
     // const { name, status } = item;

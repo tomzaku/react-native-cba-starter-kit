@@ -1,24 +1,28 @@
 //import liraries
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { connect } from 'react-redux';
+
+import { AppSwitch, AppLine } from 'AppComponent';
+import { metric, applicationStyle } from 'AppTheme'
+import { app } from 'AppAction'
 
 // create a component
-class menu extends Component {
-  // static navigationOptions = ({ navigation }) => {
-  //   const { params } = navigation.state;
-    
-  //   return {
-  //     title: 'menu',
-  //   }
-  // };
-
+class Menu extends Component {
+  onPressChangeLanguage = () => {
+    const { isVi, onPressChangeLanguage } = this.props;
+    if (isVi) {
+      return onPressChangeLanguage('en')
+    }
+    return onPressChangeLanguage('vi')
+  }
   render() {
+    const { onPressSwitchTheme, isDark, isVi } = this.props;
     return (
       <View style={styles.container}>
-        <Text>menu</Text>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
-          <Text style={{color: 'white'}}>Move to LoginScreen</Text>
-        </TouchableOpacity>
+        <AppSwitch labelKeyLang={'changeTheme'} descKeyLang={'changeTheme_desc'} onPress={onPressSwitchTheme} value={isDark} />
+        <AppLine containerStyle={styles.line} type={'thin'} />
+        <AppSwitch label={'Language Vi'} desc={'Change language to vi/en'} onPress={this.onPressChangeLanguage} value={isVi} />
       </View>
     );
   }
@@ -27,12 +31,22 @@ class menu extends Component {
 // define your styles
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    backgroundColor: '#2c3e50',
+    ...applicationStyle.con,
   },
+  line: {
+    marginVertical: metric.MARGIN_XS,
+  }
 });
 
+const mapStateToProps = (state, props) => ({
+  isDark: state.app.theme === 'light' ? false : true,
+  isVi: state.app.language === 'vi' ? true : false,
+})
+
+const mapDispatchToProps = (dispatch, props) => ({
+  onPressSwitchTheme: () => dispatch(app.switchTheme()),
+  onPressChangeLanguage: (code) => dispatch(app.changeLanguage(code))
+})
+
 //make this component available to the app
-export default menu;
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);

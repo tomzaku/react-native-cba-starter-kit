@@ -75,6 +75,8 @@ const metrics = {
   INPUT_HEIGHT: em(3),
 
   // LINE
-  LINE_HEIGHT: 3,
+  LINE_HEIGHT: 2,
+  LINE_HEIGHT_S: 0.5,
+  LINE_HEIGHT_L: 3.5,
 }
 export default metrics

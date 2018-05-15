@@ -3,9 +3,11 @@
 */
 
 // import { action as sandbox } from './sandbox/logic/redux/';
+import { action as app } from './app/logic/redux'
 import { action as todo } from './todo/logic/redux'
 
 export {
   // sandbox,
+  app,
   todo,
 }

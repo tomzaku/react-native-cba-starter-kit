@@ -2,8 +2,9 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux'
-import { application } from 'AppAction'
 
+import { todo as todoAction } from 'AppAction'
+import { todo as todoReselect } from 'AppReselect';
 
 
 import { getFinishedTodos } from '../../logic/redux/reselect.js';
@@ -13,22 +14,15 @@ import { compareListByStatus } from './helper'
 
 const mapStateToProps = (state, props) => {
   return {
-    todos: getFinishedTodos(state, props),
+    todo: todoReselect.getFinishedTodo(state, props),
     disableRightIcon: true,
   }
 }
 const mapDispatchToProps = (dispatch, props) => ({
-  submitTodo: (name) => dispatch(application.addTask(name, 'done')),
-  onPressButtonRight: (task) => dispatch(application.removeTask(task)),
-  onPressRemoveButton: (task) => dispatch(application.removeTask(task)),
+  submitTodo: (name) => dispatch(todoAction.addMoreData([{name, status: 'done' }])),
+  onPressButtonRight: (task) => dispatch(todoAction.removeTask(task)),
+  onPressRemoveButton: (task) => dispatch(todoAction.removeTask(task)),
 
 })
 //make this component available to the app
-export default connect(mapStateToProps, mapDispatchToProps, null, {
-  areStatesEqual: (next, prev) => {
-    return (
-      next.application.todo === prev.application.todo || 
-      compareListByStatus(next,prev)('done')
-    )
-  }
-} )(TodoBase)
+export default connect(mapStateToProps, mapDispatchToProps, null)(TodoBase)
