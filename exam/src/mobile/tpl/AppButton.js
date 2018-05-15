@@ -1,6 +1,9 @@
 /* @flow */
 import React, { PureComponent } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+
+import { AppText } from 'AppComponent'
+
 import PropTypes from 'prop-types';
 import rdColor from 'randomcolor';
 
@@ -16,6 +19,26 @@ export default class AppButton extends React.PureComponent {
     if (onPress) {
       onPress(title);
     }
+  }
+  renderText() {
+    const text = this.props.title || this.props.children.props.children;
+    const { large, medium, success, info, outline, textStyle } = this.props;
+    if (!text) return null;
+    return (
+       <AppText
+        style={[
+          styles.text,
+          large ? styles.largeText : {},
+          medium ? styles.mediumText : {},
+          success ? styles.successText : {},
+          info ? styles.infoText : {},
+          outline ? styles.outLineText : {},
+          textStyle
+        ]}
+      >
+      {text}
+      </AppText>
+    )
   }
   render() {
     const text = this.props.title || this.props.children;
@@ -53,19 +76,7 @@ export default class AppButton extends React.PureComponent {
           >
             {leftComponent()}
           </View>}
-        {text && <Text
-            style={[
-              styles.text,
-              large ? styles.largeText : {},
-              medium ? styles.mediumText : {},
-              success ? styles.successText : {},
-              info ? styles.infoText : {},
-              outline ? styles.outLineText : {},
-              textStyle
-            ]}
-          >
-            {text}
-          </Text>}
+        {this.renderText()}
         {rightComponent && <View
             style={[
               styles.leftRightComponent,

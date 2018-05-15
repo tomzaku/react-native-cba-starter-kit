@@ -12,6 +12,7 @@ import TodoTab from './component/TodoTab';
 import DoingTab from './component/DoingTab';
 import DoneTab from './component/DoneTab';
 // create a component
+import { applicationStyle } from 'AppTheme'
 class TodoScreen extends Component {
   componentDidMount = () => {
     this.props.getData()
@@ -34,7 +35,7 @@ class TodoScreen extends Component {
 // define your styles
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    ...applicationStyle.mainCon,
   },
 });
 

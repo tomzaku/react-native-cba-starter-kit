@@ -3,8 +3,8 @@ import { metric, color, applicationStyle, font } from "AppTheme";
 
 export default StyleSheet.create({
   container: {
-    ...applicationStyle.mainContainCon
-    // backgroundColor: color.
+    ...applicationStyle.mainCon,
+    // backgroundColor: 'black'
   },
   itemTitle: {
     ...applicationStyle.title,

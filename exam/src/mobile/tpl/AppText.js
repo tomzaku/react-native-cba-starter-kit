@@ -9,7 +9,20 @@ import I18n from '../i18n/index'
 // create a component
 class AppText extends PureComponent {
   render() {
-    const { style, keyLang, language } = this.props;
+    const { style, keyLang, language, uppercase, children } = this.props;
+    let text;
+    if (uppercase) {
+      text = React.Children.map(children, child => {
+        if (_.isString(child)) {
+          return _.toUpper(child);
+        } else {
+          return child;
+        }
+      })
+    } else {
+      text = children;
+    }
+
     // I18n.defaultLocale = 'vi'
     // I18n.locale = 'vi'
     if (keyLang) {
@@ -18,7 +31,7 @@ class AppText extends PureComponent {
       )
     }
     return (
-      <Text {...this.props} style={style} >{this.props.children}</Text>
+      <Text {...this.props} style={style} >{text}</Text>
     );
     
   }
