@@ -4,7 +4,7 @@ import React, { PureComponent, Component } from 'react';
 import { View, Text, StyleSheet, Platform, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import { ThemeColor, ThemeSpacing } from 'AppTheme';
-import { CFButton, AppAvatar } from 'AppComponent';
+import { AppButton, AppAvatar } from 'AppComponent';
 
 import { HighPureComponent } from 'AppBaseComponents';
 import styles from './style/CFHeaderProfileStyle'
@@ -23,10 +23,10 @@ export default class CFHeaderProfile extends HighPureComponent {
       <View style={styles.row}>
         {
           buttons.map((item) => (
-           <CFButton style={{ marginLeft: 3, marginRight: 3}} backgroundColor={'white'} styleText={styles.textHeader} {...item}/>
+           <AppButton style={{ marginLeft: 3, marginRight: 3}} backgroundColor={'white'} styleText={styles.textHeader} {...item}/>
           ) )
         }
-        {/* <CFButton title={'Detail'} style={{flex: 1}} /> */}
+        {/* <AppButton title={'Detail'} style={{flex: 1}} /> */}
       </View>
     )
   }

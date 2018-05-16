@@ -10,7 +10,6 @@ import IconIonic from 'react-native-vector-icons/Ionicons';
 
 import { baseModuleHelper } from 'AppUtil'
 import { HighPureComponent } from 'AppBaseComponents';
-import Swipeout from 'react-native-swipeout';
 
 class CFCardQuickAccess extends HighPureComponent {
   renderBody() {
@@ -68,9 +67,7 @@ class CFCardQuickAccess extends HighPureComponent {
       </View>
     ]
     return (
-      <Swipeout right={swipeoutBtns}>
-        {this.renderBody()}
-      </Swipeout>
+      this.renderBody()
     )
   }
 }

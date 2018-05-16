@@ -1,6 +1,5 @@
 // Config Storage
 import createSagaMiddleware from 'redux-saga';
-import immutableTransform from 'redux-persist-transform-immutable';
 import rootReducer from './reducer';
 import rootSaga from './saga.js';
 import thunk from 'redux-thunk';

@@ -44,7 +44,7 @@ const nightMonochromatic = ['#000829', '#010A4B', '#04198D']
 const nightCommonColor = {
   // dark: '#000',
   // light: '#fff',
-  gray: ['#000000', '#333333', '#616161', '#D0D0D0', '#FFFFFF']
+  gray: ['#000000', '#333333', '#616161', '#D0D0D0', '#FFFFFF'].reverse()
 }
 
 const darkPrimaryPalette = {

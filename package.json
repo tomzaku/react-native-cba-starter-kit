@@ -1,5 +1,5 @@
 {
-  "name": "react-native-module-starter-kit",
+  "name": "zkrn",
   "version": "1.0.0",
   "description": "react native starter kit and seperate module",
   "main": "./src/index.js",
@@ -20,6 +20,9 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/tomzaku/react-native-module-starter-kit/issues"
+  },
+  "bin": {
+    "create": "bin/zakurn"
   },
   "homepage": "https://github.com/tomzaku/react-native-module-starter-kit#readme",
   "dependencies": {

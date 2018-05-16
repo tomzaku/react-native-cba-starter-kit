@@ -138,29 +138,32 @@ async function copyAppDelegate(nameProject) {
 
 async function installPackageDependence(nameProject) {
   const dependences = [
+    // GENERAL
     'uuid',
-    'react-native-vector-icons',
-    'react-redux',
+    'ramda',
+    'axios',
+    'moment',
+    'randomcolor',
+    // REDUX
     'redux',
-    'redux-persist',
+    'normalizr',
+    'react-redux',
     'redux-saga',
     'redux-thunk',
     'reselect',
     'seamless-immutable',
+    'redux-persist',
+    'redux-form',
+    // UI
+    'react-native-vector-icons',
     'react-consola',
     'react-native-animatable',
     'react-native-modal-datetime-picker',
     'react-native-shimmer-placeholder',
-    'randomcolor',
     'react-native-spinkit',
-    'ramda',
-    'normalizr',
-    'axios',
     'react-native-device-info',
     'react-native-keyboard-aware-scroll-view',
     'react-native-orientation',
-    'moment',
-    'redux-form',
     'react-native-image-picker',
     'react-native-circular-action-menu',
     'react-native-action-button',
@@ -170,6 +173,7 @@ async function installPackageDependence(nameProject) {
     'react-native-datepicker',
     'react-native-linear-gradient',
     'react-native-material-bottom-navigation-performance',
+    'react-native-i18n',
   ]
   for (let package of dependences) {
     await installPackage(nameProject, package);

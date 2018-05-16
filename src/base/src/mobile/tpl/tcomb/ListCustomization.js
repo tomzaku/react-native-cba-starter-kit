@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { color, metric, font,  } from 'AppTheme';
 // import { FormLabel } from 'react-native-elements';
-import { CFFormLabel, CFFormInput, CFButton } from 'AppComponent';
+import { CFFormLabel, CFFormInput, AppButton } from 'AppComponent';
 // import TextBoxCustmization from './TextboxCustomization'
 
 import StyleTcomb from './styles';
@@ -14,7 +14,7 @@ import StyleTcomb from './styles';
 function addParentButton(button, stylesheet) {
   return (
     // <Icon name ={'md-add-circle'} size={22} onPress={button.click}/>
-    <CFButton
+    <AppButton
       style={[{ flex: 1 }]}
       icon={{ name: 'add' }}
       size={22}

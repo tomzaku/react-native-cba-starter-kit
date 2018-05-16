@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 import ImagePicker from 'react-native-image-picker';
 import PropTypes from 'prop-types';
 
-import { AppAvatar, CFButton } from 'AppComponent';
+import { AppAvatar, AppButton } from 'AppComponent';
 import { View, Text, StyleSheet } from 'react-native';
 
 import styles from './style/AppAvatarPickerStyle'
@@ -59,7 +59,7 @@ class AppAvatarPicker extends PureComponent {
         {
           withoutButton
           ? null
-          : <CFButton title={'UPDATE IMAGE'} style={styles.buttonUpdateImage} onPress={this.onChangeImage} />
+          : <AppButton title={'UPDATE IMAGE'} style={styles.buttonUpdateImage} onPress={this.onChangeImage} />
         }
       </View>
     );

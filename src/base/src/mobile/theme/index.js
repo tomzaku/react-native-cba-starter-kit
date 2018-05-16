@@ -2,5 +2,5 @@
 * @providesModule AppTheme
 */
 
-export * from './newMeta/'
+export * from './default/'
 

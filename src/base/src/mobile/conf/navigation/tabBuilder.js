@@ -23,6 +23,7 @@ const getBottomTabConfig = (value, key, obj) => {
 }
 
 const addReactNavigationProperties = (value, key, obj) => {
+  // console.log('Key', key, 'value', value)
   let tabRoute = {}
   let configMaterialBottomNavigationBar = {};
   const {
@@ -45,8 +46,7 @@ const addReactNavigationProperties = (value, key, obj) => {
         backgroundColor: headerBackgroundColor,
       },
       headerTitleStyle: {
-        ...applicationStyle.titleHl,
-        alignSelf: 'center',
+        ...applicationStyle.navHeaderTitle,
       },
       // Config tab bar bottom
       tabBarIcon: ({ tintColor, focused }) => (
@@ -82,11 +82,11 @@ export const getSessionHeader = (tabRoute = []) => {
 
 
 export const getMainTabNavigator = (listRoute, options = {}) => {
-  const { isNested = false } = options
+  const { isIncludeRouteAdvanced = false } = options
   const tabNavigator = TabNavigator(
   {
     ...addReactNavigationPropertiesRambda(listRoute, getRoutes({
-      isNested,
+      isIncludeRouteAdvanced,
     })),
   },
   {
@@ -99,16 +99,13 @@ export const getMainTabNavigator = (listRoute, options = {}) => {
       bottomNavigationOptions: {
         labelColor: color.BOTTOM_TABBAR_ICON,
         activeLabelColor: color.BOTTOM_TABBAR_ICON_SELECTED,
-        delay: 400,
-        tabStyle: { 
-          borderTopWidth: 0.5,
-          borderTopColor: '#B6B6B6'
-        },
+        tabStyle: { borderTopWidth: 0.3,
+          borderTopColor: '#626262'},
         // rippleColor: color.BOTTOM_TABBAR_RIPPLE,
         shifting: false,
         tabs: {
           ...getBottomTabConfigRambda(listRoute, getRoutes({
-            isNested,
+            isIncludeRouteAdvanced,
           })),
         }
       }

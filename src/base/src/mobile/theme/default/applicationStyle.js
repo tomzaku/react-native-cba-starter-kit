@@ -23,7 +23,8 @@ const ApplicationStyles = {
   // For screen need pading
   con: {
     flex: 1,
-    padding: metric.MARGIN_S
+    padding: metric.MARGIN_S,
+    backgroundColor: color.BACKGROUND
   },
 
   // ─── PROTOTIES ──────────────────────────────────────────────────────────────────

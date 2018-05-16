@@ -13,7 +13,7 @@ export const getStackRoute = (initialRouteName = "HoldingPlaceHolder") => {
   const routes = getRoutes();
   Object.keys(routes).map((key, index) => {
     const {
-      title = "",
+      title,
       screen,
       headerBackgroundColor = "red",
       headerMode
@@ -28,6 +28,9 @@ export const getStackRoute = (initialRouteName = "HoldingPlaceHolder") => {
         headerStyle: {
           ...applicationStyle.navHeader,
           backgroundColor: headerBackgroundColor
+        },
+        headerTitleStyle: {
+          ...applicationStyle.navHeaderTitle,
         },
         ...navigation.navigationOptions
       });

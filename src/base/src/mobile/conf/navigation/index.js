@@ -6,20 +6,12 @@ import { color, metric, font, applicationStyle } from 'AppTheme';
 import R from 'ramda'
 import { getMainTabNavigator } from './tabBuilder';
 import { StackModalNavigator, getStackRoute } from "./stackBuilder";
+import { StackNavigator } from "react-navigation";
 
 const getStackNavigator = (initialRouteName) => {
-  const statckNavigator = StackModalNavigator({
+  const statckNavigator = StackNavigator({
     Main: {
-      // screen: getMainTabNavigator(['ListEncounter', 'AllPatient', 'Menu'],
-      // screen: getMainTabNavigator(['ListEncounter', 'ListEncounter', 'AllPatient', 'AllOrganization','AllPractitioner', 'Menu'],
-      // screen: getMainTabNavigator(['AllPatient', 'Menu'],
-      // screen: getMainTabNavigator(['AllPatient'],
-      // screen: getMainTabNavigator(['AllPatient'],
-      screen: getMainTabNavigator(['ListEncounter', 'AllPatient', 'PractitionOrganization', 'Menu'],
-      {
-        isNested: true
-      }
-    ),
+      screen: getMainTabNavigator(['Todo', 'Menu']),
     },
     ...getStackRoute(),
   }, {
@@ -31,8 +23,8 @@ const getStackNavigator = (initialRouteName) => {
 
       },
       headerTitleStyle: {
-        ...applicationStyle.titleHl,
-        alignSelf: 'center',
+        ...applicationStyle.titleHeader,
+        
       },
       headerTintColor: color.TITLE_HIGHLIGH,
       ...navigation.navigationOptions,

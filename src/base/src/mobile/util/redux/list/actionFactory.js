@@ -15,20 +15,29 @@ const checkIfExist = (actionTypes) => {
   }
 }
 
-const actionFactory = (type, options ) => {
+const actionFactory = (type, options = {} ) => {
   // options will include: rules, group 
   // Depend on rule will render action
+  const { action = {} } = options
   const actionTypes = createListActionType(type, options)
   const callActionTypes = checkIfExist(actionTypes)
 
-  const getInitialData = callActionTypes('UPDATE_ALL', () =>({
-    type: addSaga(actionTypes.UPDATE_ALL)
+  const getInitialData = callActionTypes('GET_ALL', () =>({
+    type: addSaga(actionTypes.GET_ALL)
   }))
 
-  const getMoreData = callActionTypes('UPDATE_MORE', () => ({
-    type: addSaga(actionTypes.UPDATE_MORE)
+  const getMoreData = callActionTypes('GET_MORE', () => ({
+    type: addSaga(actionTypes.GET_MORE)
   }))
 
+  const addMoreData = callActionTypes('ADD_MORE', (data) => ({
+    type: addSaga(actionTypes.ADD_MORE),
+    data
+  }))
+  const removeMoreData = callActionTypes('REMOVE_MORE', (idList) => ({
+    type: addSaga(actionTypes.REMOVE_MORE),
+    idList
+  }))
   const updateSingle = callActionTypes('UDPATE_SINGLE', (data) => ({
     type: addSaga(actionTypes.UPDATE_SINGLE),
     data
@@ -55,14 +64,18 @@ const actionFactory = (type, options ) => {
       showAlert: false,
     }
   })
+  
   // Yo can call all 
   return {
     getInitialData,
     getMoreData,
+    addMoreData,
     updateSingle,
     updateFetching,
     updateQuerySuccess,
     hideAlert,
+    removeMoreData,
+    ...action
   }
 }
 export default actionFactory

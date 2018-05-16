@@ -2,18 +2,12 @@
 import React, { PureComponent } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Spinner from 'react-native-spinkit';
-import Animation from 'lottie-react-native';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { metric, color, applicationStyle, font, animation } from 'AppTheme';
 
 // create a component
 class CFStatusNetwork extends PureComponent {
-  componentDidUpdate(prevProps, prevState) {
-    if (this.animation) {
-      this.animation.play();
-    }
-  }
   render() {
     const { isFetching, ok, message, visible } = this.props;
     if ( !visible ) return null;
@@ -32,14 +26,14 @@ class CFStatusNetwork extends PureComponent {
           <View style={[styles.statusMessage, { backgroundColor: '#006400', height: 40 }]}>
             {/* <Spinner color={'white'} type={'FadingCircleAlt'} size={20} /> */}
             <View style={{ width: 40, height: 30 }}>
-              <Animation
+              {/* <Animation
                 ref={(animation) => { this.animation = animation; }}
                 style={{
                   width: 50,
                   height: 30,
                 }}
                 source={animation.success}
-              />
+              /> */}
             </View>
             <Text style={{ color: 'white' }}>
               {message || 'Successful!'}

@@ -3,9 +3,15 @@
 */
 
 import AppAlphabet from './AppAlphabet';
+import AppText from './AppText';
 import AppAvatar from './AppAvatar';
 import AppAvatarPicker from './AppAvatarPicker';
-import CFButton from './CFButton';
+import AppButton from './AppButton';
+import AppIcon from './AppIcon';
+import AppTextInput from './AppTextInput';
+import AppSwitch from './AppSwitch';
+import AppLine from './AppLine';
+import AppTabView from './AppTabView';
 import CFCard from './CFCard.js';
 import CFCardDiff from './CFCardDiff';
 import CFCardMerge from './CFCardMerge';
@@ -19,7 +25,6 @@ import CFHeader from './CFHeader';
 import CFHeaderIconNav from './CFHeaderIconNav';
 import CFHeaderLine from './CFHeaderLine';
 import CFInputField from './CFInputField';
-import CFLine from './CFLine';
 import CFLoading from './CFLoading';
 import CFLogo from './CFLogo';
 import CFPhotoPicker from './CFPhotoPicker';
@@ -32,16 +37,20 @@ import CFToolBar from './CFToolBar';
 import CFInfoForm from './CFInfoForm';
 import CFCardBackground from './CFCardBackground';
 import CFSwitchState from './CFSwitchState';
-import CFSwitch from './CFSwitch';
 import CFCardQuickAccess from './CFCardQuickAccess';
 import CFHeaderProfile from './CFHeaderProfile';
-import * as CFElementReduxForm from './CFElementReduxForm';
 
 export {
   AppAlphabet,
+  AppText,
   AppAvatar,
   AppAvatarPicker,
-  CFButton,
+  AppButton,
+  AppIcon,
+  AppTextInput,
+  AppSwitch,
+  AppLine,
+  AppTabView,
   CFCard,
   CFCardDiff,
   CFCardMerge,
@@ -55,7 +64,6 @@ export {
   CFHeaderIconNav,
   CFHeaderLine,
   CFInputField,
-  CFLine,
   CFLoading,
   CFLogo,
   CFPhotoPicker,
@@ -65,11 +73,9 @@ export {
   CFTabContainer,
   CFTabInfo,
   CFToolBar,
-  CFElementReduxForm,
   CFInfoForm,
   CFCardBackground,
   CFSwitchState,
-  CFSwitch,
   CFCardQuickAccess,
   CFHeaderProfile,
 };
