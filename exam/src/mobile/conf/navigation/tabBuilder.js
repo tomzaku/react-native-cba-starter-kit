@@ -46,8 +46,7 @@ const addReactNavigationProperties = (value, key, obj) => {
         backgroundColor: headerBackgroundColor,
       },
       headerTitleStyle: {
-        ...applicationStyle.titleHeader,
-        
+        ...applicationStyle.navHeaderTitle,
       },
       // Config tab bar bottom
       tabBarIcon: ({ tintColor, focused }) => (

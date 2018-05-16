@@ -6,22 +6,21 @@ import logger from 'react-consola';
 
 import { IconTextInput, AppButton, AppIcon, AppTextInput } from 'AppComponent'
 import { metric, color, applicationStyle, font } from "AppTheme";
-// import KeyboardSpacer from 'react-native-keyboard-spacer';
-// import firebase from 'react-native-firebase';
 import { todo as todoReselect } from 'AppReselect'
+import { theme } from 'AppUtil'
 
-import styles from './style/TodoBaseStyle'
+import TodoBaseStyle from './style/TodoBaseStyle'
 // create a component
 
 class ItemCard extends PureComponent {
   renderMoveDoing = () => {
     const { isLocal } = this.props 
     return (
-      <AppIcon name={isLocal ? 'ios-cloud-upload-outline' : 'ios-arrow-dropright-outline'} color={'white'} size={metric.ICON_S} style={{ marginLeft: metric.MARGIN_XS }}/>
+      <AppIcon name={isLocal ? 'ios-cloud-upload-outline' : 'ios-arrow-dropright-outline'} color={color.ICON_HIGHLIGHT} size={metric.ICON_S} style={{ marginLeft: metric.MARGIN_XS }}/>
     )
   }
   render() {
-    const { onPressButtonRight,onPressRemoveButton, disableRightIcon, item } = this.props;
+    const { onPressButtonRight,onPressRemoveButton, nextStatus, disableRightIcon, item, styles } = this.props;
     const { name, status } = item;
     return (
       <View style={styles.itemContainer}>
@@ -36,8 +35,7 @@ class ItemCard extends PureComponent {
             {disableRightIcon
               ? null
               : <AppButton
-               title={'doing'}
-               primary
+               title={nextStatus}
                style={styles.buttonNext}
                rightComponent={this.renderMoveDoing}
                rounded
@@ -55,7 +53,9 @@ const mapStateToProps = (state, props) => {
   return {
     // item: state.todo.entities.data[props.id],
     // isLocal: true,
-    ...todoReselect.getItemSelector(state, props)
+    ...todoReselect.getItemSelector(state, props),
+    styles: theme.getStyle(TodoBaseStyle, state.app.theme),
+
   }
 }
 const ItemCardRedux = connect(mapStateToProps)(ItemCard)
@@ -73,13 +73,14 @@ class TodoBase extends PureComponent {
   renderItem = ({ item, index }) => {
     // return null;
     // const { name, status } = item;
-    // const { onPressButtonRight, onPressRemoveButton, disableRightIcon } = this.props;
+    const { nextStatus, onPressButtonRight, onPressRemoveButton, disableRightIcon } = this.props;
     return (
       <ItemCardRedux
         // item={item}
         id={item}
-        // onPressButtonRight={onPressButtonRight}
-        // onPressRemoveButton={onPressRemoveButton}
+        nextStatus={nextStatus}
+        onPressButtonRight={onPressButtonRight}
+        onPressRemoveButton={onPressRemoveButton}
         // disableRightIcon={disableRightIcon}
       />
     )
@@ -98,7 +99,7 @@ class TodoBase extends PureComponent {
     return `${item.id}${index}${item.status}`
   }
   render() {
-    const { todo } = this.props
+    const { todo, styles } = this.props
     return (
       <KeyboardAvoidingView style={styles.container}>
         {/* <Text>TodoTab</Text> */}
@@ -115,7 +116,9 @@ class TodoBase extends PureComponent {
     );
   }
 }
-
+const mapStateTodoBase = (state, props) => ({
+  styles: theme.getStyle(TodoBaseStyle, state.app.theme)
+})
 
 //make this component available to the app
-export default TodoBase;
+export default connect(mapStateTodoBase)(TodoBase);

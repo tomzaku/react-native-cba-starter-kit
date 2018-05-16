@@ -29,6 +29,9 @@ export const getStackRoute = (initialRouteName = "HoldingPlaceHolder") => {
           ...applicationStyle.navHeader,
           backgroundColor: headerBackgroundColor
         },
+        headerTitleStyle: {
+          ...applicationStyle.navHeaderTitle,
+        },
         ...navigation.navigationOptions
       });
     } else {

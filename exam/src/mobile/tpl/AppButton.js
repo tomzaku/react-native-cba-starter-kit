@@ -21,7 +21,7 @@ export default class AppButton extends React.PureComponent {
     }
   }
   renderText() {
-    const text = this.props.title || this.props.children.props.children;
+    const text = this.props.title || this.props.children;
     const { large, medium, success, info, outline, textStyle } = this.props;
     if (!text) return null;
     return (

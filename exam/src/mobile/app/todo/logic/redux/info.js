@@ -1,7 +1,11 @@
 import moment from 'moment'
-const type = 'todo'
+import reducer from './reducer'
+import * as action from './action'
+import type from './type'
 
-const options = {
+export const options = {
+  reducer,
+  action,
   getAll: () => {
     return new Promise(
       (resolve, reject) => {

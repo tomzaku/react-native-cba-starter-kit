@@ -30,7 +30,7 @@ const boostrapColor = {
 const commonColor = {
   // dark: '#000',
   // light: '#fff',
-  gray: ['#000000', '#333333', '#616161', '#D0D0D0', '#FFFFFF'].reverse()
+  gray: ['#000000', '#333333', '#616161', '#D0D0D0', '#FFFFFF']
 }
 
 const primaryPalette = {
@@ -44,7 +44,7 @@ const nightMonochromatic = ['#000829', '#010A4B', '#04198D']
 const nightCommonColor = {
   // dark: '#000',
   // light: '#fff',
-  gray: ['#000000', '#333333', '#616161', '#D0D0D0', '#FFFFFF']
+  gray: ['#000000', '#333333', '#616161', '#D0D0D0', '#FFFFFF'].reverse()
 }
 
 const darkPrimaryPalette = {
@@ -74,9 +74,9 @@ const getPrimaryColor = (palette) => {
     NAV_BOTTOM_TABBAR: palette.commonColor.gray[4],
     BOTTOM_TABBAR_LABEL: palette.commonColor.gray[4],
     // BOTTOM_TABBAR_ICON: palette.commonColor.gray[3],
-    BOTTOM_TABBAR_ICON: palette.commonColor.gray[2],
+    BOTTOM_TABBAR_ICON: palette.commonColor.gray[1],
     // BOTTOM_TABBAR_ICON_SELECTED: palette.commonColor.gray[4],
-    BOTTOM_TABBAR_ICON_SELECTED: palette.monochromatic[1],
+    BOTTOM_TABBAR_ICON_SELECTED: palette.commonColor.gray[0],
   
     // AVATAR IMAGE LOGO
     AVATAR_BORDER: palette.commonColor.gray[4],
@@ -85,11 +85,11 @@ const getPrimaryColor = (palette) => {
 
     // TEXT
     TITLE: palette.commonColor.gray[0], //black
-    TITLE_COLOR: palette.monochromatic[1], //Have color on title
+    TITLE_COLOR: palette.commonColor.gray[0], //Have color on title
     TITLE_HIGHLIGH: palette.commonColor.gray[4], // white
     SUBTITLE: palette.commonColor.gray[3],
     SUBTITLE_HIGHLIGH: palette.commonColor.gray[4],
-    DESCRIPTION: palette.commonColor.gray[2],
+    DESCRIPTION: palette.commonColor.gray[1],
   
     // MESSAGE
     MESSAGE_YOU: palette.monochromatic[0],
@@ -103,25 +103,25 @@ const getPrimaryColor = (palette) => {
     SPINNER: palette.monochromatic[1],
   
     // SWITCH
-    SWITCH: palette.monochromatic[1],
+    SWITCH: palette.commonColor.gray[1],
   
     // Search
     SEARCH_BAR: palette.monochromatic[1],
   
     // BUTTON 
-    BUTTON: palette.monochromatic[1],
-  
+    BUTTON: palette.commonColor.gray[0],
+    BUTTON_TITLE: palette.commonColor.gray[4],
     // TAB
     TAB_UNDERLINE: palette.commonColor.gray[4],
     // TAB_UNDERLINE: palette.complementary[1],
-    TAB: palette.monochromatic[2],
-    TAB_TITLE: palette.commonColor.gray[3],
+    TAB: palette.commonColor.gray[4],
+    TAB_TITLE: palette.commonColor.gray[2],
     // TAB_TITLE: palette.complementary[0],
-    TAB_TITLE_SELECTED: palette.commonColor.gray[4],
+    TAB_TITLE_SELECTED: palette.commonColor.gray[1],
     // TAB_TITLE_SELECTED: palette.complementary[1],
 
     // ICON
-    ICON: palette.monochromatic[1],
+    ICON: palette.commonColor.gray[0],
     ICON_HIGHLIGHT: palette.commonColor.gray[4],
     ICON_DESCRIPTION: palette.commonColor.gray[2],
 

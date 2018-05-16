@@ -1,20 +1,26 @@
 import { StyleSheet } from "react-native";
+import { metric, color, applicationStyle, font } from "AppTheme";
 
-export default ({metric, color, applicationStyle, font}) => StyleSheet.create({
+export default StyleSheet.create({
   container: {
     ...applicationStyle.mainCon,
+    // backgroundColor: 'black'
   },
   itemTitle: {
     ...applicationStyle.title,
+    // paddingLeft: metric.MARGIN_S
   },
   buttonNext: {
+    // flex: 0,
     marginVertical: metric.MARGIN_XS,
     padding: 0,
     paddingHorizontal: metric.MARGIN_XS,
     paddingVertical: 0,
+    // height: 20
   },
   itemContainer: {
     marginVertical: metric.MARGIN_XXS,
+    // paddingVertical: metric.MARGIN_XXS,
     backgroundColor: color.BACKGROUND,
     alignItems: 'center',
   },
@@ -22,4 +28,5 @@ export default ({metric, color, applicationStyle, font}) => StyleSheet.create({
     flexDirection: "row",
     paddingRight: metric.MARGIN_S
   },
+
 });

@@ -11,4 +11,7 @@ export default StyleSheet.create({
   label: {
     ...applicationStyle.title,
   },
+  desc: {
+    ...applicationStyle.desc
+  }
 });

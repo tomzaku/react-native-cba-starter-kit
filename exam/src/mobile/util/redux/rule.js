@@ -12,6 +12,9 @@ const getRuleByGroup = (group) => {
         'ADD_MORE',
         'ADD_MORE_LOCAL',
         'ADD_MORE_SERVER',
+        'REMOVE_MORE',
+        'REMOVE_MORE_LOCAL',
+        'REMOVE_MORE_SERVER',
       ]
     }
     //TODO: Add more group to filter action

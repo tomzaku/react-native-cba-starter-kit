@@ -9,7 +9,7 @@ const {
   Animated,
 } = ReactNative;
 import { AppText, AppButton } from '../'
-
+import { applicationStyle, color } from 'AppTheme'
 const DefaultTabBar = createReactClass({
   propTypes: {
     goToPage: PropTypes.func,
@@ -26,8 +26,8 @@ const DefaultTabBar = createReactClass({
 
   getDefaultProps() {
     return {
-      activeTextColor: 'navy',
-      inactiveTextColor: 'black',
+      activeTextColor: color.TAB_TITLE_SELECTED,
+      inactiveTextColor: color.TAB_TITLE,
       backgroundColor: null,
     };
   },
@@ -40,7 +40,7 @@ const DefaultTabBar = createReactClass({
     const textColor = isTabActive ? activeTextColor : inactiveTextColor;
     const fontWeight = isTabActive ? 'bold' : 'normal';
     return <AppButton
-      style={{flex: 1, backgroundColor: 'white', paddingBottom: 0,}}
+      style={{flex: 1, ...applicationStyle.tabbar, paddingBottom: 0,}}
       key={name}
       accessible={true}
       accessibilityLabel={name}
@@ -48,7 +48,7 @@ const DefaultTabBar = createReactClass({
       onPress={() => onPressHandler(page)}
     >
       <View style={[styles.tab, this.props.tabStyle, ]}>
-        <AppText keyLang={keyLangs[page]} style={[{color: textColor, fontWeight, }, textStyle, ]}>
+        <AppText keyLang={keyLangs[page]} style={[{color: textColor, fontWeight}, textStyle, ]}>
           {name}
         </AppText>
       </View>

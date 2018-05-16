@@ -1,7 +1,7 @@
-// import { createPrefix } from "../../../../../helper/redux/actionType";
+import { createListActionType } from "@util/redux/actionType";
+import type from './type.js'
+const ACTION_TYPE = [
+  'CHANGE_STATUS',
 
-// export const prefix = createPrefix('APP')
-
-// export const ADD_TODO = `${prefix}ADD_TODO`;
-// export const UPDATE_TODO = `${prefix}UPDATE_TODO`;
-// export const REMOVE_TODO = `${prefix}REMOVE_TODO`;
+]
+export default createListActionType(type, { rule: ACTION_TYPE })

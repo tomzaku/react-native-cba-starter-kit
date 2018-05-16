@@ -34,6 +34,7 @@ function* handleRESTFUL(fetching, fetchServer, updateDataLocal, updateSuccess, u
     const data = yield call(fetchServer)
 
     logger.debug('DATA RECEIVE', data)
+
     // TODO: 
     // Check status of data is failure or success
 
@@ -47,6 +48,7 @@ function* handleRESTFUL(fetching, fetchServer, updateDataLocal, updateSuccess, u
     return data;
   } catch (err) {
     logger.error('Let\'s check function handleRESTFUL', err)
+    yield put(updateFailure(err))
   }
 }
 
@@ -88,6 +90,27 @@ const failureAction = (type, message) => ({
   message: message || 'Update done'
 })
 
+function* removeMoreData(actions, type, options = {}) {
+  const { idList = [] } = actions;
+  const { removeMore } = options;
+
+  const actionTypes = createListActionType(type)
+  // const { schemaOptions= {} } = options;
+  // const { idAttribute = 'id' } = schemaOptions;
+
+  // Update local
+  yield put ({
+    type: actionTypes.REMOVE_MORE_LOCAL,
+    idList,
+  })
+  const removeMoreData = (data = []) => ({
+    type: actionTypes.REMOVE_MORE_SERVER,
+    idList,
+  })
+  // Update online
+  const fetchGeneral = makeFetchGeneral(type)
+  yield fetchGeneral(() => removeMore(idList), removeMoreData)()
+}
 function* addMoreSaga(actions, type, options = {}) {
   const { data = [] } = actions;
   const { addMore } = options;
@@ -138,6 +161,10 @@ const sagaFactory = (type, options) => {
         // return takeEvery(sagaActionTypes.GET_ALL, test)
       case 'GET_MORE': 
         return takeEvery(sagaActionTypes.GET_MORE, fetchGeneral(getMore, updateMoreAction))
+      case 'REMOVE_MORE': 
+        return takeEvery(sagaActionTypes.REMOVE_MORE, function* (actions) {
+          yield removeMoreData(actions, type, options)
+        })
       case 'ADD_MORE':
         return takeEvery(sagaActionTypes.ADD_MORE, function* (actions) {
           yield addMoreSaga(actions, type, options)

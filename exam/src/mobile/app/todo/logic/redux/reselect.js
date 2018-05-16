@@ -17,7 +17,7 @@ export const getNewTodo = createSelector(
   getTodoEntity,
   (todo, localTodo, entitiesData) => {
     const mergeTodo = todo.concat(localTodo)
-    return mergeTodo.filter(id => entitiesData[id].status === 'to-do' && !entitiesData[id].locked)
+    return mergeTodo.filter(id => entitiesData[id].status === 'to-do' && !entitiesData[id].isHidden)
   }
 )
 const getItem = (state, props) => state.todo.entities.data[props.id]
@@ -37,7 +37,7 @@ export const getInProgressTodo = createSelector(
   getTodoEntity,
   (todo, localTodo, entitiesData) => {
     const mergeTodo = todo.concat(localTodo)
-    return mergeTodo.filter(id => entitiesData[id].status === 'doing' && !entitiesData[id].locked)
+    return mergeTodo.filter(id => entitiesData[id].status === 'doing' && !entitiesData[id].isHidden)
   }
 )
 
@@ -47,7 +47,7 @@ export const getFinishedTodo = createSelector(
   getTodoEntity,
   (todo, localTodo, entitiesData) => {
     const mergeTodo = todo.concat(localTodo)
-    return mergeTodo.filter(id => entitiesData[id].status === 'done' && !entitiesData[id].locked)
+    return mergeTodo.filter(id => entitiesData[id].status === 'done' && !entitiesData[id].isHidden)
   }
 )
 

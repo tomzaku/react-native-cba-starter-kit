@@ -15,13 +15,14 @@ import { compareListByStatus } from './helper'
 const mapStateToProps = (state, props) => {
   return {
     todo: todoReselect.getFinishedTodo(state, props),
-    disableRightIcon: true,
+    // disableRightIcon: true,
+    nextStatus: null
   }
 }
 const mapDispatchToProps = (dispatch, props) => ({
   submitTodo: (name) => dispatch(todoAction.addMoreData([{name, status: 'done' }])),
-  onPressButtonRight: (task) => dispatch(todoAction.removeTask(task)),
-  onPressRemoveButton: (task) => dispatch(todoAction.removeTask(task)),
+  onPressButtonRight: (task) => dispatch(todoAction.changeStatus(task.id)),
+  onPressRemoveButton: (task) => dispatch(todoAction.removeMoreData([task.id])),
 
 })
 //make this component available to the app

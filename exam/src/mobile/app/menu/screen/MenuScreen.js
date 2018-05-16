@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
 
 import { AppSwitch, AppLine } from 'AppComponent';
@@ -16,11 +16,22 @@ class Menu extends Component {
     }
     return onPressChangeLanguage('vi')
   }
+  onPressSwitchTheme = () => {
+    const { isDark } = this.props;
+    if (isDark) {
+      // StatusBar.setBarStyle('dark-content', true);
+      
+    } else {
+      // StatusBar.setBarStyle('light-content', true);
+      
+    }
+    this.props.onPressSwitchTheme()
+  }
   render() {
     const { onPressSwitchTheme, isDark, isVi } = this.props;
     return (
       <View style={styles.container}>
-        <AppSwitch labelKeyLang={'changeTheme'} descKeyLang={'changeTheme_desc'} onPress={onPressSwitchTheme} value={isDark} />
+        <AppSwitch labelKeyLang={'changeTheme'} descKeyLang={'changeTheme_desc'} onPress={this.onPressSwitchTheme} value={isDark} />
         <AppLine containerStyle={styles.line} type={'thin'} />
         <AppSwitch label={'Language Vi'} desc={'Change language to vi/en'} onPress={this.onPressChangeLanguage} value={isVi} />
       </View>

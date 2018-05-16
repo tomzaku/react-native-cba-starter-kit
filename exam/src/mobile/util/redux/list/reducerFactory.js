@@ -57,11 +57,23 @@ const reducerFactory = (type, options = {}) => {
         return state.updateIn(['entities', 'data'], mergeObject, action.data.entities.data).updateIn(['local'], mergeArray, action.data.result)
       }
       case actionType.ADD_MORE_SERVER: {
-        // return state.updateIn(['entities', 'data'], mergeObject, action.data.entites.data).updateIn(['result'], mergeArray, action.data.result )
         // This way only remove id of local
         return state.updateIn(['result'],mergeArray, state.local).set('local', [])
       }
       // ─── END OF ADD MORE DATA ────────────────────────────────────────
+      // ─── REMOVE MORE DATA ───────────────────────────────────────────────
+      case actionType.REMOVE_MORE_LOCAL: {
+        const { idList } = action
+        const removeData = R.pick(action.idList)(state.entities.data)
+        const addHiddenData = R.map(item =>{const itemHidden = item.set('isHidden',true); return itemHidden} )(removeData)
+        return state.setIn(['entities', 'data'], state.entities.data.merge(addHiddenData))
+        
+      }
+      case actionType.REMOVE_MORE_SERVER: {
+        // This way only remove id of local
+        return state.updateIn(['result'],mergeArray, state.local).set('local', [])
+      }
+      // ─── END OF REMOVE MORE DATA ────────────────────────────────────────
       case actionType.UPDATE_ALERT : {
         return state.set('showAlert', action.showAlert)
       }

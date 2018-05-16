@@ -15,7 +15,7 @@ class AppSwitch extends Component {
           <AppText style={styles.label} keyLang={labelKeyLang} >
             {label}
           </AppText>
-          <AppText keyLang={descKeyLang} >
+          <AppText style={styles.desc} keyLang={descKeyLang} >
             {desc}
           </AppText>
         </View>
