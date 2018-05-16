@@ -22,7 +22,7 @@
     "url": "https://github.com/tomzaku/react-native-module-starter-kit/issues"
   },
   "bin": {
-    "create": "bin/zakurn"
+    "zkrn": "bin/zakurn"
   },
   "homepage": "https://github.com/tomzaku/react-native-module-starter-kit#readme",
   "dependencies": {
