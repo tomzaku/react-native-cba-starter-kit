@@ -7,24 +7,27 @@ const exec = util.promisify(require('child_process').exec);
 const R = require('ramda')
 
 async function help() {
-  print.error('Try this: zkrn new <nameApp>')
+  print.error('Try this: zkrn init <nameApp>')
 }
 async function init(nameProject) {
-  print.info('FILE BIN ' + __dirname)
-  print.info('DEFAULT FOLDER ' + process.cwd())
-  print.info(`Creating new react-native called ${nameProject}... Will take 5 minutes`)
-  
-  // await installReactNative(nameProject)
-  print.info('Creating react-native successfully')
-  print.info('Now install dependence package')
-  // await installPackageDependence(nameProject)
-  print.info('Copying base component')
-  await copyBaseToProject(nameProject)
-   // Link package
-  print.info('Linking package...')
-  // await linkingPackage(nameProject)
-  print.info('Done!. Run IOS now')
-   
+  try {
+    if (!nameProject) throw 'Please fill your name app. For ex: zkrn init myApp'
+    print.info('FILE BIN ' + __dirname)
+    print.info('DEFAULT FOLDER ' + process.cwd())
+    print.info(`Creating new react-native called ${nameProject}... Will take 5 minutes`)
+    await installReactNative(nameProject)
+    print.info('Creating react-native successfully')
+    print.info('Now install dependence package')
+    await installPackageDependence(nameProject)
+    print.info('Copying base component')
+    await copyBaseToProject(nameProject)
+     // Link package
+    print.info('Linking package...')
+    await linkingPackage(nameProject)
+    print.info('Done!. Run IOS now')
+  } catch(err) {
+    print.error(err)
+  }
 }
 
 async function runIOS() {
@@ -34,7 +37,7 @@ const PascalCase = (nameProject) => nameProject[0].toUpperCase() + nameProject.s
 
 async function installReactNative(nameProject) {
   // check exist rn
-  const { stdout, stderr } = await exec(`cd ${process.cwd()}/${nameProject}/ && react-native -v`)
+  const { stdout, stderr } = await exec(`cd ${process.cwd()}/ && react-native -v`)
   if (stdout.indexOf('n/a') > 0) {
     await exec(`react-native init ${nameProject}`);
   }
@@ -132,7 +135,7 @@ async function copyAppDelegate(nameProject) {
   }
   @end
   `
-  await exec(`echo '${appDelegate}' > ${process.cwd()}/${nameProject}/ios/${nameProject}/AppDelegate.m`)
+  await exec(`echo '${appDelegate}' > ${process.cwd()}/${nameProject}/ios/${nameProject}/AppDelegate.m && chmod +x ${process.cwd()}/${nameProject}/bin/x-change-ip`)
 }
 
 async function installPackageDependence(nameProject) {
