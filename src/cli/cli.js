@@ -1,4 +1,3 @@
-const minimist = require('minimist')
 const { build, printCommands, printWtf, print } = require('gluegun')
 const { isNil, isEmpty } = require('ramda')
 const PrettyError = require('pretty-error')
