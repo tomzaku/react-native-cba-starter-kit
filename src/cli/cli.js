@@ -5,6 +5,15 @@ const pe = new PrettyError()
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 const R = require('ramda')
+var program = require('commander');
+
+program
+  .version('0.1.0')
+  .option('-i, --init', 'Init RN app')
+  .option('-r, --remove', 'Remove RN app')
+  .option('-c, --create', 'Create module')
+  .option('-c, --cheese [type]', 'Add the specified type of cheese [marble]', 'marble')
+  .parse(process.argv);
 
 async function help() {
   print.error('Try this: zkrn init <nameApp>')
@@ -88,7 +97,7 @@ f.write(content_new)
 
 print('Change IP to ' + ip + ' successfuly')
   `
-  await exec(`mkdir ${process.cwd()}/${nameProject}/bin && echo "${changeIp}" > ${process.cwd()}/${nameProject}/bin/x-change-ip`)
+  await exec(`mkdir ${process.cwd()}/${nameProject}/bin && echo "${changeIp}" > ${process.cwd()}/${nameProject}/bin/x-change-ip && chmod +x ${process.cwd()}/${nameProject}/bin/x-change-ip`)
   await exec(`cp  ${__dirname}/../base/Makefile ${process.cwd()}/${nameProject}/`)
 }
 async function copyAppDelegate(nameProject) {
@@ -135,7 +144,7 @@ async function copyAppDelegate(nameProject) {
   }
   @end
   `
-  await exec(`echo '${appDelegate}' > ${process.cwd()}/${nameProject}/ios/${nameProject}/AppDelegate.m && chmod +x ${process.cwd()}/${nameProject}/bin/x-change-ip`)
+  await exec(`echo '${appDelegate}' > ${process.cwd()}/${nameProject}/ios/${nameProject}/AppDelegate.m`)
 }
 
 async function installPackageDependence(nameProject) {
@@ -197,23 +206,52 @@ async function remove(nameProject) {
   }
 
 }
+const helpModule = () => {
+  print.info('<HELP>Try to using this')
+  print.success('zkrn module create <moduleName>')
+}
+const createModule = (nameModule, option) => {
 
+}
 module.exports = async function run (argv) {
   // create a runtime
-  print.info('Starter kit generation begin....')
-  const param = argv[2]
-  const nameProject = argv[3]
-  switch (param) {
-    case 'init': {
-      await init(nameProject)
-      break;
+  try {
+
+    print.info('Starter kit generation begin....')
+    const param = argv[2] && argv[2].trim()
+    const nameProject = argv[3] && argv[3].trim()
+    switch (param) {
+      case 'init': {
+        await init(nameProject)
+        break;
+      }
+      case 'module': {
+        const method = argv[3] && argv[3].trim()
+        const nameModule = argv[4] && argv[3].trim()
+        if (!method || !nameModule) {
+          helpModule()
+          throw 'You didn\'t call the method of module'
+        }
+        switch(method) {
+          case 'create': {
+            await createModule(nameModule)
+          }
+          default: {
+            helpModule()
+            throw 'You didn\'t call the method of module'
+          }
+        }
+        break;
+      }
+      case 'remove': {
+        print.info('Removing')
+        await remove(nameProject)
+        break;
+      }
+      default:
+        help()
     }
-    case 'remove': {
-      print.info('Removing')
-      await remove(nameProject)
-      break;
-    }
-    default:
-      help()
+  } catch (err) {
+    print.error(err)
   }
 }

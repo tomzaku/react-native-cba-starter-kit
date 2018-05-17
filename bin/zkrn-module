@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+'use strict';
+
+const program = require("commander");
+
+program
+  .version(require('../package.json').version)
+  .command("create [nameModule]")
+  .description("Create module")
+  .action(function (moduleName, cmd) {
+    console.log("command", "module create");
+    console.log("APP", moduleName)
+  })
+program
+  .version(require('../package.json').version)
+  .command("remove [nameModule]")
+  .description("Remove module")
+  .action(function (moduleName, cmd) {
+    console.log("command", "module create");
+    console.log("APP", moduleName)
+  })
+
+program
+  .parse(process.argv);

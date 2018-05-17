@@ -1,9 +1,40 @@
 #!/usr/bin/env node
 
 const sourceDir = `${__dirname}/../src/cli`
+const program = require("commander");
 
-// load the entry point or die trying
-//require(`${sourceDir}/check.js`)
 
-// congrats! we're sane enough to load.
-require(`${sourceDir}/cli.js`)(process.argv)
+const welcome = String.raw`
+________   __   ___   _______   _____  ___   
+("      "\ |/"| /  ") /"      \ (\"   \|"  \  
+ \___/   :)(: |/   / |:        ||.\\   \    |   React Native
+   /  ___/ |    __/  |_____/   )|: \.   \\  |   Starter Kit
+  //  \__  (// _  \   //      / |.  \    \. |   
+ (:   / "\ |: | \  \ |:  __   \ |    \    \ |   Author: Zaku
+  \_______)(__|  \__)|__|  \___) \___|\____\) 
+`
+console.log(welcome)
+program
+  .version(require('../package.json').version)
+  .usage('[command] <method/ appName ...>')
+program
+  .command('init [appName]')
+  .description('init the react-native application')
+  .action(function (app, cmd) {
+    const init = require(`${sourceDir}/init.js`)
+    init(app)
+  });
+program
+  .command("remove [appName]")
+  .description('Remove the application')
+  .action(function (app, cmd) {
+    console.log("command", "REMOVE");
+    console.log("APP", app)
+  });
+program
+  .command('module <method> [moduleName]','You can create module folder. Try this: \'zkrn module --help\'')
+
+
+
+program.parse(process.argv);
+// require('./zkrn-module')
