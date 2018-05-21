@@ -96,7 +96,7 @@ const makeGetModulePath = (moduleName) => {
   }
 }
 
-// const makeGetLibPath = () => {
-//   const modulePath = () => joinLibPath('..',)
-// }
+const mainScreenRouterPath = path.join(mobileDir, 'router', 'MainScreen.js')
+
 module.exports.makeGetModulePath = makeGetModulePath;
+module.exports.mainScreenRouterPath = mainScreenRouterPath;

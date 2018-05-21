@@ -1,7 +1,8 @@
-var { makeGetModulePath } = require('../helper/path')
-var { makeGetModuleName } = require('../helper/name')
-var fs = require('fs')
+const { makeGetModulePath, mainScreenRouterPath } = require('../helper/path')
+const { makeGetModuleName } = require('../helper/name')
+const fs = require('fs')
 const { renameModule } = require('../helper/file')
+const setRoute = require('../route/set')
 const { build, printCommands, printWtf, print } = require('gluegun')
 const PrettyError = require('pretty-error')
 const pe = new PrettyError()
@@ -66,8 +67,9 @@ const getReplaceData = (type, moduleName) => {
   switch (type) {
     case 'index': return `import ${actionName} from './${dirName}'\n\nexport default {
   ${actionName},`
-
-    case 'logic': return  `import ${actionName} from './${dirName}/logic/redux'\n\nexport default {
+    case 'action': return `import { action as ${actionName} } from './${dirName}/logic.redux'\n\nexport {
+  ${actionName},`
+    case 'reselect': return `import { reselect as ${actionName} } from './${dirName}/logic.redux'\n\nexport {
   ${actionName},`
     default: return ``
   }
@@ -93,16 +95,15 @@ const updateImportModule = async (moduleName) => {
   await updateImportModuleFile(indexModulePath, moduleName, 'index')
   // action
   print.info(`> Update ${appActionPath}`)
-  await updateImportModuleFile(appActionPath, moduleName, 'logic')
+  await updateImportModuleFile(appActionPath, moduleName, 'action')
   //reselect
   print.info(`> Update ${appReselectPath}`)
-  await updateImportModuleFile(appReselectPath, moduleName, 'logic')
+  await updateImportModuleFile(appReselectPath, moduleName, 'reselect')
 
 }
 
 const create = async (moduleName) => {
   const getModulePath = makeGetModulePath(moduleName);
-
   try {
     print.info(`Creating module ${moduleName} begin...`)
     if (getModulePath.isExist() ){
@@ -118,6 +119,8 @@ const create = async (moduleName) => {
     await renameLogic(moduleName)
     print.info('> Update import module')
     await updateImportModule(moduleName)
+    await setRoute(moduleName)
+    print.info('Create successfully!')
 
   } catch (err) {
     print.error('ERR Create: ')

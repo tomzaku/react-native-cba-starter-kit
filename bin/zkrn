@@ -33,6 +33,8 @@ program
   });
 program
   .command('module <method> [moduleName]','You can create module folder. Try this: \'zkrn module --help\'')
+program
+  .command('route <method> [routeName]','You can modify the route of App. Try this: \'zkrn route --help\'')
 
 
 

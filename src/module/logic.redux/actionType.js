@@ -1,6 +1,6 @@
 import { createListActionType } from "@util/redux/actionType";
 
-import type from './type.js'
+const type = 'sandbox'
 
 const ACTION_TYPE = [
   'CHANGE_SAND_BOX',

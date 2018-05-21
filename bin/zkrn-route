@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+'use strict';
+
+const program = require("commander");
+
+program
+  // .version(require('../package.json').version)
+  .command("set [routeName]")
+  .description("Set route for App")
+  .action(function (routeName, cmd) {
+    const setRoute = require('../src/cli/route/set')
+    setRoute(routeName)
+  })
+program
+  .version(require('../package.json').version)
+  .command("default")
+  .description("Set default route")
+  .action(function (cmd) {
+    const setRoute = require('../src/cli/route/set')
+    setRoute()
+  })
+
+program
+  .parse(process.argv);
