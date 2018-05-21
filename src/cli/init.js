@@ -193,20 +193,27 @@ async function init(nameProject) {
     if (!nameProject) throw 'Please fill your name app. For ex: zkrn init myApp'
     print.info('FILE BIN ' + __dirname)
     print.info('DEFAULT FOLDER ' + process.cwd())
+    print.warning("===============================================")
     print.info(`Creating new react-native called ${nameProject}... Will take 5 minutes`)
     const status = await installReactNative(nameProject)
     if (!status) {
       throw 'See error on top'
     }
+    print.warning("===============================================")
     print.info('Creating react-native successfully')
     print.info('Now install dependence package')
     await installPackageDependence(nameProject)
+    print.warning("===============================================")
     print.info('Copying base component')
     await copyBaseToProject(nameProject)
      // Link package
+     print.warning("===============================================")
     print.info('Linking package...')
     await linkingPackage(nameProject)
-    print.info('Done!. Run IOS now')
+    print.warning("===============================================")
+    print.info('Done!. Have a nice day!')
+    print.info(`> cd ${nameProject}`)
+    print.info(`> make build-ios`)
   } catch(err) {
     print.error(pe.render(err))
   }

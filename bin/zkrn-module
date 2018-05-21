@@ -8,16 +8,16 @@ program
   .command("create [nameModule]")
   .description("Create module")
   .action(function (moduleName, cmd) {
-    console.log("command", "module create");
-    console.log("APP", moduleName)
+    const create = require('../src/cli/module/create')
+    create(moduleName)
   })
 program
   .version(require('../package.json').version)
   .command("remove [nameModule]")
   .description("Remove module")
   .action(function (moduleName, cmd) {
-    console.log("command", "module create");
-    console.log("APP", moduleName)
+    const remove = require('../src/cli/module/remove')
+    remove(moduleName)
   })
 
 program

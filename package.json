@@ -27,6 +27,7 @@
   "preferGlobal": true,
   "homepage": "https://github.com/tomzaku/react-native-module-starter-kit#readme",
   "dependencies": {
+    "change-case": "^3.0.2",
     "commander": "^2.15.1",
     "gluegun": "^2.0.0-beta.10",
     "minimist": "^1.2.0",
