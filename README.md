@@ -1,9 +1,34 @@
-## Zkrn CLI
+# Zkrn CLI
 Inspired by [Ignite CLI](https://github.com/infinitered/ignite)
-#### Why I created this
-  My app based on [Component-Based Architecture](https://medium.com/@dan.shapiro1210/understanding-component-based-architecture-3ff48ec0c238). Therefor, The module(For ex: 'src/mobile/app/todo') contains both redux and view. That way make you easy to reusage in another appliaction and help you to save your time.
-
 ```
+________   __   ___   _______   _____  ___
+("      "\ |/"| /  ") /"      \ (\"   \|"  \
+ \___/   :)(: |/   / |:        ||.\\   \    |   React Native
+   /  ___/ |    __/  |_____/   )|: \.   \\  |   Starter Kit
+  //  \__  (// _  \   //      / |.  \    \. |
+ (:   / "\ |: | \  \ |:  __   \ |    \    \ |   Author: Zaku
+  \_______)(__|  \__)|__|  \___) \___|\____\)
+
+
+  Usage: zkrn [command] <method/ appName ...>
+
+  Options:
+
+    -V, --version                 output the version number
+    -h, --help                    output usage information
+
+  Commands:
+
+    init [appName]                init the react-native application
+    remove [appName]              Remove the application
+    module <method> [moduleName]  You can create module folder. Try this: 'zkrn module --help'
+    route <method> [routeName]    You can modify the route of App. Try this: 'zkrn route --help'
+    help [cmd]                    display help for [cmd]
+```
+#### Why I have to create this
+  My app based on CBA([Component-Based Architecture](https://medium.com/@dan.shapiro1210/understanding-component-based-architecture-3ff48ec0c238)). Therefor, The module(For ex: 'src/mobile/app/todo') contains both redux and view. That way make you easy to reusage in another appliaction and help you to save your time.
+
+``` 
 .src/mobile/app/todo
 ├── index.js
 ├── logic.redux
@@ -30,33 +55,6 @@ Inspired by [Ignite CLI](https://github.com/infinitered/ignite)
 
 4 directories, 18 files
 ```
-
-
-```
-________   __   ___   _______   _____  ___
-("      "\ |/"| /  ") /"      \ (\"   \|"  \
- \___/   :)(: |/   / |:        ||.\\   \    |   React Native
-   /  ___/ |    __/  |_____/   )|: \.   \\  |   Starter Kit
-  //  \__  (// _  \   //      / |.  \    \. |
- (:   / "\ |: | \  \ |:  __   \ |    \    \ |   Author: Zaku
-  \_______)(__|  \__)|__|  \___) \___|\____\)
-
-
-  Usage: zkrn [command] <method/ appName ...>
-
-  Options:
-
-    -V, --version                 output the version number
-    -h, --help                    output usage information
-
-  Commands:
-
-    init [appName]                init the react-native application
-    remove [appName]              Remove the application
-    module <method> [moduleName]  You can create module folder. Try this: 'zkrn module --help'
-    route <method> [routeName]    You can modify the route of App. Try this: 'zkrn route --help'
-    help [cmd]                    display help for [cmd]
-```
 ## Requirement
 
 + `react-native`
@@ -74,8 +72,6 @@ npm install -g zkrn
  zkrn --help
 ```
 
-## About Dir
-
 ## Todo
 
 - [ ] Add Theme CLI
@@ -87,4 +83,5 @@ npm install -g zkrn
 ## Help
 
 Please help me to make this project awesome.
+
 Be free to make issue.
