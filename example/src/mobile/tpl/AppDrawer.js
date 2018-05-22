@@ -7,7 +7,7 @@ import { metric, applicationStyle } from 'AppTheme';
 // create a component
 
 
-class CFDrawer extends Component {
+class AppDrawer extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     return false;
   }
@@ -32,7 +32,7 @@ class CFDrawer extends Component {
     );
   }
 }
-CFDrawer.defaultProps = {
+AppDrawer.defaultProps = {
   data: [
     {
       icon: 'md-create',
@@ -68,4 +68,4 @@ const styles = StyleSheet.create({
 });
 
 //make this component available to the app
-export default CFDrawer;
+export default AppDrawer;

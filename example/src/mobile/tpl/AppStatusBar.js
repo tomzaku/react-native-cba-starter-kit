@@ -4,7 +4,7 @@ import React, { PureComponent } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { color, metric } from 'AppTheme';
 
-export default class CFStatusBar extends PureComponent {
+export default class AppStatusBar extends PureComponent {
   render() {
     const {style} = this.props
     return (

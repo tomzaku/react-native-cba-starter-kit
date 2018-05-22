@@ -5,9 +5,9 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import PropTypes from 'prop-types';
 import { metric } from 'AppTheme';
 import * as Animatable from 'react-native-animatable';
-import { CFLogo } from 'AppComponent';
+import { AppLogo } from 'AppComponent';
 
-export default class CFLoading extends Component {
+export default class AppLoading extends Component {
   render() {
     const { color, styleContainer } = this.props;
     return (
@@ -20,36 +20,15 @@ export default class CFLoading extends Component {
           easing={'ease-in-circ'}
         > */}
           <CFLogo />
-        {/* </Animatable.View> */}
         <Text style={[styles.text, { color }]}>
           Wait a moment...
         </Text>
       </View>
     );
   }
-  // componentWillMount(){
-  //   this.view.bounceIn(1500).then((endState) => {
-  //     console.log(endState.finished ? 'bounce finished' : 'bounce cancelled');
-  //   })
-  // }
-
-  // componentWillUnmount() {
-  //   this.view.flipOutY();
-  // }
-
-  // componentDidMount() {
-  //   setTimeout(() => (this.view
-  //     ? this.view.pulse(1500).then((endState) => {
-  //       console.log(endState.finished
-  //         ? 'bounce finished'
-  //         : 'bounce cancelled');
-  //     })
-  //     : null),
-  //     600);
-  // }
 }
 
-CFLoading.propTypes = {
+AppLoading.propTypes = {
   color: PropTypes.any,
   styleContainer: PropTypes.any,
 };

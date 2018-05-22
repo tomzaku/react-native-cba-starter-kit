@@ -5,7 +5,7 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import PropTypes from 'prop-types';
 import { metric, color, applicationStyle, font, image as imageResource} from 'AppTheme';
 
-class CFEmpty extends Component {
+class AppEmpty extends Component {
   render() {
     let { text, image } = this.props;
     return (
@@ -17,17 +17,17 @@ class CFEmpty extends Component {
   }
 }
 
-CFEmpty.propTypes = {
+AppEmpty.propTypes = {
   text: PropTypes.string,
   image: PropTypes.any,
 };
 
-CFEmpty.defaultProps = {
+AppEmpty.defaultProps = {
   text: 'This content is empty',
   image: imageResource.empty,
 };
 
-export default CFEmpty;
+export default AppEmpty;
 
 const styles = StyleSheet.create({
   container: {

@@ -5,7 +5,7 @@ import ScrollableTabView from 'react-native-scrollable-tab-view';
 import { StyleSheet } from 'react-native';
 import { metric, color, applicationStyle, font } from 'AppTheme';
 
-class CFTabContainer extends React.PureComponent {
+class AppTabContainer extends React.PureComponent {
 
   render() {
     const {
@@ -32,7 +32,7 @@ class CFTabContainer extends React.PureComponent {
   }
 }
 
-CFTabContainer.propTypes = {
+AppTabContainer.propTypes = {
   tabBarBackgroundColor: PropTypes.string,
   tabBarInactiveTextColor: PropTypes.string,
   tabBarActiveTextColor: PropTypes.string,
@@ -40,7 +40,7 @@ CFTabContainer.propTypes = {
   children: PropTypes.node,
 };
 
-CFTabContainer.defaultProps = {
+AppTabContainer.defaultProps = {
   tabBarBackgroundColor: color.TAB,
   tabBarActiveTextColor: color.TAB_TITLE_SELECTED,
   tabBarInactiveTextColor: color.TAB_TITLE,
@@ -48,11 +48,8 @@ CFTabContainer.defaultProps = {
     backgroundColor: color.TAB_UNDERLINE,
   },
   tabBarTextStyle: {
-    // ...applicationStyle.txtHl
-    // ...applicationStyle.title,
-    // color: color.TITLE_HIGHLIGH,
     ...metric.h6,
   }
 };
 
-export default CFTabContainer;
+export default AppTabContainer;

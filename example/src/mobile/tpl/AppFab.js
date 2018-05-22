@@ -8,8 +8,7 @@ import PropTypes from 'prop-types';
 import { metric, color, applicationStyle, font } from 'AppTheme';
 import { StyleSheet } from 'react-native';
 
-export default class CFFab extends Component {
-
+export default class AppFab extends Component {
   render() {
     const { data } = this.props;
     return (
@@ -38,10 +37,10 @@ export default class CFFab extends Component {
   }
 }
 
-CFFab.propTypes = {
+AppFab.propTypes = {
   data: PropTypes.array,
 };
-CFFab.defaultProps = {
+AppFab.defaultProps = {
   buttonColor: color.FAB,
 }
 

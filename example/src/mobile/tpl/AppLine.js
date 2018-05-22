@@ -7,7 +7,6 @@ import { metric, color, applicationStyle, font } from "AppTheme";
 
 export default class Line extends PureComponent {
   getHightLine(type) {
-    console.log('TYPE', type)
     if (type === 'thin'){
       return metric.LINE_HEIGHT_S
     }
