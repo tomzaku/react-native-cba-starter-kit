@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import TabBar from './component/TabBar'
 
 // create a component
-class AppTabView extends Component {
+class AppTab extends Component {
   render() {
     const keyLangs = this.props.children.map(child => child.props.keyLang)
     return (
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state, props) => ({
   language: state.app.language
 })
-const AppTabViewRedux = connect(mapStateToProps)(AppTabView)
+const AppTabRedux = connect(mapStateToProps)(AppTab)
 
 //make this component available to the app
-export default AppTabViewRedux;
+export default AppTabRedux;
