@@ -19,7 +19,7 @@ export default class AppLoading extends Component {
           duration={600}
           easing={'ease-in-circ'}
         > */}
-          <CFLogo />
+          <AppLogo />
         <Text style={[styles.text, { color }]}>
           Wait a moment...
         </Text>

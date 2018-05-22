@@ -27,7 +27,7 @@ import CFHeader from './CFHeader';
 
 import CFCardDiff from './CFCardDiff';
 import CFCardMerge from './CFCardMerge';
-import CFVerticalFab from './CFVerticalFab';
+// // import CFVerticalFab from './CFVerticalFab';
 import CFFormInput from './CFFormInput';
 import CFFormLabel from './CFFormLabel';
 import CFHeaderIconNav from './CFHeaderIconNav';
@@ -35,7 +35,7 @@ import CFHeaderLine from './CFHeaderLine';
 import CFPhotoPicker from './CFPhotoPicker';
 import CFSearchBar from './CFSearchBar.js';
 import CFStatusNetwork from './CFStatusNetwork';
-import CFTabInfo from './CFTabInfo';
+// // import CFTabInfo from './CFTabInfo';
 import CFInfoForm from './CFInfoForm';
 import CFCardBackground from './CFCardBackground';
 import CFSwitchState from './CFSwitchState';
@@ -66,7 +66,7 @@ export {
 
   CFCardDiff,
   CFCardMerge,
-  CFVerticalFab,
+  // CFVerticalFab,
   CFFormInput,
   CFFormLabel,
   CFHeader,
@@ -75,7 +75,7 @@ export {
   CFPhotoPicker,
   CFSearchBar,
   CFStatusNetwork,
-  CFTabInfo,
+  // CFTabInfo,
   CFInfoForm,
   CFCardBackground,
   CFSwitchState,

@@ -5,7 +5,7 @@ import { StyleSheet, NetInfo, View, Platform, StatusBar } from 'react-native';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import { CFLoading } from 'AppComponent';
+import { AppLoading } from 'AppComponent';
 import { DEVICE_TYPE } from 'AppSetting'
 
 import './conf/index'
@@ -60,7 +60,7 @@ class App extends Component {
     return (
       <Provider store={store} style={styles.container}>
         <PersistGate
-          loading={<CFLoading />}
+          loading={<AppLoading />}
           onBeforeLift={onBeforeLift}
           persistor={persistor}>
           <NavigationApp />
