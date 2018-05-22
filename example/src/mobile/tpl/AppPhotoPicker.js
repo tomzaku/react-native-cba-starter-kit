@@ -14,7 +14,7 @@ const options = {
   maxHeight: 300
 }
 
-class CFPhotoPicker extends Component {
+class AppPhotoPicker extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -99,4 +99,4 @@ const styles = StyleSheet.create({
 });
 
 //make this component available to the app
-export default CFPhotoPicker;
+export default AppPhotoPicker;

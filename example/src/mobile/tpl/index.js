@@ -22,25 +22,25 @@ import AppFab from './AppFab';
 import AppDrawer from './AppDrawer';
 import AppStatusBar from './AppStatusBar';
 import AppCard from './AppCard.js';
+import AppPhotoPicker from './AppPhotoPicker';
 
-import CFHeader from './CFHeader';
+// import CFHeader from './CFHeader';
 
-import CFCardDiff from './CFCardDiff';
-import CFCardMerge from './CFCardMerge';
-// // import CFVerticalFab from './CFVerticalFab';
-import CFFormInput from './CFFormInput';
-import CFFormLabel from './CFFormLabel';
-import CFHeaderIconNav from './CFHeaderIconNav';
-import CFHeaderLine from './CFHeaderLine';
-import CFPhotoPicker from './CFPhotoPicker';
-import CFSearchBar from './CFSearchBar.js';
-import CFStatusNetwork from './CFStatusNetwork';
-// // import CFTabInfo from './CFTabInfo';
-import CFInfoForm from './CFInfoForm';
-import CFCardBackground from './CFCardBackground';
-import CFSwitchState from './CFSwitchState';
-import CFCardQuickAccess from './CFCardQuickAccess';
-import CFHeaderProfile from './CFHeaderProfile';
+// import CFCardDiff from './CFCardDiff';
+// import CFCardMerge from './CFCardMerge';
+// // // import CFVerticalFab from './CFVerticalFab';
+// import CFFormInput from './CFFormInput';
+// import CFFormLabel from './CFFormLabel';
+// import CFHeaderIconNav from './CFHeaderIconNav';
+// import CFHeaderLine from './CFHeaderLine';
+// import CFSearchBar from './CFSearchBar.js';
+// import CFStatusNetwork from './CFStatusNetwork';
+// // // import CFTabInfo from './CFTabInfo';
+// import CFInfoForm from './CFInfoForm';
+// import CFCardBackground from './CFCardBackground';
+// import CFSwitchState from './CFSwitchState';
+// import CFCardQuickAccess from './CFCardQuickAccess';
+// import CFHeaderProfile from './CFHeaderProfile';
 
 export {
   AppAlphabet,
@@ -63,22 +63,25 @@ export {
   AppLogo,
   AppCard,
   AppDrawer,
+  AppPhotoPicker,
 
-  CFCardDiff,
-  CFCardMerge,
-  // CFVerticalFab,
-  CFFormInput,
-  CFFormLabel,
-  CFHeader,
-  CFHeaderIconNav,
-  CFHeaderLine,
-  CFPhotoPicker,
-  CFSearchBar,
-  CFStatusNetwork,
-  // CFTabInfo,
-  CFInfoForm,
-  CFCardBackground,
-  CFSwitchState,
-  CFCardQuickAccess,
-  CFHeaderProfile,
+  // CF Prefix is used for specific App: 
+  // For example YourApp Name: 'Zaku' => 'ZkPersonalCard' / 'ZkPersonalHeader' / 'ZkAwesomeCard'
+
+  // CFCardDiff,
+  // CFCardMerge,
+  // // CFVerticalFab,
+  // CFFormInput,
+  // CFFormLabel,
+  // CFHeader,
+  // CFHeaderIconNav,
+  // CFHeaderLine,
+  // CFSearchBar,
+  // CFStatusNetwork,
+  // // CFTabInfo,
+  // CFInfoForm,
+  // CFCardBackground,
+  // CFSwitchState,
+  // CFCardQuickAccess,
+  // CFHeaderProfile,
 };
