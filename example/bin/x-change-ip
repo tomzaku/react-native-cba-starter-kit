@@ -7,7 +7,7 @@ s.connect(("8.8.8.8", 80))
 ip = s.getsockname()[0]
 s.close()
 
-FILE_IOS = './ios/exam/AppDelegate.m'
+FILE_IOS = './ios/example/AppDelegate.m'
 with open(FILE_IOS) as f:
     content = f.read()
 content_new = re.sub(r'(http:\/\/).*\/', r'http://' + ip + ':8081/', content)

@@ -1,7 +1,7 @@
 import Immutable from 'seamless-immutable';
 
 const initialState = Immutable({
-  isAuthenticated: true
+  isAuthenticated: false
 })
 const reducer = (state = initialState, action) => {
   switch(action.type) {

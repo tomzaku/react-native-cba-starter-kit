@@ -1,8 +1,7 @@
 var fs = require('fs')
 const util = require('util');
-const { build, printCommands, printWtf, print } = require('gluegun')
 const PrettyError = require('pretty-error')
-const pe = new PrettyError()
+const chalk = require('chalk');
 
 
 const readFile = util.promisify(fs.readFile);
@@ -13,9 +12,12 @@ const exec = util.promisify(require('child_process').exec);
 var { makeGetModulePath } = require('../helper/path')
 var { makeGetModuleName } = require('../helper/name')
 
+const log = console.log;
+const pe = new PrettyError()
+
 const removeModuleDir = async (moduleName) => {
   const getModulePath = makeGetModulePath(moduleName);
-  print.info(`>>> Removing ${getModulePath.getModuleDir()}`)
+  log(chalk.blue(`>>> Removing ${getModulePath.getModuleDir()}`))
   await exec(`rm -rf ${getModulePath.getModuleDir()}`)
 }
 
@@ -37,29 +39,29 @@ const updateImportModule = async (moduleName) => {
   const indexModulePath = getModulePath.getAppIndex()
   const appActionPath = getModulePath.getAppAction()
   const appReselectPath = getModulePath.getAppReselect()
-  print.info(`Removing ${indexModulePath}`)
+  log(chalk.blue(`Removing ${indexModulePath}`))
   await updateAppFile(moduleName, indexModulePath)
-  print.info(`Removing ${appActionPath}`)
+  log(chalk.blue(`Removing ${appActionPath}`))
   await updateAppFile(moduleName, appActionPath)
-  print.info(`Removing ${appReselectPath}`)
+  log(chalk.blue(`Removing ${appReselectPath}`))
   await updateAppFile(moduleName, appReselectPath)
 }
 
 const Remove = async (moduleName) => {
   const getModulePath = makeGetModulePath(moduleName);
   try {
-    print.info(`Removing module ${moduleName} begin...`)
+    log(chalk.cyan("==============================================="))
+    log(chalk.blue(`Removing module ${moduleName} begin...`))
     if (!getModulePath.isExist() ){
       throw `Module called \'${moduleName}\'is not existed`
     }
-    print.warning("===============================================")
     await removeModuleDir(moduleName)
-    print.info('> Remove import module')
+    log(chalk.blue('> Remove import module'))
     await updateImportModule(moduleName)
 
   } catch (err) {
-    print.error('ERR Remove: ')
-    print.error(pe.render(err))
+    log(chalk.red.bold('ERR Create: '))
+    log(chalk.red.bold(pe.render(err)))
   }
 }
 

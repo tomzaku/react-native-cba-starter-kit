@@ -79,6 +79,7 @@ npm install -g zkrn
 - [x] Add Language
 - [x] Add router CLI
 - [x] Add Saga
+- [ ] Update template
 
 ## Help
 

@@ -9,7 +9,6 @@ export default StyleSheet.create({
     alignItems: 'center',
     overflow: 'hidden',
   },
-
   cardSelectedContainer: {
     backgroundColor: color.CARD_SELECTED,
   },

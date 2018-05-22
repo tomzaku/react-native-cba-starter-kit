@@ -8,29 +8,22 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import PropTypes from 'prop-types';
-// import { HighPureComponent } from 'CFBaseComponents'
 import { time } from 'AppUtil'
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { AppAvatar } from 'AppComponent';
 const ITEM_BLOCK_DELAY_MS = 500
-import _ from 'lodash';
 import { HighPureComponent } from 'AppBaseComponents';
-import styles from './style/CFCardStyle'
+import styles from './style/AppCardStyle'
 import { metric, color, applicationStyle, font } from 'AppTheme';
 
-export default class CFCard extends HighPureComponent {
+export default class AppCard extends HighPureComponent {
   constructor(props){
     super(props);
     this.state = {
       selected: this.props.selected,
     }
   }
-  // shouldComponentUpdate = (nextProps, nextState) => {
-  //   console.log('>>>>>>>>>>>>>>>>>>',nextProps, this.props, nextProps === this.props)
-  //   return false
-  // }
-  
   checkIfExistFunction(currentFunc, oldFunction){
     return currentFunc && !oldFunction 
   }
@@ -95,10 +88,10 @@ export default class CFCard extends HighPureComponent {
     );
   }
 }
-CFCard.defaultProps = {
+AppCard.defaultProps = {
   selected: false,
 }
-CFCard.propTypes = {
+AppCard.propTypes = {
   id: PropTypes.any,
   title: PropTypes.string,
   subtitleUp: PropTypes.string,

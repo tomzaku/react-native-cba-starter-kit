@@ -1,18 +1,19 @@
 const localIps = require('./helper/getIp')
-const { build, printCommands, printWtf, print } = require('gluegun')
+const chalk = require('chalk')
 const PrettyError = require('pretty-error')
 const pe = new PrettyError()
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 var fs = require('fs');
 
+const log = console.log
 const appDir = (nameProject) => `${process.cwd()}/${nameProject}`
 const libDir = `../../`
 const baseDir = `${__dirname}/../base`
 const localIp = localIps.length > 0 ? localIps[0] : '192.168.100.122'
 
 async function copyAppDelegate(nameProject) {
-  print.info('Copy App Delegate...')
+  log(chalk.blue('Copy App Delegate'))
   const appDelegate = String.raw`
   /**
    * Copyright (c) 2015-present, Facebook, Inc.
@@ -63,7 +64,7 @@ async function linkingPackage(nameProject) {
   exec(`cd ${appDir(nameProject)} && react-native link`)
 }
 async function copyIndexFile(nameProject) {
-  print.info('Copy index.js file')
+  log(chalk.blue('Copy index.js file'))
   const indexFile  = `import { AppRegistry } from 'react-native';
   import App from './src/mobile';
   
@@ -91,7 +92,7 @@ async function copyBaseToProject(nameProject) {
 }
 
 async function installPackage(nameProject, namePackage) {
-  print.info(`Installing package: ${namePackage}`)
+  log(chalk.green.underline.bold(`Installing package: ${namePackage}`))
   await exec(`cd ${process.cwd()}/${nameProject} && yarn add ${namePackage}`)
 }
 
@@ -141,7 +142,7 @@ async function installPackageDependence(nameProject) {
 }
 
 async function copyBin(nameProject) {
-  print.info('Copy bin and Makefile')
+  log(chalk.blue('Copy bin and Makefile'))
   const changeIp = String.raw`#!/usr/bin/env python3
 import re
 import socket
@@ -174,7 +175,6 @@ async function installReactNative(nameProject) {
       //   await exec(`react-native init ${nameProject}`);
       // }
       // else {
-        // print.warning(`Your folder name ${nameProject} is existed R-N`);
         throw "ERR> Your folder name ${nameProject} is existed R-N\nGO> Change the name App"
       // }
       return false;
@@ -183,7 +183,7 @@ async function installReactNative(nameProject) {
       return true;
     }
   } catch (err) {
-    print.error(err);
+    log(chalk.red.bold('err'))
     return false;
   }
 }
@@ -191,31 +191,35 @@ async function installReactNative(nameProject) {
 async function init(nameProject) {
   try {
     if (!nameProject) throw 'Please fill your name app. For ex: zkrn init myApp'
-    print.info('FILE BIN ' + __dirname)
-    print.info('DEFAULT FOLDER ' + process.cwd())
-    print.warning("===============================================")
-    print.info(`Creating new react-native called ${nameProject}... Will take 5 minutes`)
+    // log(chalk.yellow(`FILE BIN: ${__dirname}`))
+    // log(chalk.cyan('FILE BIN ' + __dirname))
+    // log(chalk.cyan('DEFAULT FOLDER ' + process.cwd()))
+    log(chalk.cyan("==============================================="))
+    log(chalk.blue(`Creating new react-native called ${nameProject}... Will take 5 minutes`))
     const status = await installReactNative(nameProject)
     if (!status) {
       throw 'See error on top'
     }
-    print.warning("===============================================")
-    print.info('Creating react-native successfully')
-    print.info('Now install dependence package')
+    log(chalk.green(`Creating react-native successfully`))
+
+    log(chalk.cyan("==============================================="))
+    log(chalk.blue(`Now install dependence package`))
     await installPackageDependence(nameProject)
-    print.warning("===============================================")
-    print.info('Copying base component')
+    log(chalk.green(`Installed lib successfully`))
+ 
+    log(chalk.cyan("==============================================="))
+    log(chalk.blue('Copying base component'))
     await copyBaseToProject(nameProject)
      // Link package
-     print.warning("===============================================")
-    print.info('Linking package...')
+    log(chalk.cyan("==============================================="))
+    log(chalk.blue('Linking package...'))
     await linkingPackage(nameProject)
-    print.warning("===============================================")
-    print.info('Done!. Have a nice day!')
-    print.info(`> cd ${nameProject}`)
-    print.info(`> make build-ios`)
+
+    log(chalk.green('Done!. Have a nice day!'))
+    log(chalk.cyan(`> cd ${nameProject}`))
+    log(chalk.cyan(`> make build-ios`))
   } catch(err) {
-    print.error(pe.render(err))
+    log(chalk.red(pe.render(err)))
   }
 }
 

@@ -16,7 +16,7 @@ import { withNavigation } from 'react-navigation';
 
 
 // create a component
-class ToolBar extends PureComponent {
+class AppToolBar extends PureComponent {
   goBack = () => {
     const { navigation } = this.props;
     navigation && navigation.goBack()
@@ -48,7 +48,7 @@ class ToolBar extends PureComponent {
   }
 }
 
-ToolBar.defaultProps = {
+AppToolBar.defaultProps = {
   iconBack: false,
   rightComponent: [],
   leftComponent: [],
@@ -94,4 +94,4 @@ const styles = StyleSheet.create({
 });
 
 //make this component available to the app
-export default withNavigation(ToolBar);
+export default withNavigation(AppToolBar);

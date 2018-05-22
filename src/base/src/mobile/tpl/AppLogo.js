@@ -5,7 +5,7 @@ import { View, Image } from 'react-native';
 import PropTypes from 'prop-types';
 import { image, metric } from 'AppTheme';
 
-class CFLogo extends PureComponent {
+class AppLogo extends PureComponent {
   render() {
     let { style, size, styleContainer } = this.props;
     if (size) {
@@ -26,17 +26,17 @@ class CFLogo extends PureComponent {
   }
 }
 
-CFLogo.propTypes = {
+AppLogo.propTypes = {
   style: PropTypes.any,
   size: PropTypes.any,
   styleContainer: PropTypes.any,
 };
 
-CFLogo.defaultProps = {
+AppLogo.defaultProps = {
   // size: ThemeSpacing.LOGO_HEIGHT,
   style: {
     height: metric.LOGO_HEIGHT,
     width: metric.LOGO_WIDTH,
   },
 };
-export default CFLogo;
+export default AppLogo;

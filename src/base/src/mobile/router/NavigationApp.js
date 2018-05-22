@@ -17,8 +17,7 @@ class NavigatorApp extends Component {
   }
   render() {
     const { isAuthenticated } = this.props;
-    // const LoginContainer = getStackNavigator('Login');
-    const LoginContainer = getStackNavigator('Main');
+    const LoginContainer = getStackNavigator('Login');
     if (!isAuthenticated) {
       return <LoginContainer />;
     }

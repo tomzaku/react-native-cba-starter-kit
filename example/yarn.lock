@@ -3646,8 +3646,8 @@ minimist@~0.0.1:
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.10.tgz#de3f98543dbf96082be48ad1a0c7cda836301dcf"
 
 minipass@^2.2.1, minipass@^2.2.4:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/minipass/-/minipass-2.3.1.tgz#4e872b959131a672837ab3cb554962bc84b1537d"
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/minipass/-/minipass-2.3.2.tgz#2bb00e836f1f8d44573f96b08c4f440b330072e4"
   dependencies:
     safe-buffer "^5.1.1"
     yallist "^3.0.0"
@@ -4204,8 +4204,8 @@ punycode@^1.4.1:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
 
 punycode@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.0.tgz#5f863edc89b96db09074bad7947bf09056ca4e7d"
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
 
 qs@~6.5.1:
   version "6.5.2"

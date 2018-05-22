@@ -3,10 +3,10 @@ const { makeGetModuleName } = require('../helper/name')
 const fs = require('fs')
 const { renameModule } = require('../helper/file')
 const setRoute = require('../route/set')
-const { build, printCommands, printWtf, print } = require('gluegun')
 const PrettyError = require('pretty-error')
 const pe = new PrettyError()
 const util = require('util');
+const chalk = require('chalk');
 const exec = util.promisify(require('child_process').exec);
 // --------
 const readFile = util.promisify(fs.readFile);
@@ -15,7 +15,7 @@ const writeFile = util.promisify(fs.writeFile);
 // ------------
 const moduleLibDir = `${__dirname}/../../module`
 const baseLibDir = `${__dirname}/../../base`
-
+const log = console.log;
 
 
 const updateFile = async (moduleName, file) => {
@@ -57,7 +57,7 @@ const renameLogic = async (moduleName) => {
 const makeModuleDir = async (moduleName) => {
   const getModulePath = makeGetModulePath(moduleName);
 
-  print.info(`>>> copy ${moduleLibDir} > ${getModulePath.getModuleDir()}`)
+  log(chalk.blue(`Copy ${moduleLibDir} > ${getModulePath.getModuleDir()}`))
   await exec(`cp -r ${moduleLibDir} ${getModulePath.getModuleDir()}`)
 }
 const getReplaceData = (type, moduleName) => {
@@ -90,14 +90,13 @@ const updateImportModule = async (moduleName) => {
   const indexModulePath = getModulePath.getAppIndex()
   const appActionPath = getModulePath.getAppAction()
   const appReselectPath = getModulePath.getAppReselect()
-
-  print.info(`> Update ${indexModulePath}`)
+  log(chalk.blue(`Update ${indexModulePath}`))
   await updateImportModuleFile(indexModulePath, moduleName, 'index')
   // action
-  print.info(`> Update ${appActionPath}`)
+  log(chalk.blue(`Update ${appActionPath}`))
   await updateImportModuleFile(appActionPath, moduleName, 'action')
   //reselect
-  print.info(`> Update ${appReselectPath}`)
+  log(chalk.blue(`Update ${appReselectPath}`))
   await updateImportModuleFile(appReselectPath, moduleName, 'reselect')
 
 }
@@ -105,26 +104,26 @@ const updateImportModule = async (moduleName) => {
 const create = async (moduleName) => {
   const getModulePath = makeGetModulePath(moduleName);
   try {
-    print.info(`Creating module ${moduleName} begin...`)
+    log(chalk.white(`Creating module ${moduleName} begin...`))
     if (getModulePath.isExist() ){
       throw `Module called \'${moduleName}\'is existed`
     }
-    print.warning("===============================================")
-    print.info('> Copy screen & logic from sand to your app')
+    log(chalk.cyan("==============================================="))
+    log(chalk.blue(`Copy screen & logic from sand to your app`))
     await makeModuleDir(moduleName)
-    print.warning("===============================================")
-    print.info('> Renaming screen...')
+    log(chalk.cyan("==============================================="))
+    log(chalk.blue('Renaming screen...'))
     await renameScreen(moduleName)
-    print.info('> Renaming logic...')
+    log(chalk.blue('Renaming logic...'))
     await renameLogic(moduleName)
-    print.info('> Update import module')
+    log(chalk.blue('Update import module'))
     await updateImportModule(moduleName)
     await setRoute(moduleName)
-    print.info('Create successfully!')
+    log(chalk.blue('Create successfully!'))
 
   } catch (err) {
-    print.error('ERR Create: ')
-    print.error(pe.render(err))
+    log(chalk.red.bold('ERR Create: '))
+    log(chalk.red.bold(pe.render(err)))
   }
 }
 module.exports = create

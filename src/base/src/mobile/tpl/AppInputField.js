@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { FormLabel, FormInput } from 'react-native-elements';
 import { metric } from 'AppTheme';
 
-class CFInputField extends PureComponent {
+class AppInputField extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,35 +21,29 @@ class CFInputField extends PureComponent {
         <FormInput
           containerStyle={this.state.isFocus ? styles.formInputSelected : styles.formInput}
           onFocus={() => {
-            // console.log(">>>",this.refs);
-            // this.refs.underline.expandLine();
             this.setState({ isFocus: true });
           }}
           onBlur={() => {
-            // this.refs.underline.shrinkLine();
             this.setState({ isFocus: false });
           }}
           {...this.props}
-          // style={{color:'rgb(42, 42, 42)'}}
-          // placeholderTextColor={'rgb(187, 187, 187)'}
-          // value={"sad"}
         />
       </View>
     );
   }
 }
 
-CFInputField.propTypes = {
+AppInputField.propTypes = {
   autoFocus: PropTypes.bool,
   label: PropTypes.any,
 };
 
-CFInputField.defaultProps = {
+AppInputField.defaultProps = {
   autoFocus: false,
   label: 'Label',
 };
 
-export default CFInputField;
+export default AppInputField;
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
