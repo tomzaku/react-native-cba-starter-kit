@@ -1,3 +1,13 @@
+<h2 align="center">
+  React Native CBA Starter Kit
+</h2>
+<h5 align="center">
+Base on Component-Based Architecture
+</h5>
+<p align="center">
+<img src="https://github.com/tomzaku/react-native-cba-starter-kit/blob/master/logo.png?raw=true">
+</p>
+
 # Zkrn CLI
 Inspired by [Ignite CLI](https://github.com/infinitered/ignite)
 ```
@@ -26,7 +36,7 @@ ________   __   ___   _______   _____  ___
     help [cmd]                    display help for [cmd]
 ```
 #### Why I have to create this
-  My app based on CBA([Component-Based Architecture](https://medium.com/@dan.shapiro1210/understanding-component-based-architecture-3ff48ec0c238)). Therefor, The module(For ex: 'src/mobile/app/todo') contains both redux and view. That way make you easy to reusage in another appliaction and help you to save your time.
+  My app based on CBA([Component-Based Architecture](https://medium.com/@dan.shapiro1210/understanding-component-based-architecture-3ff48ec0c238)). Therefor, The module(For ex: 'src/mobile/app/todo') contains both redux and view. That way make you easy to reuse in another appliaction and help you to save your time.
 
 ``` 
 .src/mobile/app/todo
