@@ -1,4 +1,3 @@
-const localIps = require('./helper/getIp')
 const chalk = require('chalk')
 const PrettyError = require('pretty-error')
 const pe = new PrettyError()
@@ -6,10 +5,12 @@ const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 var fs = require('fs');
 
-const log = console.log
+const localIps = require('./helper/getIp')
+const check = require('./check')
 const appDir = (nameProject) => `${process.cwd()}/${nameProject}`
 const libDir = `../../`
 const baseDir = `${__dirname}/../base`
+const log = console.log
 const localIp = localIps.length > 0 ? localIps[0] : '192.168.100.122'
 
 async function copyAppDelegate(nameProject) {
@@ -92,7 +93,7 @@ async function copyBaseToProject(nameProject) {
 }
 
 async function installPackage(nameProject, namePackage) {
-  log(chalk.green.underline.bold(`Installing package: ${namePackage}`))
+  log('Installing package: ' + chalk.green.underline.bold(`${namePackage}`))
   await exec(`cd ${process.cwd()}/${nameProject} && yarn add ${namePackage}`)
 }
 
@@ -169,6 +170,7 @@ print('Change IP to ' + ip + ' successfuly')
 async function installReactNative(nameProject) {
   // check exist rn
   try {
+    
     if (fs.existsSync(`${appDir(nameProject)}`)) {
       const { stdout, stderr } = await exec(`cd ${appDir(nameProject)}/ && react-native -v`)
       // if (stdout.indexOf('n/a') > 0) { //if react-native is'nt exist
@@ -190,6 +192,9 @@ async function installReactNative(nameProject) {
 
 async function init(nameProject) {
   try {
+    const isInstalledDependence = await check()
+    
+
     if (!nameProject) throw 'Please fill your name app. For ex: zkrn init myApp'
     // log(chalk.yellow(`FILE BIN: ${__dirname}`))
     // log(chalk.cyan('FILE BIN ' + __dirname))
