@@ -7,7 +7,7 @@ ________   __   ___   _______   _____  ___
    /  ___/ |    __/  |_____/   )|: \.   \\  |   Starter Kit
   //  \__  (// _  \   //      / |.  \    \. |
  (:   / "\ |: | \  \ |:  __   \ |    \    \ |   Author: Zaku
-  \_______)(__|  \__)|__|  \___) \___|\____\)
+  \_______)(__|  \__)|__|  \___) \___|\____\)   Vers: 1.0.8
 
 
   Usage: zkrn [command] <method/ appName ...>
@@ -53,7 +53,6 @@ ________   __   ___   _______   _____  ___
     │       └── TodoTabStyle.js
     └── index.js
 
-4 directories, 18 files
 ```
 ## Requirement
 
@@ -71,6 +70,48 @@ npm install -g zkrn
 ``` bash
  zkrn --help
 ```
+
+**1. Create app**
+
+``` bash
+zkrn init <appName>
+```
+Example: `zkrn init myApp`
+
+**appName** could be snake case/ pascal case/ camelCase.
+Don't try to using space (Ex: App Name)
+
+**2. Create module**
+
+``` bash
+zkrn module create <moduleName>
+```
+Example: `zkrn module create todo`
+Create a new module will include (saga, reselect, reducer, action, screen, styles) and auto register reducer/ saga/ action/ reselect/ screen.
+
+**3. Remove module**
+
+``` bash
+zkrn module remove <moduleName>
+```
+Example: `zkrn module remove todo`
+Remove a module will include (saga, reselect, reducer, action, screen, styles) and auto unregister reducer/ saga/ action/ reselect/ screen.
+
+**4. Set router app**
+
+``` bash
+zkrn route set <routeName>
+```
+Example: `zkrn route set todo`
+For who wanna test this screen first. It's will show this screen at begin.
+
+**5. Make router at default**
+
+``` bash
+zkrn route default
+```
+Make router at default (This maybe personal.)
+
 ## Directory
 ###### App
 ```
@@ -204,10 +245,10 @@ This place includes all layout for application. For ex: Button/ Text/ Avatar/...
 
 - [ ] Add Theme CLI
 - [ ] Add Template (30%)
+- [ ] Update template
 - [x] Add Language
 - [x] Add router CLI
 - [x] Add Saga
-- [ ] Update template
 
 ## Help
 

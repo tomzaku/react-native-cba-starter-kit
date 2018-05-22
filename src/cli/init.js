@@ -190,12 +190,11 @@ async function installReactNative(nameProject) {
   }
 }
 
-async function init(nameProject) {
+async function init(name) {
   try {
     const isInstalledDependence = await check()
-    
-
-    if (!nameProject) throw 'Please fill your name app. For ex: zkrn init myApp'
+    if (!name) throw 'Please fill your name app. For ex: zkrn init myApp'
+    const nameProject = makeGetModuleName(name).getAction() // Camel Case
     // log(chalk.yellow(`FILE BIN: ${__dirname}`))
     // log(chalk.cyan('FILE BIN ' + __dirname))
     // log(chalk.cyan('DEFAULT FOLDER ' + process.cwd()))
