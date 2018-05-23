@@ -71,8 +71,13 @@ ________   __   ___   _______   _____  ___
 
 ## Installation
 
+Using npm:
 ``` bash
 npm install -g zkrn
+```
+or using yarn:
+``` bash
+yarn global add zkrn
 ```
 
 ## Usage
