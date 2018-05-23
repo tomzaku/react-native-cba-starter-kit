@@ -4,14 +4,13 @@ import React, { PureComponent, Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, StyleSheet, Image, TouchableOpacity, Text, ImageBackground, Platform } from 'react-native';
 // import FastImage from 'react-native-fast-image';
-import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
 import { compare } from 'AppUtil'
 import _ from 'lodash'
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from './style/AppAvatarStyle'
 import { metric, color, applicationStyle, font, image as imageResource} from 'AppTheme';
 
-class AppAvatar extends Component {
+class AppAvatar extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,27 +20,7 @@ class AppAvatar extends Component {
   componentWillReceiveProps(nextProps) {
     return false;
   }
-  shouldComponentUpdate = (nextProps, nextState) => {
-    // Compare props
-    const isEqualWithoutImageProps = compare.isEqualObjectIncludeFunction(
-      _.omit(nextProps,['image']),
-      _.omit(this.props,['image']),
-    )
 
-    // Compare image source
-    // console.log('Require image ', nextProps, this.props, nextProps.image.uri, this.props.image.uri, nextProps.image.uri==this.props.image.uri, _.isEqual(nextProps.image.uri, this.props.image.uri))
-
-    // Why doing this
-    // uri may be exist getter setter. So that why make sure comapare without getter and setter properties
-    
-    const isEqualImageProps = nextProps.image && nextProps.image.uri 
-      ? _.isEqual(nextProps.image.uri, this.props.image.uri)
-      : _.isEqual(nextProps.image, this.props.image)
-
-    // console.log('isEqualImageProps', isEqualImageProps)
-    return !isEqualWithoutImageProps || !isEqualImageProps
-    // return false
-  }
   _renderIconEditor({ editorButton, size }) {
     // ToDo: handle each size and render proper button
     if (!editorButton) return null;

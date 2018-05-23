@@ -1,12 +1,8 @@
-import Immutable from 'seamless-immutable';
+import * as action from './action'
+import reducer from './reducer'
 
-const initialState = Immutable({
-  isAuthenticated: false
-})
-const reducer = (state = initialState, action) => {
-  switch(action.type) {
-    default: return state
-  }
+export {
+  action,
 }
 export default {
   reducer

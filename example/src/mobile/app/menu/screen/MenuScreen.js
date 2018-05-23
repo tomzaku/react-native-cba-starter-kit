@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
 
-import { AppSwitch, AppLine } from 'AppComponent';
+import { AppSwitch, AppLine, AppButton } from 'AppComponent';
 import { metric, applicationStyle } from 'AppTheme'
-import { app } from 'AppAction'
+import { app, authentication as authAction } from 'AppAction'
 
 // create a component
 class Menu extends Component {
@@ -31,9 +31,15 @@ class Menu extends Component {
     const { onPressSwitchTheme, isDark, isVi } = this.props;
     return (
       <View style={styles.container}>
-        <AppSwitch labelKeyLang={'changeTheme'} descKeyLang={'changeTheme_desc'} onPress={this.onPressSwitchTheme} value={isDark} />
-        <AppLine containerStyle={styles.line} type={'thin'} />
-        <AppSwitch label={'Language Vi'} desc={'Change language to vi/en'} onPress={this.onPressChangeLanguage} value={isVi} />
+        <View style={styles.body}>
+          <AppSwitch labelKeyLang={'changeTheme'} descKeyLang={'changeTheme_desc'} onPress={this.onPressSwitchTheme} value={isDark} />
+          <AppLine containerStyle={styles.line} type={'thin'} />
+          <AppSwitch label={'Language Vi'} desc={'Change language to vi/en'} onPress={this.onPressChangeLanguage} value={isVi} />
+        </View>
+        <View>
+          <AppLine containerStyle={styles.line} type={'thin'} />
+          <AppButton title={'LOG OUT'} onPress={this.props.logout} warning />
+        </View>
       </View>
     );
   }
@@ -46,6 +52,9 @@ const styles = StyleSheet.create({
   },
   line: {
     marginVertical: metric.MARGIN_XS,
+  },
+  body: {
+    flex: 1,
   }
 });
 
@@ -56,7 +65,8 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = (dispatch, props) => ({
   onPressSwitchTheme: () => dispatch(app.switchTheme()),
-  onPressChangeLanguage: (code) => dispatch(app.changeLanguage(code))
+  onPressChangeLanguage: (code) => dispatch(app.changeLanguage(code)),
+  logout: () => dispatch(authAction.logout())
 })
 
 //make this component available to the app

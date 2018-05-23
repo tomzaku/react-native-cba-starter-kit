@@ -44,8 +44,8 @@ const metrics = {
   STATUS_BAR_HEIGHT: statusBarHeight,
 
   // ─── LOGO AVATAR IMAGE ──────────────────────────────────────────────────────────
-  LOGO_HEIGHT: em(6),
-  LOGO_WIDTH: em(9),
+  LOGO_HEIGHT: em(12),
+  LOGO_WIDTH: em(15),
   LOGO_BORDER: 99999,
   AVATAR_XS: em(2),
   AVATAR_S: em(2.5),
@@ -56,7 +56,7 @@ const metrics = {
   AVATAR_XXL: em(7.25),
 
   // ─── TABBAR ─────────────────────────────────────────────────────────────────────
-  TABBAR_HEIGHT: 50,
+  TABBAR_HEIGHT: 13,
 
   // ─── ICON ───────────────────────────────────────────────────────────────────────
   ICON: em(1.5),

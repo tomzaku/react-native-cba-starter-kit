@@ -22,6 +22,8 @@ class IconTextInput extends Component {
     onPress && onPress(text)
   }
   renderIconRight = () => {
+    const { onPress } = this.props;
+    if (!onPress) return null
     return (
       <TouchableOpacity onPress={this.onPress} style={styles.button}>
         <View style={{flex: 1, paddingHorizontal: metric.MARGIN_XS, ...applicationStyle.center }}>

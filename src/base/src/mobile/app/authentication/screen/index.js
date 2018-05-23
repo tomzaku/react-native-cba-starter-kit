@@ -4,6 +4,7 @@ export default {
     phone: {
       screen: LoginScreen,
       title: 'Login',
+      headerMode: 'none',
     }
   }
 }

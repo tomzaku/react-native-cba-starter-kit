@@ -1,4 +1,3 @@
-import logger from 'react-consola'
 import { all } from 'redux-saga/effects';
 import R from 'ramda'
 import { getSpecificModuleRedux } from '../helper/module';

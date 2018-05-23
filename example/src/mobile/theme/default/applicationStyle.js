@@ -37,7 +37,7 @@ const ApplicationStyles = {
   // ─── NAV ────────────────────────────────────────────────────────────────────────
   navHeader: {
     backgroundColor: color.NAV_HEADER,
-    height: metric.TABBAR_HEIGHT,
+    // height: metric.TABBAR_HEIGHT,
     elevation: 0,
     justifyContent: "center",
     // alignItems: "center",

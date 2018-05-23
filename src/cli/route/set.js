@@ -18,6 +18,7 @@ const setRoute = async (routeName = 'Main') => {
     const getModuleName = makeGetModuleName(routeName)
     const rawTextAppliedModule = rawText.replace(new RegExp(`getStackNavigator\\(.*`), `getStackNavigator('${getModuleName.getClassName()}');`)
     await writeFile(mainScreenPath, rawTextAppliedModule)
+    log(chalk.green('Updated route successfully. Try to refresh screen'))
   } catch(err) {
     log(chalk.red('ERR SetRoute: '))
     log(chalk.red(pe.render(err)))

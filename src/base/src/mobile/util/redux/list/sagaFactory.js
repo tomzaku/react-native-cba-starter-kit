@@ -1,5 +1,4 @@
 import { call, put, takeEvery, select, all } from 'redux-saga/effects';
-import logger from 'react-consola'
 import { normalize, schema } from 'normalizr';
 import { v1 as uuid } from 'uuid'
 
@@ -22,7 +21,7 @@ const normalizeData = (data, options = {}) => {
 function* handleRESTFUL(fetching, fetchServer, updateDataLocal, updateSuccess, updateFailure) {
   try {
     // Update data local
-    logger.debug('SAGA BEGIN')
+    console.log('SAGA BEGIN')
 
     yield put(fetching())
 
@@ -33,7 +32,7 @@ function* handleRESTFUL(fetching, fetchServer, updateDataLocal, updateSuccess, u
 
     const data = yield call(fetchServer)
 
-    logger.debug('DATA RECEIVE', data)
+    console.log('DATA RECEIVE', data)
 
     // TODO: 
     // Check status of data is failure or success
@@ -47,7 +46,7 @@ function* handleRESTFUL(fetching, fetchServer, updateDataLocal, updateSuccess, u
     }
     return data;
   } catch (err) {
-    logger.error('Let\'s check function handleRESTFUL', err)
+    console.log('Let\'s check function handleRESTFUL', err)
     yield put(updateFailure(err))
   }
 }
@@ -177,7 +176,7 @@ const sagaFactory = (type, options) => {
   }
 }
 function* test() {
-  logger.input('TESTCLEAN_APP')
+  console.log('TESTCLEAN_APP')
   yield put({
     type: 'CLEAN_APP'
   })

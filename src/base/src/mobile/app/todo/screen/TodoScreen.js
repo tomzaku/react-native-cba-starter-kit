@@ -6,7 +6,7 @@ import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 import { todo } from 'AppAction'
 import I18n from 'AppI18n'
-import { AppTabView } from 'AppComponent'
+import { AppTab } from 'AppComponent'
 
 import TodoTab from './component/TodoTab';
 import DoingTab from './component/DoingTab';
@@ -21,12 +21,12 @@ class TodoScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <AppTabView>
+        <AppTab>
           <TodoTab tabLabel={'To do'} keyLang={'todo'} />
           <DoingTab tabLabel={'Doing'} keyLang={'doing'} />
           <DoneTab tabLabel="Done" keyLang={'done'} />
           {/* <View/> */}
-        </AppTabView>
+        </AppTab>
       </View>
     );
   }

@@ -5,9 +5,6 @@ import { reducer as formReducer } from 'redux-form'
 import { REHYDRATE, PURGE, persistCombineReducers, persistReducer } from 'redux-persist'
 import reduxPersist from './ReduxPersist';
 
-// Add language
-
-
 const rootModule = getSpecificModuleRedux('reducer')
 
 const reducer = combineReducers({

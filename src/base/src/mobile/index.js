@@ -1,23 +1,22 @@
 /* @flow */
 
-import Orientation from 'react-native-orientation';
+import React, { Component } from 'react';
 import { StyleSheet, NetInfo, View, Platform, StatusBar } from 'react-native';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import { Provider } from 'react-redux'
+import Orientation from 'react-native-orientation';
+
+import configureStore from './conf/redux/index';
 
 import { AppLoading } from 'AppComponent';
 import { DEVICE_TYPE } from 'AppSetting'
+import { applicationStyle } from 'AppTheme'
 
 import './conf/index'
-import configureStore from './conf/redux/index';
-// import Main from './main'
-// import NavigatorApp from './config/navigation/';
 import { PersistGate } from 'redux-persist/es/integration/react'
-import { Provider } from 'react-redux'
 import NavigationApp from './router/NavigationApp'
 
 const { persistor, store } = configureStore()
-
 const onBeforeLift = () => {
   console.debug(':onBeforeLift: called')
 }
@@ -81,6 +80,7 @@ class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    ...applicationStyle.mainCon
   },
 });
 

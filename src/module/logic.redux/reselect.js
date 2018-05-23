@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect'
-import logger from 'react-consola';
 
 const getRelatedThing = (state, props) => 
   null

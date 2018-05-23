@@ -6,6 +6,7 @@ const exec = util.promisify(require('child_process').exec);
 var fs = require('fs');
 
 const localIps = require('./helper/getIp')
+const { makeGetModuleName } = require('./helper/name')
 const check = require('./check')
 const appDir = (nameProject) => `${process.cwd()}/${nameProject}`
 const libDir = `../../`
@@ -116,25 +117,31 @@ async function installPackageDependence(nameProject) {
     'redux-persist',
     'redux-form',
     // UI
+    // NEED LINK
     'react-native-vector-icons',
-    'react-consola',
-    'react-native-animatable',
-    'react-native-modal-datetime-picker',
-    'react-native-shimmer-placeholder',
-    'react-native-spinkit',
     'react-native-device-info',
-    'react-native-keyboard-aware-scroll-view',
     'react-native-orientation',
+    'react-native-linear-gradient',
+    'react-native-i18n',
+
+    // 'react-consola',
+    'react-native-animatable',
+    // 'react-native-modal-datetime-picker',
+    // 'react-native-shimmer-placeholder',
+    // 'react-native-spinkit',
+    // 'react-native-keyboard-aware-scroll-view',
     'react-native-image-picker',
+    'react-native-textinput-effects',
+   
+    // FAB
     'react-native-circular-action-menu',
     'react-native-action-button',
+
     'react-native-elements',
     'react-navigation',
-    'react-native-scrollable-tab-view',
-    'react-native-datepicker',
-    'react-native-linear-gradient',
     'react-native-material-bottom-navigation-performance',
-    'react-native-i18n',
+    'react-native-scrollable-tab-view',
+    // 'react-native-datepicker',
   ]
   for (let package of dependences) {
     await installPackage(nameProject, package);

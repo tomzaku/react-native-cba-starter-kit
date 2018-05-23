@@ -11,9 +11,8 @@ import AppIcon from './AppIcon';
 import AppTextInput from './AppTextInput';
 import AppSwitch from './AppSwitch';
 import AppLine from './AppLine';
-import AppTabView from './AppTabView';
+import AppTab from './AppTab';
 import AppEmpty from './AppEmpty';
-import AppTabContainer from './AppTabContainer';
 import AppLoading from './AppLoading';
 import AppLogo from './AppLogo';
 import AppInputField from './AppInputField';
@@ -52,9 +51,8 @@ export {
   AppTextInput,
   AppSwitch,
   AppLine,
-  AppTabView,
+  AppTab,
   AppEmpty,
-  AppTabContainer,
   AppFab,
   AppInputField,
   AppLoading,
