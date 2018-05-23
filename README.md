@@ -10,6 +10,8 @@ Base on Component-Based Architecture
 
 # Zkrn CLI
 Inspired by [Ignite CLI](https://github.com/infinitered/ignite)
+Find how it work by [this video](https://www.youtube.com/watch?v=k1kNW5fv1zc)
+
 ```
 ________   __   ___   _______   _____  ___
 ("      "\ |/"| /  ") /"      \ (\"   \|"  \
@@ -81,11 +83,10 @@ yarn global add zkrn
 ```
 
 ## Usage
-
+Find how it work by [this video](https://www.youtube.com/watch?v=k1kNW5fv1zc)
 ``` bash
  zkrn --help
 ```
-
 **1. Create app**
 
 ``` bash
