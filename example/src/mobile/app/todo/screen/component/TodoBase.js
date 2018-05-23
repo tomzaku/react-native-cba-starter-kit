@@ -2,7 +2,6 @@
 import React, { Component, PureComponent } from 'react';
 import { View, Text, StyleSheet, FlatList, TextInput, KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
-import logger from 'react-consola';
 
 import { IconTextInput, AppButton, AppIcon, AppTextInput } from 'AppComponent'
 import { metric, color, applicationStyle, font } from "AppTheme";

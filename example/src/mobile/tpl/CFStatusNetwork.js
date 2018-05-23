@@ -1,7 +1,6 @@
 //import liraries
 import React, { PureComponent } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import Spinner from 'react-native-spinkit';
+import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { metric, color, applicationStyle, font, animation } from 'AppTheme';
@@ -14,7 +13,7 @@ class CFStatusNetwork extends PureComponent {
     if (isFetching) {
       return (
           <View style={[styles.statusMessage, { height: 40 }]}>
-            <Spinner color={'white'} type={'FadingCircleAlt'} size={16} style={{ alignItems: 'center', justifyContent: 'center' }} />
+            <ActivityIndicator size="small" color="#00ff00" />
             <Text style={{ marginLeft: metric.MARGIN_S, color: 'white' }}>
               Waitting!
             </Text>

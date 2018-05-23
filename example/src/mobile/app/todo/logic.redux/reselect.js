@@ -1,6 +1,5 @@
 
 import { createSelector } from 'reselect'
-import logger from 'react-consola';
 
 const getTodoList = (state, props) =>
   state.todo.result

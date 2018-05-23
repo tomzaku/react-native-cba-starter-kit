@@ -1,6 +1,6 @@
 {
   "name": "zkrn",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "react native starter kit and seperate module",
   "main": "./src/index.js",
   "scripts": {

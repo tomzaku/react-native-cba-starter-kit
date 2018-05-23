@@ -1,7 +1,6 @@
 import R from 'ramda'
 import _ from 'lodash'
 import Immutable from 'seamless-immutable'
-import logger from 'react-consola'
 
 import { getPrefix, getActionTypeByModule } from '../name'
 import { getRule } from '../rule';
@@ -23,7 +22,7 @@ const reducerFactory = (type, options = {}) => {
   const initialStateGenerate = initialState ? initialState : createInitialState()
   const actionType = createListActionType(type, { group, rule })
 
-  logger.info('>>> REGISTERING REDUCER: ', actionType)
+  console.log(' REGISTERING REDUCER: ', actionType)
 
   return function(state = initialStateGenerate, action) {
     switch(action.type) {

@@ -13,6 +13,14 @@ program
   })
 program
   // .version(require('../package.json').version)
+  .command("copy [moduleName] [appPath]")
+  .description("Copy module to another App")
+  .action(function (moduleName, cmd) {
+    const copy = require('../src/cli/module/copy')
+    copy(moduleName)
+  })
+program
+  // .version(require('../package.json').version)
   .command("remove [moduleName]")
   .description("Remove module")
   .action(function (moduleName, cmd) {

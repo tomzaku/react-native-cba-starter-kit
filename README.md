@@ -17,7 +17,7 @@ ________   __   ___   _______   _____  ___
    /  ___/ |    __/  |_____/   )|: \.   \\  |   Starter Kit
   //  \__  (// _  \   //      / |.  \    \. |
  (:   / "\ |: | \  \ |:  __   \ |    \    \ |   Author: Zaku
-  \_______)(__|  \__)|__|  \___) \___|\____\)   Vers: 1.0.8
+  \_______)(__|  \__)|__|  \___) \___|\____\)   
 
 
   Usage: zkrn [command] <method/ appName ...>
@@ -107,7 +107,15 @@ zkrn module remove <moduleName>
 Example: `zkrn module remove todo`
 Remove a module will include (saga, reselect, reducer, action, screen, styles) and auto unregister reducer/ saga/ action/ reselect/ screen.
 
-**4. Set router app**
+**4. Copy module**
+
+```bash
+zkrn module copy <moduleName> <AppDistPath>
+```
+Example: `zkrn module copy task ./path/to/another/awesome/app`
+Will copy all module from this app to another app
+
+**5. Set router app**
 
 ``` bash
 zkrn route set <routeName>
@@ -115,7 +123,7 @@ zkrn route set <routeName>
 Example: `zkrn route set todo`
 For who wanna test this screen first. It's will show this screen at begin.
 
-**5. Make router at default**
+**6. Make router at default**
 
 ``` bash
 zkrn route default
