@@ -16,7 +16,7 @@ class MainScreen extends Component {
 
   
   render() {
-    const TabScreen = getStackNavigator('Form');
+    const TabScreen = getStackNavigator('Main');
     return (
       <View style={styles.container}>
         <StatusBar

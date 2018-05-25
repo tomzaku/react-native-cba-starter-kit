@@ -7,11 +7,10 @@ var t = require('tcomb-form-native/lib');
 import { material } from 'AppTcomb'
 var i18n = require('tcomb-form-native/lib/i18n/en');
 // var stylesheet = require('tcomb-form-native/lib/stylesheets/bootstrap');
-import stylesheet from '../tpl/tcomb/material/stylesheet';
 
 t.form.Form.templates = material;
 t.form.Form.i18n = i18n;
-t.form.Form.stylesheet = stylesheet;
+t.form.Form.stylesheet = material.stylesheet;
 
 t.form.Form.defaultProps = {
   templates: t.form.Form.templates,

@@ -5,4 +5,5 @@ module.exports = {
   datepicker: require("./datepicker"),
   struct: require("./struct"),
   list: require("./list"),
+  stylesheet: require("./stylesheet"),
 };

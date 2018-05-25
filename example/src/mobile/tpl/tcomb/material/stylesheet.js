@@ -8,15 +8,6 @@
 import { Platform } from "react-native";
 import { color, font, metric, applicationStyle } from 'AppTheme'
 
-var LABEL_COLOR = "#000000";
-var INPUT_COLOR = "#000000";
-var ERROR_COLOR = "#a94442";
-var HELP_COLOR = "#999999";
-var BORDER_COLOR = "#cccccc";
-var DISABLED_COLOR = "#777777";
-var DISABLED_BACKGROUND_COLOR = "#eeeeee";
-var FONT_SIZE = 17;
-var FONT_WEIGHT = "500";
 var stylesheet = Object.freeze({
   fieldset: {},
   // the style applied to the container of all inputs
@@ -63,7 +54,7 @@ var stylesheet = Object.freeze({
     ...applicationStyle.desc,
     fontSize: font.size.FONT_SIZE_XS,
     marginBottom: 2,
-    color: ERROR_COLOR
+    color: color.error,
   },
   textboxView: {
     normal: {},
@@ -80,16 +71,10 @@ var stylesheet = Object.freeze({
     },
     // the style applied when the textbox is not editable
     notEditable: {
-      fontSize: FONT_SIZE,
-      // height: 36,
-      // paddingVertical: Platform.OS === "ios" ? 7 : 0,
-      // paddingHorizontal: 7,
-      // borderRadius: 4,
-      borderColor: BORDER_COLOR,
-      // borderWidth: 1,
-      // marginBottom: 5,
-      color: DISABLED_COLOR,
-      backgroundColor: DISABLED_BACKGROUND_COLOR
+      fontSize: font.size.FONT_SIZE_XS,
+      borderColor: color.LINE_BORDER,
+      color: color.DESCRIPTION,
+      // backgroundColor: DISABLED_BACKGROUND_COLOR
     }
   },
   checkbox: {
@@ -105,7 +90,7 @@ var stylesheet = Object.freeze({
     normal: Platform.select({
       android: {
         paddingLeft: 7,
-        color: INPUT_COLOR
+        color: color.TITLE,
       },
       ios: {}
     }),
@@ -113,7 +98,7 @@ var stylesheet = Object.freeze({
     error: Platform.select({
       android: {
         paddingLeft: 7,
-        color: ERROR_COLOR
+        color: color.error,
       },
       ios: {}
     })
@@ -122,13 +107,13 @@ var stylesheet = Object.freeze({
     normal: {
       marginBottom: 4,
       borderRadius: 4,
-      borderColor: BORDER_COLOR,
+      borderColor: color.LINE_BORDER,
       borderWidth: 1
     },
     error: {
       marginBottom: 4,
       borderRadius: 4,
-      borderColor: ERROR_COLOR,
+      borderColor: color.error,
       borderWidth: 1
     },
     open: {
@@ -154,11 +139,11 @@ var stylesheet = Object.freeze({
   },
   pickerValue: {
     normal: {
-      fontSize: FONT_SIZE,
+      fontSize: font.size.FONT_SIZE,
       paddingLeft: 7
     },
     error: {
-      fontSize: FONT_SIZE,
+      fontSize: font.size.FONT_SIZE,
       paddingLeft: 7
     }
   },
@@ -166,13 +151,13 @@ var stylesheet = Object.freeze({
     normal: {
       marginBottom: 4,
       borderRadius: 4,
-      borderColor: BORDER_COLOR,
+      borderColor: color.LINE_BORDER,
       borderWidth: 1
     },
     error: {
       marginBottom: 4,
       borderRadius: 4,
-      borderColor: ERROR_COLOR,
+      borderColor: color.error,
       borderWidth: 1
     },
     open: {
@@ -198,14 +183,14 @@ var stylesheet = Object.freeze({
   },
   dateValue: {
     normal: {
-      color: INPUT_COLOR,
-      fontSize: FONT_SIZE,
+      color: color.TITLE,
+      fontSize: font.size.FONT_SIZE,
       padding: 7,
       marginBottom: 5
     },
     error: {
-      color: ERROR_COLOR,
-      fontSize: FONT_SIZE,
+      color: color.error,
+      fontSize: font.size.FONT_SIZE,
       padding: 7,
       marginBottom: 5
     }
