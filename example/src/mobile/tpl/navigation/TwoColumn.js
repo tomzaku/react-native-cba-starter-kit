@@ -1,7 +1,3 @@
-/**
-* @providesModule TwoColumn
-*/
-
 // import liraries
 
 import React, { Component, PureComponent } from 'react';

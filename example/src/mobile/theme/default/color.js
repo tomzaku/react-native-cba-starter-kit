@@ -85,6 +85,7 @@ const getPrimaryColor = (palette) => {
 
     // TEXT
     TITLE: palette.commonColor.gray[0], //black
+    TITLE2: palette.commonColor.gray[1], //black
     TITLE_COLOR: palette.monochromatic[1], //Have color on title
     TITLE_HIGHLIGH: palette.commonColor.gray[4], // white
     SUBTITLE: palette.commonColor.gray[3],
@@ -130,6 +131,7 @@ const getPrimaryColor = (palette) => {
 
     // LINE
     LINE_BORDER: palette.commonColor.gray[3],
+    LINE_BORDER_ACTIVE: palette.monochromatic[1],
 
     // SEGMENT
     SEGMENT: palette.monochromatic[0],

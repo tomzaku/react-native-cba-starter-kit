@@ -10,6 +10,7 @@ const type = {
 const size = {
   // FONT
   FONT_SIZE: em(1),
+  FONT_SIZE_XXXS: em(0.25),
   FONT_SIZE_XXS: em(0.5),
   FONT_SIZE_XS: em(0.75),
   FONT_SIZE_S: em(0.875),
@@ -69,7 +70,8 @@ const style = {
   desc: {
     // fontFamily: type.base,
     fontSize: size.FONT_SIZE_S,
-    fontStyle: 'italic',
+    // fontStyle: 'italic',
+    fontWeight: '400',
   }
 }
 

@@ -7,16 +7,20 @@ import styles from './style/AppIconStyle.js'
 
 export default class AppIcon extends PureComponent {
   render() {
-    const { containerStyle, onPress } = this.props;
+    const { containerStyle, onPress, color, size } = this.props;
     if (!onPress) {
       return (
-        <Icon size={metric.ICON} color={color.ICON} {...this.props}/>
+        <Icon size={size} color={color} {...this.props}/>
       )
     }
     return (
       <TouchableOpacity style={[styles.container, containerStyle]} onPress={onPress}>
-        <Icon size={metric.ICON} color={color.ICON} {...this.props}/>
+        <Icon size={size} color={color} {...this.props}/>
       </TouchableOpacity>
     )
   }
+}
+AppIcon.defaultProps = {
+  color: color.ICON,
+  size: metric.ICON,
 }

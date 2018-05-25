@@ -2,6 +2,7 @@ import { normalize, schema } from 'normalizr';
 
 import { reduxHelper } from 'AppUtil'
 import { getLinkServer } from 'AppSetting';
+
 import { getRule } from '../rule'
 import { createListActionType } from '../actionType';
 import { addSaga } from '../name';

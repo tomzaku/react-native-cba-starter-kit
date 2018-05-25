@@ -73,7 +73,7 @@ const ApplicationStyles = {
     color: color.TITLE_HIGHLIGH
   },
   desc: {
-    ...font.desc,
+    ...font.style.desc,
     color: color.DESCRIPTION
   },
   descHl: {

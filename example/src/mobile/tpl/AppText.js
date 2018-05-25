@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component, PureComponent } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux'
 
 import I18n from '../i18n/index'
@@ -8,8 +8,8 @@ import I18n from '../i18n/index'
 
 // create a component
 class AppText extends PureComponent {
-  render() {
-    const { style, keyLang, language, uppercase, children } = this.props;
+  renderText() {
+    const { style, keyLang, language, uppercase, children, onPress } = this.props;
     let text;
     if (uppercase) {
       text = React.Children.map(children, child => {
@@ -27,13 +27,21 @@ class AppText extends PureComponent {
     // I18n.locale = 'vi'
     if (keyLang) {
       return (
-        <Text {...this.props} style={style}> {I18n.t(keyLang, { locale: language })} </Text>
+        <Text {...this.props} onPress={null} style={style}> {I18n.t(keyLang, { locale: language })} </Text>
       )
     }
     return (
-      <Text {...this.props} style={style} >{text}</Text>
+      <Text {...this.props} onPress={null} style={style} >{text}</Text>
     );
     
+  }
+  render() {
+    const { onPress } = this.props
+    return (
+      <TouchableOpacity onPress={onPress} disable={!onPress}>
+        {this.renderText()}
+      </TouchableOpacity>
+    )
   }
 }
 

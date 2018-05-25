@@ -1,9 +1,11 @@
 //import liraries
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, StatusBar } from 'react-native';
-import { CFStatusBar } from 'AppComponent';
-import TwoColumn from 'TwoColumn';
-import { CFToolBar } from 'AppComponent'
+import TwoColumn from './TwoColumn';
+
+import { AppStatusBar } from 'AppComponent';
+import { AppToolBar } from 'AppComponent'
+
 import styles from './style/TwoColumnTabletStyle'
 import { metric, color, applicationStyle, font } from 'AppTheme';
 
@@ -20,7 +22,7 @@ class TwoColumnTablet extends Component {
     const mainNavigation = this.props.navigation
     return (
       <View style={{ flex: 1 }}>
-        <CFToolBar title={name} style= {{ backgroundColor }} showIconBack={showIconBack} navigation={mainNavigation}/>
+        <AppToolBar title={name} style= {{ backgroundColor }} showIconBack={showIconBack} navigation={mainNavigation}/>
         {this.props.leftComponent && this.props.leftComponent(mainNavigation, minorNav)}
       </View>
     );
@@ -34,7 +36,6 @@ class TwoColumnTablet extends Component {
         <TwoColumn
           {...this.props}
           leftComponent={this.renderLeftContainer} // Should be HOC
-          // leftComponent={this.leftComponent}
           idNavRight={this.props.idNavRight}
           rightProps={this.props.rightProps}
         />

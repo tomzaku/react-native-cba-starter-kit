@@ -33,9 +33,9 @@ const metrics = {
   BORDER_XXL: 6,
 
   // ─── BORDER RADIUS ──────────────────────────────────────────────────────────────
-  BORDER_RADIUS: 1,
-  BORDER_RADIUS_L: 4,
-  BORDER_RADIUS_XL: 6,
+  BORDER_RADIUS: 6,
+  BORDER_RADIUS_L: 10,
+  BORDER_RADIUS_XL: 15,
   
   // ─── ELEVATION ──────────────────────────────────────────────────────────────────
   ELEVATION: 2,

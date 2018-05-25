@@ -16,20 +16,30 @@ export default class Line extends PureComponent {
     return metric.LINE_HEIGHT
   }
   render() {
-    const { containerStyle, style, type} = this.props
+    const { style, type, vertical, color } = this.props
     const heightLine = this.getHightLine(type)
     return (
-      <View style={[styles.container, containerStyle, {
-        height: heightLine
-      }]}>
-        <View style={[styles.line, style]} />
+      <View style={[styles.container, style, 
+        vertical 
+        ? {
+          borderLeftWidth: heightLine,
+          borderLeftColor: color
+          } 
+        : {
+          borderTopWidth : heightLine,
+          borderTopColor: color
+
+          }
+      ]}>
+        {/* <View style={[styles.line, style]} /> */}
       </View>
 
     );
   }
 }
 Line.defaultProps = {
-  type: 'normal'
+  type: 'normal',
+  color: color.LINE_BORDER,
 }
 
 Line.propTypes = {

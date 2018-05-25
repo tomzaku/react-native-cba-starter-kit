@@ -8,14 +8,14 @@ import { AppText } from './index'
 // create a component
 class AppSwitch extends Component {
   render() {
-    const { onPress, label, labelKeyLang, desc ='', descKeyLang, value } = this.props;
+    const { onPress, label, labelKeyLang, desc ='', descKeyLang, value, labelStyle, descStyle } = this.props;
     return (
       <View style={styles.switchComponent}>
         <View>
-          <AppText style={styles.label} keyLang={labelKeyLang} >
+          <AppText style={[styles.label, labelStyle]} keyLang={labelKeyLang} >
             {label}
           </AppText>
-          <AppText style={styles.desc} keyLang={descKeyLang} >
+          <AppText style={[styles.desc, descStyle]} keyLang={descKeyLang} >
             {desc}
           </AppText>
         </View>
@@ -24,6 +24,7 @@ class AppSwitch extends Component {
           value={value}
           onTintColor={color.SWITCH}
           thumbTintColor={color.BACKGROUND}
+          {...this.props}
         />
       </View>
     );
