@@ -7,8 +7,12 @@ import { configureStore } from './conf/redux/redux'
 
 const { store, persistor } = configureStore()
 const AppScreen = () => (
+	<Provider store={store}>
+		<PersistGate loading={null} persistor={persistor}>
 			<Text>
 				asdsa
 			</Text>
+		</PersistGate>
+	</Provider>
 )
 export const App = compose(pure)(AppScreen)

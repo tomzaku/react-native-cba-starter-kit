@@ -1,3 +1,4 @@
+import { TTodoState } from '@module/todo/logic.redux/initialState'
 import { combineReducers } from 'redux'
 import { persistReducer } from 'redux-persist'
 import { getSpecificModuleRedux } from '../../module/helper/moduleHelper'
@@ -11,7 +12,8 @@ const reducer = combineReducers({
 })
 
 export type TRootState = {
-  app: TAppState,
+	setting: TAppState,
+	todo: TTodoState,
 }
 
 const rootReducer = (state: any, action: any) => {

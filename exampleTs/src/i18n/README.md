@@ -1,16 +1,23 @@
-# File description
+# Idea
 
-`build.json` << Created by translator.ts by combine all of files with extension lang.json
+Shipping app with localization for all available languages. The main idea here is to minimize the memory required of other languages that is not used by the platform.
 
-Sample json
+For example if the phone is localized in French, then this will only load the French and English translations into memory and ignore the 30+ other languages available.
 
-``` json
-{
-  "en": {
-    "Sample.title": "Sample"
-  },
-  "vi": {
-    "Sample.title": "Mẫu"
-  }
-}
-```
+English translation is set as default fallback in case some translations are not available in the chosen language.
+
+# Installation
+
+Run `ignite add i18n`.
+
+# Usage
+
+TODO: Real usage example.
+
+    import I18n from 'App/I18n';
+
+    render() {
+    ...
+    { I18n.t('welcome') }
+    ...
+    }
