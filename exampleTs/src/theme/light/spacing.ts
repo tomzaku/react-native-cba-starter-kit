@@ -1,4 +1,4 @@
 
-const spacing = {
-   a: 2,
+export const spacing = {
+	unit: 16,
 }

@@ -1,5 +1,5 @@
 
-const commonPalette = {
+const materialPalette = {
 	common: {
 		black: '#000',
 		white: '#fff',
@@ -60,7 +60,29 @@ const commonPalette = {
 		disabled: 'rgba(0, 0, 0, 0.26)',
 		disabledBackground: 'rgba(0, 0, 0, 0.12)',
 	},
-  }
+}
 export const palette = {
-
+	...materialPalette,
+	avatar: {
+		...materialPalette.primary,
+	},
+	button: {
+		...materialPalette.primary,
+	},
+	card: {
+		...materialPalette.primary,
+	},
+	icon: {
+		...materialPalette.primary,
+	},
+	toolbar: {
+		...materialPalette.primary,
+	},
+	tabbarNavigation: {
+		main: materialPalette.background.default,
+		activeLabel: materialPalette.primary.dark,
+		inactiveLabel: materialPalette.grey['700'],
+		activeIcon: materialPalette.primary.dark,
+		inactiveIcon: materialPalette.grey['700'],
+	},
 }

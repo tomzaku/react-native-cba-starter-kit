@@ -1,0 +1,5 @@
+
+
+const getStackRoute = (initialRouteName: string) => {
+
+}
