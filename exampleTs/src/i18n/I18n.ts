@@ -7,7 +7,6 @@ export const settingI18nLanguage = () => {
 	  vi: require('./languages/vi.json'),
 	}
 	const languageCode = I18n.locale.substr(0, 2)
-	console.log('>>>>>>>>>>>>', I18n)
 	// All other translations for the app goes to the respective language file:
 	switch (languageCode) {
 		case 'af':

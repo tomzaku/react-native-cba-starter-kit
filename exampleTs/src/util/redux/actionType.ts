@@ -1,6 +1,6 @@
+import { addPrefix } from '@util/redux/name'
+import { getRule } from '@util/redux/rule'
 import { compose, map, mergeAll } from 'ramda'
-import { addPrefix } from './name'
-import { getRule } from './rule'
 
 const makeGetActionType = (nameModule: string, appName= '@@app') => {
   return (nameAction: string) => `${addPrefix(nameModule, appName)}/${nameAction.toUpperCase()}/`

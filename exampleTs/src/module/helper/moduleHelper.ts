@@ -1,6 +1,7 @@
 import { compose, filter, flatten, isNil, map, mapObjIndexed, mergeAll, path, pick, values } from 'ramda'
 // tslint:disable-next-line:no-duplicate-imports
 
+import { TScreenLayoutModule, TScreensModule } from '@module/module'
 import { module } from '../module'
 
 interface IOptionType {
@@ -40,6 +41,6 @@ function pathDict(data: typeof module, rootPath: string[], options: IOptionType 
 
 
 export const getSpecificModuleRedux = (key: ReduxKey, options?: IOptionType) => pathDict(module, ['redux', key], options)
-export const getScreenList = () => <IScreen>pathDict(module, ['screen'], { type: 'flatten' })
+export const getScreenList = () => <TScreensModule>pathDict(module, ['screen'], { type: 'flatten' })
 export default { getSpecificModuleRedux, getScreenList }
 

@@ -1,8 +1,10 @@
 import { getScreenList } from '@module/helper/moduleHelper'
-import { TNavigationOptionsModule } from '@module/module'
+import { TNavigationOptionsModule, TScreenLayoutModule } from '@module/module'
 import { TTheme } from '@module/setting/logic.redux/initalState'
 import { getTheme } from '@theme/themeHelper'
+import { compose, filter, isNil, mapObjIndexed, merge, mergeAll, path, values } from 'ramda'
 import React from 'react'
+import { isTablet } from 'react-native-device-info'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { NavigationScreenProp, NavigationScreenProps, StackNavigatorConfig } from 'react-navigation'
 
@@ -52,15 +54,48 @@ export const getNavigationOptionsTabDefault = (themeType?: TTheme, navigationOpt
 	}
 }
 export const getTabRouteConfigDefault = (themeType?: TTheme) => {
-	const { appStyle } = getTheme(themeType)
+	const { appStyle, palette } = getTheme(themeType)
 	return {
-		activeTintColor: appStyle.tabbarNavigation.activeTintColor,
-		inactiveTintColor: appStyle.tabbarNavigation.inactiveTintColor,
+		activeTintColor: palette.tabbarNavigation.activeLabel,
+		inactiveTintColor: palette.tabbarNavigation.inactiveLabel,
+		tabStyle: appStyle.tabbarNavigation.main,
+	}
+}
+export const getTabMaterialRouteConfigDefault = (themeType?: TTheme) => {
+	const { appStyle, palette } = getTheme(themeType)
+	return {
+		activeTintColor: palette.tabbarNavigation.activeLabel,
+		inactiveTintColor: palette.tabbarNavigation.inactiveLabel,
 		barStyle: appStyle.tabbarNavigation.main,
+		shifting: false,
+		// animationEnabled: false,
+		// lazy: true,
 	}
 }
 
+export const mergeSpecificRoute = (route: TScreenLayoutModule, layoutTarget: string, layoutSource: string) => {
+	return merge(path([layoutSource])(route), path([layoutTarget])(route))
+}
+
+const removeUndefinedItem = filter((item: any) => !isNil(item))
+
+const extendPhoneAndTabletRoute = (route: TScreenLayoutModule, key: string) => {
+	if (route.tablet) {
+		return {
+			[`${key}Phone`]: route.phone,
+			[`${key}Tablet`]: mergeSpecificRoute(route, 'tablet', 'phone'),
+		}
+	}
+	return undefined
+}
 export const getRoutes = () => {
 	const screenList = getScreenList()
-	return screenList
+	const routeExtend = mapObjIndexed(extendPhoneAndTabletRoute)(screenList)
+	const routeAddPhoneAndTablet = compose(mergeAll, values)(routeExtend)
+	if (isTablet()) {
+		const routeTabletList = mapObjIndexed((route: TScreenLayoutModule) => mergeSpecificRoute(route, 'tablet', 'phone'))(screenList)
+		return merge(routeTabletList, routeAddPhoneAndTablet)
+	}
+	const routePhoneList = mapObjIndexed(path(['phone']))(screenList)
+	return merge(routePhoneList, routeAddPhoneAndTablet)
 }

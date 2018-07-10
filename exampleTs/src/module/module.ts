@@ -11,11 +11,16 @@ export interface TNavigationOptionsModule {
 	tabBarIcon?: any
 }
 export interface TScreenModule {
-	screen?: React.ComponentClass<{}>
+	screen: React.ComponentClass<{}>
 	navigationOptions?: TNavigationOptionsModule
 }
+
+export interface TScreenLayoutModule {
+	phone: TScreenModule,
+	tablet?: TScreenModule
+}
 export interface TScreensModule {
-	[screenKey: string]: TScreenModule
+	[screenKey: string]: TScreenLayoutModule
 }
 export interface TModule {
 	redux?: TReduxModule

@@ -8,9 +8,9 @@ import {
 	mergeAll,
 	pick,
 	} from 'ramda'
-import { createStackNavigator } from 'react-navigation'
+import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
-import { getNavigationOptionsDefault } from './routerHelper'
+import { getNavigationOptionsDefault, getTabMaterialRouteConfigDefault } from './routerHelper'
 const mapIndexed = addIndex(map)
 const getTabRoute = () => {
 
@@ -23,7 +23,6 @@ const addStackNavigation = (keyRoute: string | string[], index: number) => {
 	const listRoute = getRoutes()
 	const keyRouteArray = typeof keyRoute === 'string' ? [keyRoute] : keyRoute
 	const stackRoute = compose(pick(keyRouteArray))(listRoute)
-	console.log('>>StackRoute', stackRoute, keyRoute, keyRouteArray, listRoute)
 	return {
 		[`StackTabApp${index}`]: createStackNavigator(
 			{
@@ -39,12 +38,16 @@ export const tabBuilder = (listTabRoute: string[] |string[][], themeType?: TThem
 	const listRoute = getRoutes()
 	// const tabRoute = compose(pick(listTabRoute))(listRoute)
 	const tabRoute = compose(mergeAll, mapIndexed(compose(addStackNavigation)))(listTabRoute)
-	const ScreenTab = createMaterialBottomTabNavigator(
+	// const ScreenTab = createMaterialBottomTabNavigator(
+	const ScreenTab = createBottomTabNavigator(
 		{
 			...tabRoute,
 		},
 		{
-			...getTabRouteConfigDefault(themeType),
+			tabBarOptions: {
+				...getTabRouteConfigDefault(themeType),
+			},
+			// ...getTabMaterialRouteConfigDefault(themeType),
 			navigationOptions: getNavigationOptionsTabDefault(themeType),
 			// title:'ab',
 		},

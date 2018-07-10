@@ -1,9 +1,9 @@
+import { PERSIST_CONFIG } from '@conf/redux/persist'
+import { getSpecificModuleRedux } from '@module/helper/moduleHelper'
+import { TAppState } from '@module/setting/logic.redux/initalState'
 import { TTodoState } from '@module/todo/logic.redux/initialState'
 import { combineReducers } from 'redux'
 import { persistReducer } from 'redux-persist'
-import { getSpecificModuleRedux } from '../../module/helper/moduleHelper'
-import { TAppState } from '../../module/setting/logic.redux/initalState'
-import { PERSIST_CONFIG } from './persist'
 
 
 const moduleReducer = getSpecificModuleRedux('reducer')
