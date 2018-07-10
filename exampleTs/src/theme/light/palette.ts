@@ -50,7 +50,7 @@ const materialPalette = {
 	divider: 'rgba(0, 0, 0, 0.12)',
 	background: {
 		paper: '#fff',
-		default: '#e5e5e5',
+		default: '#fafafa',
 	},
 	action: {
 		active: 'rgba(0, 0, 0, 0.54)',
@@ -84,5 +84,6 @@ export const palette = {
 		inactiveLabel: materialPalette.grey['700'],
 		activeIcon: materialPalette.primary.dark,
 		inactiveIcon: materialPalette.grey['700'],
+		borderColor: materialPalette.divider,
 	},
 }

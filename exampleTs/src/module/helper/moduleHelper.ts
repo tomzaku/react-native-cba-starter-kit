@@ -11,11 +11,11 @@ interface IReduxType {
   saga?: Function,
   thunk?: Function
 }
-interface IPageType {
+interface IScreen {
   [key: string]: any,
 }
 interface IPageListType {
-  [key: string]: IPageType
+  [key: string]: IScreen
 }
 interface IModuleType {
   redux?: IReduxType,
@@ -40,6 +40,6 @@ function pathDict(data: typeof module, rootPath: string[], options: IOptionType 
 
 
 export const getSpecificModuleRedux = (key: ReduxKey, options?: IOptionType) => pathDict(module, ['redux', key], options)
-export const getPageList = () => <IPageType>pathDict(module, ['page', 'route'], { type: 'flatten' })
-export default { getSpecificModuleRedux, getPageList }
+export const getScreenList = () => <IScreen>pathDict(module, ['screen'], { type: 'flatten' })
+export default { getSpecificModuleRedux, getScreenList }
 

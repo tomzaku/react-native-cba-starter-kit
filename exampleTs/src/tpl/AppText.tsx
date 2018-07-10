@@ -3,8 +3,8 @@ import { Text } from 'react-native'
 import { connect } from 'react-redux'
 import { compose, pure } from 'recompose'
 
-import { TRootState } from '../conf/redux/reducer'
-import { EnhanceI18n } from '../i18n/index'
+import { TRootState } from '@conf/redux/reducer'
+import { EnhanceI18n } from '@i18n/index'
 
 interface IAppTextPropsOut {
 }

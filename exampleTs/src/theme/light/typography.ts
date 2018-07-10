@@ -1,10 +1,10 @@
+import { getEm } from '@theme/unit'
+import { isIOS } from '@util/platform'
 import { TextStyle } from '../../../node_modules/@types/react-native'
-import { isIOS } from '../../util/platform'
-import { getEm } from '../unit'
 
 const generalTypography = {
-	fontFamily: isIOS() ? 'San Francisco' : 'Roboto',
-	fontSize: 16,
+	fontFamily: isIOS() ? 'FontAwesome' : 'Roboto',
+	fontSize: 14,
 	fontWeightLight: 300,
 	fontWeightRegular: 400,
 	fontWeightMedium: 500,
@@ -58,7 +58,7 @@ const materialTypography = {
 		fontSize: em(1.3),
 		fontWeight: '500',
 		fontFamily: generalTypography.fontFamily,
-		lineHeight: em(1.16),
+		lineHeight: em(1.3),
 		color: 'rgba(0, 0, 0, 0.87)',
 	} as TextStyle,
 	subheading: {
