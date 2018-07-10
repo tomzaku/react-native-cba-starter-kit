@@ -9,8 +9,8 @@ import { compose } from 'recompose'
 import { Dispatch } from 'redux'
 
 
-const Setting = ({ changeTheme, changeLanguage, navigation }) => {
-	const { appStyle, palette, spacing } = getTheme()
+const Setting = ({ changeTheme, changeLanguage, navigation, themeType }) => {
+	const { appStyle, palette, spacing } = getTheme(themeType)
 	return (
 		<View style={appStyle.container.padding}>
 			{/* <Button title={'Change Theme'} raised onPress={changeTheme}/> */}
@@ -26,9 +26,14 @@ const Setting = ({ changeTheme, changeLanguage, navigation }) => {
 		</View>
 	)
 }
+
+const mapStateToProps = (state: TRootState) => ({
+	themeType: state.setting.theme.paletteType,
+})
+
 const mapActionToProps = (dispatch: Dispatch) => ({
 	changeTheme: () => dispatch(changeTheme()),
 	changeLanguage: (code: string) => () => dispatch(changeLanguage(code)),
 })
-const withRedux = connect(undefined, mapActionToProps)
+const withRedux = connect(mapStateToProps, mapActionToProps)
 export const SettingScreen = compose(withRedux)(Setting)

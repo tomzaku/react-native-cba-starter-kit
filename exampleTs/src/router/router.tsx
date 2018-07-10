@@ -22,4 +22,5 @@ const mapStateToProps = (state: TRootState) => ({
 	theme: state.setting.theme.paletteType,
 })
 const withRedux = connect(mapStateToProps)
-export const AppRouter = compose<RouterAppPropsIn, RouterAppPropsOut>(withRedux)(RouterScreen)
+export const AppRouter = compose<RouterAppPropsIn, RouterAppPropsOut>()(RouterScreen)
+// export const AppRouter = compose<RouterAppPropsIn, RouterAppPropsOut>(withRedux)(RouterScreen)

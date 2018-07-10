@@ -3,11 +3,13 @@ import { AppText } from '@tpl/AppText'
 import React from 'react'
 import { Text, View } from 'react-native'
 import { compose } from 'recompose'
+import { styles } from './Todo.style'
+
+const todoStyle = styles(getTheme())
 
 const Todo = () => {
-	const { appStyle } = getTheme()
 	return (
-		<View style={appStyle.container.main}>
+		<View style={todoStyle.container}>
 			<AppText />
 		</View>
 	)
