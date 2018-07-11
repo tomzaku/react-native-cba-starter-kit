@@ -1,6 +1,7 @@
 import { changeLanguage, changeTheme } from '@module/setting/logic.redux/action'
 import { withStyles } from '@theme/context'
 import { getTheme } from '@theme/themeHelper'
+import { AppText } from '@tpl/AppText'
 import React from 'react'
 import { Text, View } from 'react-native'
 import { Avatar, Button } from 'react-native-elements'
@@ -16,14 +17,21 @@ const Setting = ({ changeTheme, changeLanguage, navigation, styles }) => {
 		<View style={styles.container}>
 			{/* <Button title={'Change Theme'} raised onPress={changeTheme}/> */}
 			<Button
-				title={'Change Theme'}
+				title={<AppText text="SettingTheme.changeTheme" />}
 				raised
 				onPress={() => navigation.navigate('SelectTheme')}
 			/>
+
 			<Button
-				title={'Change Language'}
+				title={'Change To Vi'}
 				raised
 				onPress={changeLanguage('vi')}
+				buttonStyle={styles.buttonStyle}
+			/>
+			<Button
+				title={'Change To En'}
+				raised
+				onPress={changeLanguage('en')}
 				buttonStyle={styles.buttonStyle}
 			/>
 		</View>

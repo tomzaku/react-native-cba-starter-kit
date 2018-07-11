@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "build:lang": "node src/i18n/translator.js"
   },
   "dependencies": {
     "@types/react-navigation": "^2.0.10",
@@ -40,6 +41,8 @@
     "@types/react-test-renderer": "^16.0.1",
     "babel-jest": "23.2.0",
     "babel-preset-react-native": "^5",
+    "fs": "^0.0.1-security",
+    "glob": "^7.1.2",
     "jest": "23.3.0",
     "react-native-typescript-transformer": "^1.2.10",
     "react-test-renderer": "16.4.1",

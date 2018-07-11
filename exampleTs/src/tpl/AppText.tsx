@@ -7,16 +7,19 @@ import { settingI18n } from '@conf/i18n/i18n'
 import { TRootState } from '@conf/redux/reducer'
 import { EnhanceI18n } from '@i18n/index'
 interface IAppTextPropsOut {
+	text: string
 }
 interface IAppTextPropsIn extends IAppTextPropsOut{
 	lang: string
 }
 
-const EnhanceText = ({ lang }: IAppTextPropsIn) => (
+const EnhanceText = ({ lang, text }: IAppTextPropsIn) => {
+	console.log('>>> text', text)
+	return  (
 	<Text>
-		{EnhanceI18n.t('signIn', { locale: lang })}
+		{EnhanceI18n.t(text, { locale: lang })}
 	</Text>
-)
+)}
 
 const mapStateToProps = (state: TRootState) => ({
 	lang: state.setting.lang,

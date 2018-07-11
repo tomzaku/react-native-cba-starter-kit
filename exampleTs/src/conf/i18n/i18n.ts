@@ -1,4 +1,4 @@
-import { settingI18nLanguage } from '../../i18n/I18n'
+import { settingI18nLanguage } from '../../i18n/setting'
 
 export const settingI18n = () => {
 	// import done for you
