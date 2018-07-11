@@ -13,10 +13,10 @@ interface IAppTextPropsIn extends IAppTextPropsOut{
 	lang: string
 }
 
-const EnhanceText = ({ lang, text }: IAppTextPropsIn) => {
+const EnhanceText = ({ lang, text, ...rest }: IAppTextPropsIn) => {
 	console.log('>>> text', text)
 	return  (
-	<Text>
+	<Text {...rest} >
 		{EnhanceI18n.t(text, { locale: lang })}
 	</Text>
 )}

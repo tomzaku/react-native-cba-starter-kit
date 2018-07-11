@@ -7,6 +7,7 @@ export interface TReduxModule {
 }
 export interface TNavigationOptionsModule {
 	title?: string,
+	titleI18n?: string,
 	tabBarIconName?: string,
 	tabBarIcon?: any
 }

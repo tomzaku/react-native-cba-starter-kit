@@ -1,0 +1,18 @@
+{
+  "en": {
+    "signIn": "Sign In",
+    "SelectTheme.changeTheme": "Change Theme",
+    "Setting.setting": "Setting",
+    "SettingTheme.changeTheme": "Change Theme",
+    "Todo.todo": "Todo",
+    "TodoSingle.detail": "Detail"
+  },
+  "vi": {
+    "signIn": "Đăng nhập1",
+    "SelectTheme.changeTheme": "Thay đổi giao diện",
+    "Setting.setting": "Cài đặt",
+    "SettingTheme.changeTheme": "Thay đổi giao diện",
+    "Todo.todo": "Tác vụ",
+    "TodoSingle.detail": "Chi tiết"
+  }
+}

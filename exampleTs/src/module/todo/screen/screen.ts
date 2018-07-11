@@ -8,6 +8,7 @@ export const screen: TScreensModule = {
 			screen: TodoScreen,
 			navigationOptions: {
 				title: 'Todo',
+				titleI18n: 'Todo.todo',
 				tabBarIconName: 'ios-checkbox',
 			},
 		},
@@ -17,6 +18,7 @@ export const screen: TScreensModule = {
 			screen: TodoSingleScreen,
 			navigationOptions: {
 				title: 'Detail Todo',
+				titleI18n: 'TodoSingle.detail',
 			},
 		},
 	},

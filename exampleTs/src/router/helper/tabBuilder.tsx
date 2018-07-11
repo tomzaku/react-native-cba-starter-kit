@@ -1,5 +1,7 @@
 import { TTheme } from '@module/setting/logic.redux/initalState'
-import { getNavigationOptionsTabDefault, getRoutes, getTabRouteConfigDefault } from '@router/helper/routerHelper'
+import { getRoutes, getTabNavigationOptionsDefault, getTabRouteConfigDefault } from '@router/helper/routerHelper'
+import { getNavigationOptionsDefault, getTabMaterialRouteConfigDefault } from '@router/helper/routerHelper'
+import { AppText } from '@tpl/AppText'
 import {
 	addIndex,
 	compose,
@@ -8,9 +10,10 @@ import {
 	mergeAll,
 	pick,
 	} from 'ramda'
+import React from 'react'
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
-import { getNavigationOptionsDefault, getTabMaterialRouteConfigDefault } from './routerHelper'
+import { getHeaderTitle } from './routerHelper'
 const mapIndexed = addIndex(map)
 const getTabRoute = () => {
 
@@ -19,7 +22,9 @@ const getTabRoute = () => {
 
 // interface TListTabRoute extends Array<string> {
 // }
-const addStackNavigation = (keyRoute: string | string[], index: number) => {
+
+
+const addStackNavigation = (themeType:TTheme) => (keyRoute: string | string[], index: number) => {
 	const listRoute = getRoutes()
 	const keyRouteArray = typeof keyRoute === 'string' ? [keyRoute] : keyRoute
 	const stackRoute = compose(pick(keyRouteArray))(listRoute)
@@ -29,7 +34,18 @@ const addStackNavigation = (keyRoute: string | string[], index: number) => {
 				...stackRoute,
 			},
 			{
-				navigationOptions: getNavigationOptionsDefault(),
+				navigationOptions: getNavigationOptionsDefault(themeType, (navigationConfig) => {
+					const { routeName } = navigationConfig.navigation.state
+					console.log('>>>>navigationConfig', navigationConfig, listRoute[routeName])
+					return {
+						headerTitle: getHeaderTitle(listRoute[routeName]),
+					}
+					// headerTitle: getHeaderTitle
+					// headerTitle: (props) => {
+					// 	console.log('props', props)
+					// 	return (<AppText text = {'signIn'} style={props.style[1]} / >)
+					// },
+				}),
 			},
 		),
 	}
@@ -37,7 +53,7 @@ const addStackNavigation = (keyRoute: string | string[], index: number) => {
 export const tabBuilder = (listTabRoute: (string | string[])[], themeType?: TTheme) => {
 	const listRoute = getRoutes()
 	// const tabRoute = compose(pick(listTabRoute))(listRoute)
-	const tabRoute = compose(mergeAll, mapIndexed(compose(addStackNavigation)))(listTabRoute)
+	const tabRoute = compose(mergeAll, mapIndexed(compose(addStackNavigation(themeType))))(listTabRoute)
 	// const ScreenTab = createMaterialBottomTabNavigator(
 	const ScreenTab = createBottomTabNavigator(
 		{
@@ -48,7 +64,7 @@ export const tabBuilder = (listTabRoute: (string | string[])[], themeType?: TThe
 				...getTabRouteConfigDefault(themeType),
 			},
 			// ...getTabMaterialRouteConfigDefault(themeType),
-			navigationOptions: getNavigationOptionsTabDefault(themeType),
+			navigationOptions: getTabNavigationOptionsDefault(themeType),
 			// title:'ab',
 		},
 	)

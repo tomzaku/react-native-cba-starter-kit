@@ -9,6 +9,7 @@ export const screen: TScreensModule = {
 			screen: SettingScreen,
 			navigationOptions: {
 				title: 'Setting',
+				titleI18n: 'Setting.setting',
 				tabBarIconName: 'ios-cog',
 			},
 		},

@@ -2,24 +2,35 @@ import { getScreenList } from '@module/helper/moduleHelper'
 import { TNavigationOptionsModule, TScreenLayoutModule } from '@module/module'
 import { TTheme } from '@module/setting/logic.redux/initalState'
 import { getTheme } from '@theme/themeHelper'
+import { AppText } from '@tpl/AppText'
+import { EnhanceI18n } from 'i18n'
 import { compose, filter, isNil, mapObjIndexed, merge, mergeAll, path, values } from 'ramda'
 import React from 'react'
 import { isTablet } from 'react-native-device-info'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { NavigationScreenProp, NavigationScreenProps, StackNavigatorConfig } from 'react-navigation'
+import { NavigationScreenOptions, NavigationScreenProp, NavigationScreenProps, StackNavigatorConfig } from 'react-navigation'
+import { TScreenModule } from '../../module/module'
+import { isFunction } from '../../util/type'
 
-export const getNavigationOptionsDefault = (themeType?: TTheme, navigationOptions?: StackNavigatorConfig) => {
+export const getNavigationOptionsDefault = (themeType?: TTheme, navigationOptionsOverride?: any) => {
 	const { appStyle } = getTheme(themeType)
-	return ({ navigation, navigationOptions }: NavigationScreenProps) => ({
-		headerStyle: {
-			...appStyle.toolbar.main,
-		},
-		headerTitleStyle: {
-			...appStyle.toolbar.text,
-		  },
-		// headerTintColor: color.TITLE_HIGHLIGH,
-		...navigationOptions,
-	})
+	return (navigationConfig: NavigationScreenProps) => {
+		const { navigation, navigationOptions } = navigationConfig
+		const navigationOptionsOverrideEnhance = isFunction(navigationOptionsOverride)
+													? navigationOptionsOverride(navigationConfig)
+													: navigationOptionsOverride
+		return {
+			headerStyle: {
+				...appStyle.toolbar.main,
+			},
+			headerTitleStyle: {
+				...appStyle.toolbar.text,
+			},
+			// headerTintColor: color.TITLE_HIGHLIGH,
+			...navigationOptions,
+			...navigationOptionsOverrideEnhance,
+		}
+	}
 }
 
 export interface TTabBarIcon {
@@ -39,7 +50,7 @@ export const getTabBarIcon = (moduleNavigationOptions: TNavigationOptionsModule)
 	return ({ focused, tintColor }: TTabBarIcon) => <Ionicons name={iconName} size={24} color={tintColor}/>
 }
 
-export const getNavigationOptionsTabDefault = (themeType?: TTheme, navigationOptions?: StackNavigatorConfig) => {
+export const getTabNavigationOptionsDefault = (themeType?: TTheme, navigationOptions?: StackNavigatorConfig) => {
 	const { appStyle } = getTheme(themeType)
 	const routeList = getRoutes()
 	return ({ navigation, navigationOptions }: NavigationScreenProps) => {
@@ -49,8 +60,21 @@ export const getNavigationOptionsTabDefault = (themeType?: TTheme, navigationOpt
 		return {
 			tabBarIcon,
 			...routeNavigationOptions,
-			// title: 'a',
+			tabBarLabel: getTabBarLabel(routeList[key]),
+			// tabBarLabel: getHeaderTitle(routeList[key]),
+			// title: <AppText text={'signIn'} />,
+			// title: EnhanceI18n.t('signIn', {}),
 		}
+	}
+}
+interface TOptionsGetTabBarLabel {
+	hidden: boolean,
+}
+export const getTabBarLabel =  ({ navigationOptions }: TScreenModule, options?: TOptionsGetTabBarLabel = {}) => {
+	const { title, titleI18n } = navigationOptions
+	const { hidden = false } = options
+	return ({ focused, tintColor }) => {
+		return (!hidden || focused) && <AppText text={titleI18n || title} style={{ color: tintColor }} />
 	}
 }
 export const getTabRouteConfigDefault = (themeType?: TTheme) => {
@@ -75,6 +99,13 @@ export const getTabMaterialRouteConfigDefault = (themeType?: TTheme) => {
 
 export const mergeSpecificRoute = (route: TScreenLayoutModule, layoutTarget: string, layoutSource: string) => {
 	return merge(path([layoutSource])(route), path([layoutTarget])(route))
+}
+
+export const getHeaderTitle = ({ navigationOptions }: TScreenModule) => {
+	const { title, titleI18n } = navigationOptions
+	return (props) => {
+		return <AppText text={titleI18n || title} style={props.style[1]} />
+	}
 }
 
 const removeUndefinedItem = filter((item: any) => !isNil(item))

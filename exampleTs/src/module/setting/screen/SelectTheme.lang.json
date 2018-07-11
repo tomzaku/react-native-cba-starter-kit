@@ -1,10 +1,12 @@
 {
 	"en": {
 		"signIn": "Sign In",
-		"SelectTheme.changeTheme": "Change Theme"
+		"SelectTheme.changeTheme": "Change Theme",
+		"Setting.setting": "Setting"
 	},
 	"vi": {
 		"signIn": "Đăng nhập1",
-		"SelectTheme.changeTheme": "Thay đổi giao diện"
+		"SelectTheme.changeTheme": "Thay đổi giao diện",
+		"Setting.setting": "Cài đặt"
 	}
 }
