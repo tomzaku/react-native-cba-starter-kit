@@ -1,4 +1,5 @@
 import { TRootState } from '@conf/redux/reducer'
+import { withStyles } from '@theme/context'
 import { getTheme } from '@theme/themeHelper'
 import React from 'react'
 import { View } from 'react-native'
@@ -7,11 +8,11 @@ import { connect } from 'react-redux'
 import { compose, pure } from 'recompose'
 import { Dispatch } from 'redux'
 import { changeTheme } from '../logic.redux/action'
+import { styles } from './SelectTheme.style'
 
-const SelectTheme = ({ changeTheme, themeType }) => {
-	const { appStyle } = getTheme(themeType)
+const SelectTheme = ({ changeTheme, themeType, styles }) => {
 	return (
-		<View style={appStyle.container.main}>
+		<View style={styles.container}>
 			<Button title={'Change Theme'} raised onPress={changeTheme}/>
 		</View>
 	)
@@ -27,4 +28,4 @@ const mapActionToProps = (dispatch: Dispatch) => ({
 
 const withRedux = connect(mapStateToProps, mapActionToProps)
 
-export const SelectThemeScreen = compose(withRedux, pure)(SelectTheme)
+export const SelectThemeScreen = compose(withRedux, withStyles(styles), pure)(SelectTheme)

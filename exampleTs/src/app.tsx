@@ -6,16 +6,20 @@ import { Text, View } from 'react-native'
 import { Provider } from 'react-redux'
 import { compose, pure } from 'recompose'
 import { PersistGate } from 'redux-persist/integration/react'
+import { EnhanceAppTheme } from './appTheme'
 
 settingConfig()
 const { store, persistor } = configureStore()
 
-const AppScreen = () => (
+
+
+
+const AppRedux = () => (
 	<Provider store={store}>
 		<PersistGate loading={null} persistor={persistor}>
-			<AppRouter />
+			<EnhanceAppTheme />
 		</PersistGate>
 	</Provider>
 )
 
-export const App = compose(pure)(AppScreen)
+export const App = compose(pure)(AppRedux)

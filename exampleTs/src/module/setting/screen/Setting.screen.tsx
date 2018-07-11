@@ -1,4 +1,5 @@
 import { changeLanguage, changeTheme } from '@module/setting/logic.redux/action'
+import { withStyles } from '@theme/context'
 import { getTheme } from '@theme/themeHelper'
 import React from 'react'
 import { Text, View } from 'react-native'
@@ -7,33 +8,31 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import { connect } from 'react-redux'
 import { compose } from 'recompose'
 import { Dispatch } from 'redux'
+import { styles } from './Setting.style'
 
 
-const Setting = ({ changeTheme, changeLanguage, navigation, themeType }) => {
-	const { appStyle, palette, spacing } = getTheme(themeType)
+const Setting = ({ changeTheme, changeLanguage, navigation, styles }) => {
 	return (
-		<View style={appStyle.container.padding}>
+		<View style={styles.container}>
 			{/* <Button title={'Change Theme'} raised onPress={changeTheme}/> */}
-			<Button title={'Change Theme'} raised
-			onPress={() => navigation.navigate('SelectTheme')}/>
-			<Button title={'Change Language'} raised
+			<Button
+				title={'Change Theme'}
+				raised
+				onPress={() => navigation.navigate('SelectTheme')}
+			/>
+			<Button
+				title={'Change Language'}
+				raised
 				onPress={changeLanguage('vi')}
-				buttonStyle={{
-					backgroundColor: palette.secondary.main,
-					marginTop: spacing.unit,
-				}}
-				/>
+				buttonStyle={styles.buttonStyle}
+			/>
 		</View>
 	)
 }
-
-const mapStateToProps = (state: TRootState) => ({
-	themeType: state.setting.theme.paletteType,
-})
 
 const mapActionToProps = (dispatch: Dispatch) => ({
 	changeTheme: () => dispatch(changeTheme()),
 	changeLanguage: (code: string) => () => dispatch(changeLanguage(code)),
 })
-const withRedux = connect(mapStateToProps, mapActionToProps)
-export const SettingScreen = compose(withRedux)(Setting)
+const withRedux = connect(undefined, mapActionToProps)
+export const SettingScreen = compose(withRedux, withStyles(styles))(Setting)
