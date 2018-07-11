@@ -1,5 +1,6 @@
 {
   "en": {
+    "Calendar.title": "Calendar",
     "signIn": "Sign In",
     "SelectTheme.changeTheme": "Change Theme",
     "Setting.setting": "Setting",
@@ -8,6 +9,7 @@
     "TodoSingle.detail": "Detail"
   },
   "vi": {
+    "Calendar.title": "Lịch",
     "signIn": "Đăng nhập1",
     "SelectTheme.changeTheme": "Thay đổi giao diện",
     "Setting.setting": "Cài đặt",

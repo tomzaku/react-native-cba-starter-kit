@@ -13,9 +13,9 @@ import { TScreenModule } from '../../module/module'
 import { isFunction } from '../../util/type'
 
 export const getNavigationOptionsDefault = (themeType?: TTheme, navigationOptionsOverride?: any) => {
-	const { appStyle } = getTheme(themeType)
+	const { appStyle, palette } = getTheme(themeType)
 	return (navigationConfig: NavigationScreenProps) => {
-		const { navigation, navigationOptions } = navigationConfig
+		const { navigationOptions } = navigationConfig
 		const navigationOptionsOverrideEnhance = isFunction(navigationOptionsOverride)
 													? navigationOptionsOverride(navigationConfig)
 													: navigationOptionsOverride
@@ -26,7 +26,7 @@ export const getNavigationOptionsDefault = (themeType?: TTheme, navigationOption
 			headerTitleStyle: {
 				...appStyle.toolbar.text,
 			},
-			// headerTintColor: color.TITLE_HIGHLIGH,
+			headerTintColor: palette.primary.contrastText,
 			...navigationOptions,
 			...navigationOptionsOverrideEnhance,
 		}
@@ -37,7 +37,7 @@ export interface TTabBarIcon {
 	focused: boolean
 	tintColor: string
 }
-export const getKey = (navigation: NavigationScreenProp<any>) => {
+export const getRouteName = (navigation: NavigationScreenProp<any>) => {
 	if (navigation.state.routes) {
 		return navigation.state.routes[0].routeName
 	}
@@ -54,16 +54,14 @@ export const getTabNavigationOptionsDefault = (themeType?: TTheme, navigationOpt
 	const { appStyle } = getTheme(themeType)
 	const routeList = getRoutes()
 	return ({ navigation, navigationOptions }: NavigationScreenProps) => {
-		const key = getKey(navigation)
+		const key = getRouteName(navigation)
 		const routeNavigationOptions = routeList[key].navigationOptions
 		const tabBarIcon = getTabBarIcon(routeNavigationOptions)
 		return {
 			tabBarIcon,
-			...routeNavigationOptions,
 			tabBarLabel: getTabBarLabel(routeList[key]),
-			// tabBarLabel: getHeaderTitle(routeList[key]),
-			// title: <AppText text={'signIn'} />,
-			// title: EnhanceI18n.t('signIn', {}),
+			...routeNavigationOptions,
+			...navigationOptions,
 		}
 	}
 }
@@ -83,17 +81,6 @@ export const getTabRouteConfigDefault = (themeType?: TTheme) => {
 		activeTintColor: palette.tabbarNavigation.activeLabel,
 		inactiveTintColor: palette.tabbarNavigation.inactiveLabel,
 		tabStyle: appStyle.tabbarNavigation.main,
-	}
-}
-export const getTabMaterialRouteConfigDefault = (themeType?: TTheme) => {
-	const { appStyle, palette } = getTheme(themeType)
-	return {
-		activeTintColor: palette.tabbarNavigation.activeLabel,
-		inactiveTintColor: palette.tabbarNavigation.inactiveLabel,
-		barStyle: appStyle.tabbarNavigation.main,
-		shifting: false,
-		// animationEnabled: false,
-		// lazy: true,
 	}
 }
 

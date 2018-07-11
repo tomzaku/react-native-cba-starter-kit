@@ -1,18 +1,19 @@
 import { TTheme } from '@module/setting/logic.redux/initalState'
 import { tabBuilder } from '@router/helper/tabBuilder'
+import { pick } from 'ramda'
 import { createStackNavigator } from 'react-navigation'
 import { getNavigationOptionsDefault, getRoutes } from './helper/routerHelper'
+
 import { getStackRoute } from './helper/stackBuilder'
-export const setupRoute = (themeType?: TTheme) => {
+export const setupAuthRoute = (themeType?: TTheme) => {
 	const listScreen = getRoutes()
+	const authenticationRoute = pick(['Login', 'Register'])(listScreen)
 	const MainRoute = createStackNavigator(
 		{
-			MainTab: tabBuilder([['Todo', 'TodoSingle'], ['Setting', 'SelectTheme']], themeType),
-			// ...listScreen,
-			...getStackRoute(listScreen),
+			...getStackRoute(authenticationRoute),
 		},
 		{
-			initialRouteKey: 'MainTab',
+			initialRouteKey: 'Login',
 			navigationOptions: getNavigationOptionsDefault(themeType),
 		},
 	)

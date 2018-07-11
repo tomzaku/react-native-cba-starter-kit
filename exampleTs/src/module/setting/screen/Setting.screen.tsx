@@ -1,3 +1,4 @@
+import { logout } from '@module/authentication/logic.redux/action'
 import { changeLanguage, changeTheme } from '@module/setting/logic.redux/action'
 import { withStyles } from '@theme/context'
 import { getTheme } from '@theme/themeHelper'
@@ -12,7 +13,7 @@ import { Dispatch } from 'redux'
 import { styles } from './Setting.style'
 
 
-const Setting = ({ changeTheme, changeLanguage, navigation, styles }) => {
+const Setting = ({ changeTheme, changeLanguage, navigation, styles, logout }) => {
 	return (
 		<View style={styles.container}>
 			{/* <Button title={'Change Theme'} raised onPress={changeTheme}/> */}
@@ -34,6 +35,12 @@ const Setting = ({ changeTheme, changeLanguage, navigation, styles }) => {
 				onPress={changeLanguage('en')}
 				buttonStyle={styles.buttonStyle}
 			/>
+			<Button
+				title={'Logout'}
+				raised
+				onPress={logout}
+				buttonStyle={styles.buttonStyle}
+			/>
 		</View>
 	)
 }
@@ -41,6 +48,7 @@ const Setting = ({ changeTheme, changeLanguage, navigation, styles }) => {
 const mapActionToProps = (dispatch: Dispatch) => ({
 	changeTheme: () => dispatch(changeTheme()),
 	changeLanguage: (code: string) => () => dispatch(changeLanguage(code)),
+	logout: () => dispatch(logout()),
 })
 const withRedux = connect(undefined, mapActionToProps)
 export const SettingScreen = compose(withRedux, withStyles(styles))(Setting)

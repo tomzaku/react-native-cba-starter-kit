@@ -1,3 +1,5 @@
+import { authentication } from './authentication/authentication'
+import { calendar } from './calendar/todo'
 import { setting } from './setting/setting'
 import { todo } from './todo/todo'
 
@@ -34,4 +36,6 @@ export interface TModules {
 export const module = {
 	setting,
 	todo,
+	calendar,
+	authentication,
 }

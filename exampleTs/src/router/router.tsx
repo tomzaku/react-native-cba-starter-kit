@@ -1,26 +1,33 @@
 import { TRootState } from '@conf/redux/reducer'
 import { TTheme } from '@module/setting/logic.redux/initalState'
-import { setupRoute } from '@router/setupRoute'
 import React from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
 import { compose } from 'recompose'
+import { setupAuthRoute } from './authenticationRoute'
+import { setupRoute  } from './setupRoute'
 
 interface RouterAppPropsOut {}
 interface RouterAppStateToProps {
 	theme: TTheme
+	isAuthenticated: boolean
 }
 interface RouterAppPropsIn extends RouterAppPropsOut, RouterAppStateToProps {}
 
-const RouterScreen = ({ theme }: RouterAppPropsIn) => {
-	const MainRoute = setupRoute(theme)
+const RouterScreen = ({ theme, isAuthenticated }: RouterAppPropsIn) => {
+	if (isAuthenticated) {
+		const MainRoute = setupRoute(theme)
+		return <MainRoute />
+	}
+	const AuthRoute = setupAuthRoute(theme)
 	return (
-		<MainRoute/>
+		<AuthRoute />
 	)
 }
 const mapStateToProps = (state: TRootState) => ({
 	theme: state.setting.theme.paletteType,
+	isAuthenticated: state.authentication.isAuthenticated,
 })
 const withRedux = connect(mapStateToProps)
-export const AppRouter = compose<RouterAppPropsIn, RouterAppPropsOut>()(RouterScreen)
-// export const AppRouter = compose<RouterAppPropsIn, RouterAppPropsOut>(withRedux)(RouterScreen)
+// export const AppRouter = compose<RouterAppPropsIn, RouterAppPropsOut>()(RouterScreen)
+export const AppRouter = compose<RouterAppPropsIn, RouterAppPropsOut>(withRedux)(RouterScreen)

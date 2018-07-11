@@ -12,6 +12,7 @@ const Todo = ({ styles, navigation }) => {
 		<View style={styles.container}>
 			<AppText />
 			<Button title={'Move to single'} onPress={() => navigation.navigate('TodoSingle')} />
+			<Button title={'Move to Calendar'} onPress={() => navigation.navigate('Calendar')} />
 		</View>
 	)
 }
