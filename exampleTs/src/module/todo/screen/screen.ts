@@ -1,5 +1,6 @@
 import { TScreensModule } from '@module/module'
 import { TodoScreen } from './Todo.screen'
+import { TodoSingleScreen } from './TodoSingle.screen'
 
 export const screen: TScreensModule = {
 	Todo: {
@@ -8,6 +9,14 @@ export const screen: TScreensModule = {
 			navigationOptions: {
 				title: 'Todo',
 				tabBarIconName: 'ios-checkbox',
+			},
+		},
+	},
+	TodoSingle: {
+		phone: {
+			screen: TodoSingleScreen,
+			navigationOptions: {
+				title: 'Detail Todo',
 			},
 		},
 	},

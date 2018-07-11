@@ -34,7 +34,7 @@ const addStackNavigation = (keyRoute: string | string[], index: number) => {
 		),
 	}
 }
-export const tabBuilder = (listTabRoute: string[] |string[][], themeType?: TTheme) => {
+export const tabBuilder = (listTabRoute: (string | string[])[], themeType?: TTheme) => {
 	const listRoute = getRoutes()
 	// const tabRoute = compose(pick(listTabRoute))(listRoute)
 	const tabRoute = compose(mergeAll, mapIndexed(compose(addStackNavigation)))(listTabRoute)

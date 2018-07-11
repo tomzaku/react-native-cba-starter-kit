@@ -6,7 +6,7 @@ export const setupRoute = (themeType?: TTheme) => {
 	const listScreen = getRoutes()
 	const MainRoute = createStackNavigator(
 		{
-			MainTab: tabBuilder(['Todo', 'Setting'], themeType),
+			MainTab: tabBuilder([['Todo', 'TodoSingle'], ['Setting', 'SelectTheme']], themeType),
 			...listScreen,
 		},
 		{
