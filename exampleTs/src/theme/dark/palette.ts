@@ -1,5 +1,6 @@
+import { getPalette } from '@theme/palette'
 
-const materialPalette = {
+const darkMaterialPalette = {
 	common: {
 		black: '#000',
 		white: '#fff',
@@ -62,29 +63,4 @@ const materialPalette = {
 		disabledBackground: 'rgba(255, 255, 255, 0.12)',
 	},
 }
-export const palette = {
-	...materialPalette,
-	avatar: {
-		...materialPalette.primary,
-	},
-	button: {
-		...materialPalette.primary,
-	},
-	card: {
-		...materialPalette.primary,
-	},
-	icon: {
-		...materialPalette.primary,
-	},
-	toolbar: {
-		...materialPalette.primary,
-	},
-	tabbarNavigation: {
-		main: materialPalette.background.default,
-		activeLabel: materialPalette.primary.dark,
-		inactiveLabel: materialPalette.grey['700'],
-		activeIcon: materialPalette.primary.dark,
-		inactiveIcon: materialPalette.grey['700'],
-		borderColor: materialPalette.divider,
-	},
-}
+export const palette = getPalette(darkMaterialPalette)

@@ -7,3 +7,5 @@ export const metric = {
 		borderTopWith: 0.25,
 	},
 }
+
+export type TMetric = typeof metric

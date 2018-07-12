@@ -1,3 +1,4 @@
+import { getPalette } from '@theme/palette'
 
 const materialPalette = {
 	common: {
@@ -61,29 +62,7 @@ const materialPalette = {
 		disabledBackground: 'rgba(0, 0, 0, 0.12)',
 	},
 }
-export const palette = {
-	...materialPalette,
-	avatar: {
-		...materialPalette.primary,
-	},
-	button: {
-		...materialPalette.primary,
-	},
-	card: {
-		...materialPalette.primary,
-	},
-	icon: {
-		...materialPalette.primary,
-	},
-	toolbar: {
-		...materialPalette.primary,
-	},
-	tabbarNavigation: {
-		main: materialPalette.background.default,
-		activeLabel: materialPalette.primary.dark,
-		inactiveLabel: materialPalette.grey['700'],
-		activeIcon: materialPalette.primary.dark,
-		inactiveIcon: materialPalette.grey['700'],
-		borderColor: materialPalette.divider,
-	},
-}
+export const palette = getPalette(materialPalette)
+
+export type Tpalette = typeof palette
+export type TBasicPalette = typeof materialPalette
