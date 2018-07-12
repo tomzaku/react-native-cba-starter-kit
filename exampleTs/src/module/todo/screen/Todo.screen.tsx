@@ -1,4 +1,4 @@
-import { withStyles, withTheme } from '@theme/context'
+import { withStyles, withTheme } from '@theme/helper/context'
 import { getTheme } from '@theme/themeHelper'
 import { AppText } from '@tpl/AppText'
 import React from 'react'

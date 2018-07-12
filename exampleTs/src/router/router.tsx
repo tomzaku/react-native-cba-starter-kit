@@ -25,7 +25,7 @@ const RouterScreen = ({ theme, isAuthenticated }: RouterAppPropsIn) => {
 	)
 }
 const mapStateToProps = (state: TRootState) => ({
-	theme: state.setting.theme.paletteType,
+	// theme: state.setting.theme.paletteType,
 	isAuthenticated: state.authentication.isAuthenticated,
 })
 const withRedux = connect(mapStateToProps)

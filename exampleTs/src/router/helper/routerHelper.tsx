@@ -11,6 +11,9 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import { NavigationScreenOptions, NavigationScreenProp, NavigationScreenProps, StackNavigatorConfig } from 'react-navigation'
 import { TScreenModule } from '../../module/module'
 import { isFunction } from '../../util/type'
+import { AppToolbar } from '@tpl/AppToobar/AppToobar';
+import { View } from 'react-native';
+import { AppToolbarReactNavigation } from '@tpl/AppToolbarReactNavigation/AppToolbarReactNavigation';
 
 export const getNavigationOptionsDefault = (themeType?: TTheme, navigationOptionsOverride?: any) => {
 	const { appStyle, palette } = getTheme(themeType)
@@ -26,7 +29,12 @@ export const getNavigationOptionsDefault = (themeType?: TTheme, navigationOption
 			headerTitleStyle: {
 				...appStyle.toolbar.text,
 			},
+			// headerRight: () => <View style={{flex:1, backgroundColor: 'red'}} />,
 			headerTintColor: palette.primary.contrastText,
+			header: (props) => {
+				console.log('HEADER', props)
+				return <AppToolbarReactNavigation {...props} />
+			},
 			...navigationOptions,
 			...navigationOptionsOverrideEnhance,
 		}

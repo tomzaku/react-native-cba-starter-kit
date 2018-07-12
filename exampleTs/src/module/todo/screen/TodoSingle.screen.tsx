@@ -1,4 +1,4 @@
-import { withStyles } from '@theme/context'
+import { withStyles } from '@theme/helper/context'
 import React from 'react'
 import { Text, View } from 'react-native'
 import { compose } from 'recompose'

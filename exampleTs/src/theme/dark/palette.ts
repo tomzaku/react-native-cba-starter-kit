@@ -1,4 +1,5 @@
-import { getPalette } from '@theme/palette'
+import { ViewStyle } from 'react-native'
+import { getPalette } from '../helper/palette'
 
 const darkMaterialPalette = {
 	common: {
@@ -52,7 +53,7 @@ const darkMaterialPalette = {
 	divider: 'rgba(255, 255, 255, 0.12)',
 	background: {
 		paper: '#424242',
-		default: '#08294b',
+		default: '#000',
 	},
 	action: {
 		active: '#fff',
@@ -63,4 +64,22 @@ const darkMaterialPalette = {
 		disabledBackground: 'rgba(255, 255, 255, 0.12)',
 	},
 }
-export const palette = getPalette(darkMaterialPalette)
+
+const overideComponent = {
+	tabbarNavigation: {
+		main: darkMaterialPalette.background.default,
+		activeLabel: darkMaterialPalette.common.white,
+		inactiveLabel: darkMaterialPalette.grey['600'],
+		activeIcon: darkMaterialPalette.common.white,
+		inactiveIcon: darkMaterialPalette.grey['600'],
+		borderColor: darkMaterialPalette.divider,
+	},
+	toolbar: {
+		light: darkMaterialPalette.background.default,
+		main: darkMaterialPalette.background.default,
+		dark: darkMaterialPalette.background.default,
+		contrastText: '#fff',
+	},
+}
+
+export const palette = getPalette(darkMaterialPalette, overideComponent)

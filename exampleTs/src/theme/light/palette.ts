@@ -1,4 +1,4 @@
-import { getPalette } from '@theme/palette'
+import { getPalette } from '../helper/palette'
 
 const materialPalette = {
 	common: {

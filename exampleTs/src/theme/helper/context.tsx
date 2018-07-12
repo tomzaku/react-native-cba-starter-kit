@@ -1,7 +1,7 @@
 import React from 'react'
 import { compose } from 'recompose'
 import { withContext } from 'with-context'
-import { getTheme } from './themeHelper'
+import { getTheme } from '../themeHelper'
 
 export const ThemeContext = React.createContext(getTheme())
 export const withTheme = withContext(ThemeContext, 'theme')

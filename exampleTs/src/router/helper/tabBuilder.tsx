@@ -29,7 +29,6 @@ const addStackNavigation = (themeType:TTheme) => (keyRoute: string | string[], i
 					themeType,
 					(navigationConfig) => {
 						const { routeName } = navigationConfig.navigation.state
-						console.log('>>>>navigationConfig', navigationConfig, listRoute[routeName])
 						return {
 							headerTitle: getHeaderTitle(listRoute[routeName]),
 						}

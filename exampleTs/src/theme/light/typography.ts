@@ -1,5 +1,5 @@
 import { getTypographyByEm } from '@theme/helper/typography'
-import { getEm } from '@theme/unit'
+import { getEm } from '../helper/unit'
 import { isIOS } from '@util/platform'
 
 const generalTypography = {

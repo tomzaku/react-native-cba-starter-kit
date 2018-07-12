@@ -20,3 +20,4 @@ export const getEm = (baseUnit: number) => (value: number) => {
 	return unit * value
 }
 
+export const getStatusBarHeight = () => StatusBar.currentHeight || 20

@@ -1,6 +1,13 @@
 import { TBasicPalette } from '@theme/light/palette'
-
-export const getPalette = (palette: TBasicPalette) => ({
+interface ComponentPalette {
+	avatar?: any,
+	button?: any,
+	card?: any,
+	icon?: any,
+	toolbar?: any,
+	tabbarNavigation?: any,
+}
+export const getPalette = (palette: TBasicPalette, overrideComponent: ComponentPalette = {}) => ({
 	...palette,
 	avatar: {
 		...palette.primary,
@@ -25,5 +32,5 @@ export const getPalette = (palette: TBasicPalette) => ({
 		inactiveIcon: palette.grey['700'],
 		borderColor: palette.divider,
 	},
-}
-)
+	...overrideComponent,
+})

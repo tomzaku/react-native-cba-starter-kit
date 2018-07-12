@@ -4,7 +4,7 @@ import { getTheme } from '@theme/themeHelper'
 import React from 'react'
 import { connect } from 'react-redux'
 import { compose, pure } from 'recompose'
-import { ThemeContext } from './theme/context'
+import { ThemeContext } from './theme/helper/context'
 
 const AppTheme = ({ theme }) => {
 	return (

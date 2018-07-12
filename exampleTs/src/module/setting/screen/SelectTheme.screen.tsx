@@ -1,5 +1,5 @@
 import { TRootState } from '@conf/redux/reducer'
-import { withStyles } from '@theme/context'
+import { withStyles } from '@theme/helper/context'
 import { getTheme } from '@theme/themeHelper'
 import React from 'react'
 import { View } from 'react-native'

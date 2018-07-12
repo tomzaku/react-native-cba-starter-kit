@@ -1,4 +1,4 @@
-import { getAppStyle } from '@theme/appStyle'
+import { getAppStyle } from '../helper/appStyle'
 import { metric } from './metric'
 import { palette } from './palette'
 import { typography } from './typography'
