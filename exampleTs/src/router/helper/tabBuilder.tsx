@@ -51,9 +51,9 @@ export const tabBuilder = (listTabRoute: (string | string[])[], themeType?: TThe
 		{
 			// tabBarComponent: BottomTabBar,
 			tabBarComponent: AppBottomTabBar,
-			tabBarOptions: {
-				...getTabRouteConfigDefault(themeType),
-			},
+			// tabBarOptions: {
+			// 	...getTabRouteConfigDefault(themeType),
+			// },
 			navigationOptions: getTabNavigationOptionsDefault(themeType),
 		},
 	)
