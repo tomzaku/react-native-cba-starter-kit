@@ -2,6 +2,10 @@ import { TTheme } from '@module/setting/logic.redux/initalState'
 import { getRoutes, getTabNavigationOptionsDefault, getTabRouteConfigDefault } from '@router/helper/routerHelper'
 import { getNavigationOptionsDefault } from '@router/helper/routerHelper'
 import { AppText } from '@tpl/AppText'
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
+import { BottomTabBar, createBottomTabNavigator } from 'react-navigation-tabs'
+
+import { AppBottomTabBar } from '@tpl/AppBottomTabBar/AppBottomTabBar'
 import {
 	addIndex,
 	compose,
@@ -45,6 +49,8 @@ export const tabBuilder = (listTabRoute: (string | string[])[], themeType?: TThe
 			...tabRoute,
 		},
 		{
+			// tabBarComponent: BottomTabBar,
+			tabBarComponent: AppBottomTabBar,
 			tabBarOptions: {
 				...getTabRouteConfigDefault(themeType),
 			},
