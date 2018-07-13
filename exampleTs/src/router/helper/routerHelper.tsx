@@ -3,17 +3,18 @@ import { TNavigationOptionsModule, TScreenLayoutModule } from '@module/module'
 import { TTheme } from '@module/setting/logic.redux/initalState'
 import { getTheme } from '@theme/themeHelper'
 import { AppText } from '@tpl/AppText'
+import { AppToolbar } from '@tpl/AppToobar/AppToobar'
+import { AppToolbarReactNavigation } from '@tpl/AppToolbarReactNavigation/AppToolbarReactNavigation'
 import { EnhanceI18n } from 'i18n'
 import { compose, filter, isNil, mapObjIndexed, merge, mergeAll, path, values } from 'ramda'
 import React from 'react'
+import { View } from 'react-native'
 import { isTablet } from 'react-native-device-info'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { NavigationScreenOptions, NavigationScreenProp, NavigationScreenProps, StackNavigatorConfig } from 'react-navigation'
 import { TScreenModule } from '../../module/module'
+import { AppHeader } from '../../tpl/AppHeader/AppHeader'
 import { isFunction } from '../../util/type'
-import { AppToolbar } from '@tpl/AppToobar/AppToobar';
-import { View } from 'react-native';
-import { AppToolbarReactNavigation } from '@tpl/AppToolbarReactNavigation/AppToolbarReactNavigation';
 
 export const getNavigationOptionsDefault = (themeType?: TTheme, navigationOptionsOverride?: any) => {
 	const { appStyle, palette } = getTheme(themeType)
@@ -23,18 +24,18 @@ export const getNavigationOptionsDefault = (themeType?: TTheme, navigationOption
 													? navigationOptionsOverride(navigationConfig)
 													: navigationOptionsOverride
 		return {
-			headerStyle: {
-				...appStyle.toolbar.main,
-			},
-			headerTitleStyle: {
-				...appStyle.toolbar.text,
-			},
+			// headerStyle: {
+			// 	...appStyle.toolbar.main,
+			// },
+			// headerTitleStyle: {
+			// 	...appStyle.toolbar.text,
+			// },
 			// headerRight: () => <View style={{flex:1, backgroundColor: 'red'}} />,
-			headerTintColor: palette.primary.contrastText,
-			header: (props) => {
-				console.log('HEADER', props)
-				return <AppToolbarReactNavigation {...props} />
-			},
+			// headerTintColor: palette.primary.contrastText,
+			header: (props) => <AppHeader {...props} />,
+			// header: (props) => {
+			// 	return <AppToolbarReactNavigation {...props} />
+			// },
 			...navigationOptions,
 			...navigationOptionsOverrideEnhance,
 		}
@@ -83,14 +84,7 @@ export const getTabBarLabel =  ({ navigationOptions }: TScreenModule, options?: 
 		return (!hidden || focused) && <AppText text={titleI18n || title} style={{ color: tintColor }} />
 	}
 }
-export const getTabRouteConfigDefault = (themeType?: TTheme) => {
-	const { appStyle, palette } = getTheme(themeType)
-	return {
-		activeTintColor: palette.tabbarNavigation.activeLabel,
-		inactiveTintColor: palette.tabbarNavigation.inactiveLabel,
-		tabStyle: appStyle.tabbarNavigation.main,
-	}
-}
+
 
 export const mergeSpecificRoute = (route: TScreenLayoutModule, layoutTarget: string, layoutSource: string) => {
 	return merge(path([layoutSource])(route), path([layoutTarget])(route))
