@@ -1,9 +1,6 @@
+import { getMetric } from '../helper/metric'
 import { spacing } from './spacing'
-export const metric = {
-	container: {
-		padding: spacing.unit,
-	},
-	tabbarNavigation: {
-		borderTopWith: 0.25,
-	},
-}
+
+export const metric = getMetric(spacing.unit)
+
+export type TMetric = typeof metric

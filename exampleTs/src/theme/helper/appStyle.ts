@@ -1,8 +1,9 @@
 
-import { ViewStyle } from 'react-native'
-import { TMetric } from './light/metric'
-import { Tpalette } from './light/palette'
-import { TTypography } from './light/typography'
+import { isIOS } from '@util/platform'
+import { Platform, ViewStyle } from 'react-native'
+import { TMetric } from '../light/metric'
+import { Tpalette } from '../light/palette'
+import { TTypography } from '../light/typography'
 // import { metric } from './metric'
 // import { palette } from './palette'
 // import { typography } from './typography'
@@ -20,8 +21,22 @@ export const getAppStyle = (palette: Tpalette, metric: TMetric, typography: TTyp
 
 		} as ViewStyle,
 		text: {
-			// ...typography.title,
+			...typography.title,
 			color: palette.toolbar.contrastText,
+			// textAlign: 'center',
+			// color: 'red',
+			// alignSelf:'center',
+			// justifyContent: 'center',
+			// alignSelf: "center",
+			// flex: 1,
+			...Platform.select({
+				ios: {
+
+				},
+				android: {
+					marginLeft: metric.toolbar.android.marginLeft,
+				},
+			}),
 			// textAlign: 'center',
 		},
 		centerElement: {

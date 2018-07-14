@@ -10,7 +10,7 @@ import { styles } from './Todo.style'
 const Todo = ({ styles, navigation }) => {
 	return (
 		<View style={styles.container}>
-			<AppText />
+			<AppText text={'Todo'} style={{ color: 'blue' }} />
 			<Button title={'Move to single'} onPress={() => navigation.navigate('TodoSingle')} />
 			<Button title={'Move to Calendar'} onPress={() => navigation.navigate('Calendar')} />
 		</View>

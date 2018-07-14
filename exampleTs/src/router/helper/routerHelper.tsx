@@ -84,7 +84,7 @@ export const getTabBarLabel =  ({ navigationOptions }: TScreenModule, options?: 
 	const { title, titleI18n } = navigationOptions
 	const { hidden = false } = options
 	return ({ focused, tintColor }) => {
-		return (!hidden || focused) && <AppText text={titleI18n || title} style={{ color: tintColor }} />
+		return (!hidden || focused) && <AppText text={titleI18n || title} style={{ color: tintColor, textAlign: 'center' }} />
 	}
 }
 
@@ -96,7 +96,8 @@ export const mergeSpecificRoute = (route: TScreenLayoutModule, layoutTarget: str
 export const getHeaderTitle = ({ navigationOptions }: TScreenModule) => {
 	const { title, titleI18n } = navigationOptions
 	return (props) => {
-		return <AppText text={titleI18n || title} style={props.style[1]} />
+		console.log('APP TEXT PROPS', props)
+		return <AppText {...props} text={titleI18n || title}/>
 	}
 }
 
@@ -111,6 +112,7 @@ const extendPhoneAndTabletRoute = (route: TScreenLayoutModule, key: string) => {
 	}
 	return undefined
 }
+
 export const getRoutes = () => {
 	const screenList = getScreenList()
 	const routeExtend = mapObjIndexed(extendPhoneAndTabletRoute)(screenList)

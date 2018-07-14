@@ -3,7 +3,6 @@ const messages = require('./language._generate.json')
 
 export const settingI18nLanguage = () => {
 	I18n.fallbacks = true
-	console.log('>messages', messages)
 	I18n.translations = require('./language._generate.json')
 	I18n.defaultSeparator = '/'
 	return I18n

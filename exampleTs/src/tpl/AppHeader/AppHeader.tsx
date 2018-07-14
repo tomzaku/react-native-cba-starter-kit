@@ -9,7 +9,7 @@ import { from } from 'seamless-immutable'
 
 const addProps = withProps(
 	({ theme, scene, scenes, index }) => {
-		console.log('>>>>', scene, scenes)
+		// console.log('>>>>', scene, scenes)
 		const headerTitleStylePath = ['descriptor', 'options', 'headerTitleStyle']
 		const headerStylePath = ['descriptor', 'options', 'headerStyle']
 		const headerTintColorPath = ['descriptor', 'options', 'headerTintColor']
@@ -35,7 +35,7 @@ const addProps = withProps(
 		// <<<<<<<<<<<<
 		const newScenes = from(scenes).set(index, newsceneInScenes)
 		return {
-			// scene: newScene,
+			scene: newScene,
 			scenes: newScenes,
 		}
 	},
