@@ -28,14 +28,17 @@ export const getNavigationOptionsDefault = (themeType?: TTheme, navigationOption
 			// 	...appStyle.toolbar.main,
 			// },
 			// headerTitleStyle: {
-			// 	...appStyle.toolbar.text,
+			// 	// ...appStyle.toolbar.text,
+			// 	backgroundColor: 'red',
 			// },
-			// headerRight: () => <View style={{flex:1, backgroundColor: 'red'}} />,
+			// headerRight: <View style={{ flex:1, backgroundColor: 'red' }} />,
 			// headerTintColor: palette.primary.contrastText,
-			header: (props) => <AppHeader {...props} />,
+			// headerTintColor: 'green',
+
 			// header: (props) => {
 			// 	return <AppToolbarReactNavigation {...props} />
 			// },
+			header: (props) => <AppHeader {...props} />,
 			...navigationOptions,
 			...navigationOptionsOverrideEnhance,
 		}

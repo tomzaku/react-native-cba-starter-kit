@@ -24,4 +24,7 @@ const withStatic = setStatic(
 	// 	}
 	// },
 )
-export const CalendarScreen = compose(withStatic, pure)(Calendar)
+export const CalendarScreen = compose(
+	// withStatic,
+	pure,
+	)(Calendar)
