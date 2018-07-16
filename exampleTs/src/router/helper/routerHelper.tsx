@@ -96,7 +96,6 @@ export const mergeSpecificRoute = (route: TScreenLayoutModule, layoutTarget: str
 export const getHeaderTitle = ({ navigationOptions }: TScreenModule) => {
 	const { title, titleI18n } = navigationOptions
 	return (props) => {
-		console.log('APP TEXT PROPS', props)
 		return <AppText {...props} text={titleI18n || title}/>
 	}
 }

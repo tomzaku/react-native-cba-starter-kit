@@ -33,6 +33,8 @@ export interface TModules {
 	[routeKey: string]: TModule
 }
 
+export type ReduxKey = 'reducer' | 'action' | 'saga'
+
 export const module = {
 	setting,
 	todo,

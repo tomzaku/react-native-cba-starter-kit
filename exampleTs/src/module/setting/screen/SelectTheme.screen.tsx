@@ -1,5 +1,5 @@
 import { TRootState } from '@conf/redux/reducer'
-import { withStyles } from '@theme/helper/context'
+import { withStyles, WithStyles } from '@theme/helper/context'
 import { getTheme } from '@theme/themeHelper'
 import React from 'react'
 import { View } from 'react-native'
@@ -8,9 +8,25 @@ import { connect } from 'react-redux'
 import { compose, pure } from 'recompose'
 import { Dispatch } from 'redux'
 import { changeTheme } from '../logic.redux/action'
+import { TTheme } from '../logic.redux/initalState'
 import { styles } from './SelectTheme.style'
 
-const SelectTheme = ({ changeTheme, themeType, styles }) => {
+interface SelectThemePropsOut {
+
+}
+
+interface SelectThemeStateProps {
+	themeType: TTheme
+}
+interface SelectThemeActionsProps {
+	changeTheme: () => void
+}
+
+interface SelectThemePropsIn extends SelectThemePropsOut, WithStyles<typeof styles>, SelectThemeActionsProps, SelectThemeStateProps {
+
+}
+
+const SelectTheme = ({ changeTheme, themeType, styles }: SelectThemePropsIn) => {
 	return (
 		<View style={styles.container}>
 			<Button title={'Change Theme'} raised onPress={changeTheme}/>
@@ -28,4 +44,4 @@ const mapActionToProps = (dispatch: Dispatch) => ({
 
 const withRedux = connect(mapStateToProps, mapActionToProps)
 
-export const SelectThemeScreen = compose(withRedux, withStyles(styles), pure)(SelectTheme)
+export const SelectThemeScreen = compose<SelectThemePropsIn, SelectThemePropsOut>(withRedux, withStyles(styles), pure)(SelectTheme)

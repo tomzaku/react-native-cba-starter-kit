@@ -1,19 +1,31 @@
 import { logout } from '@module/authentication/logic.redux/action'
 import { changeLanguage, changeTheme } from '@module/setting/logic.redux/action'
-import { withStyles } from '@theme/helper/context'
+import { withStyles, WithStyles } from '@theme/helper/context'
 import { getTheme } from '@theme/themeHelper'
 import { AppText } from '@tpl/AppText'
 import React from 'react'
 import { Text, View } from 'react-native'
 import { Avatar, Button } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import { NavigationInjectedProps } from 'react-navigation'
 import { connect } from 'react-redux'
 import { compose } from 'recompose'
 import { Dispatch } from 'redux'
 import { styles } from './Setting.style'
 
+interface SettingScreenPropsOut {
 
-const Setting = ({ changeTheme, changeLanguage, navigation, styles, logout }) => {
+}
+interface SettingScreenActionProps {
+	changeTheme: () => void
+	changeLanguage: (code: string) => () => void
+	logout: () => void
+}
+interface SettingScreenPropsIn extends WithStyles<typeof styles>, SettingScreenPropsOut, NavigationInjectedProps, SettingScreenActionProps{
+
+}
+
+const Setting = ({ changeTheme, changeLanguage, navigation, styles, logout }: SettingScreenPropsIn) => {
 	return (
 		<View style={styles.container}>
 			{/* <Button title={'Change Theme'} raised onPress={changeTheme}/> */}
@@ -50,5 +62,8 @@ const mapActionToProps = (dispatch: Dispatch) => ({
 	changeLanguage: (code: string) => () => dispatch(changeLanguage(code)),
 	logout: () => dispatch(logout()),
 })
+
 const withRedux = connect(undefined, mapActionToProps)
-export const SettingScreen = compose(withRedux, withStyles(styles))(Setting)
+
+
+export const SettingScreen = compose<SettingScreenPropsIn, SettingScreenPropsOut>(withRedux, withStyles(styles))(Setting)

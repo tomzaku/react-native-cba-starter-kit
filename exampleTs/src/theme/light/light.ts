@@ -11,3 +11,5 @@ export const light = {
 	spacing,
 	typography,
 }
+
+export type TStyle = typeof light

@@ -2,33 +2,17 @@ import { compose, filter, flatten, isNil, map, mapObjIndexed, mergeAll, path, pi
 // tslint:disable-next-line:no-duplicate-imports
 
 import { TScreenLayoutModule, TScreensModule } from '@module/module'
-import { module } from '../module'
+import { module, ReduxKey, TModule } from '../module'
 
 interface IOptionType {
   type: 'array' | 'flatten' | 'list'
 }
-interface IReduxType {
-  reducer?: Function,
-  saga?: Function,
-  thunk?: Function
-}
-interface IScreen {
-  [key: string]: any,
-}
-interface IPageListType {
-  [key: string]: IScreen
-}
-interface IModuleType {
-  redux?: IReduxType,
-  page?: IPageListType
-}
 
-type ReduxKey = 'reducer' | 'action' | 'saga'
 
 
 function pathDict(data: typeof module, rootPath: string[], options: IOptionType = { type: 'list' }) {
   const { type } = options
-  const getListData = mapObjIndexed((eachModuleValue: IModuleType) => path(rootPath)(eachModuleValue))
+  const getListData = mapObjIndexed((eachModuleValue: TModule) => path(rootPath)(eachModuleValue))
   const removeUndefinedItem = filter((item: any) => !isNil(item))
   const listCompose = compose(removeUndefinedItem, getListData)
   switch (type) {

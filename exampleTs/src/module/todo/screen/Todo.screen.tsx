@@ -1,13 +1,21 @@
-import { withStyles, withTheme } from '@theme/helper/context'
+import { withStyles, WithStyles, withTheme } from '@theme/helper/context'
 import { getTheme } from '@theme/themeHelper'
 import { AppText } from '@tpl/AppText'
 import React from 'react'
 import { Text, View } from 'react-native'
 import { Button } from 'react-native-elements'
+import { NavigationInjectedProps } from 'react-navigation'
 import { compose, getContext, withContext } from 'recompose'
 import { styles } from './Todo.style'
 
-const Todo = ({ styles, navigation }) => {
+interface ITodoPropsOut {
+
+}
+interface ITodoPropsIn extends WithStyles<typeof styles>, NavigationInjectedProps {
+
+}
+
+const Todo = ({ styles, navigation }: ITodoPropsIn) => {
 	return (
 		<View style={styles.container}>
 			<AppText text={'Todo'} style={{ color: 'blue' }} />
@@ -17,6 +25,4 @@ const Todo = ({ styles, navigation }) => {
 	)
 }
 
-
-
-export const TodoScreen = compose(withStyles(styles))(Todo)
+export const TodoScreen = compose<ITodoPropsIn, ITodoPropsOut>(withStyles(styles))(Todo)
