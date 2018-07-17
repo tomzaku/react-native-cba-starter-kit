@@ -1,12 +1,14 @@
-import { TScreensModule } from '@module/module'
+import { TScreenModule, TScreensModule } from '@module/module'
+import { isFunction } from '@util/type'
 import { compose, mapObjIndexed } from 'ramda'
-import { isFunction } from '../../util/type'
+import { StackNavigatorConfig } from 'react-navigation'
 import { getHeaderTitle } from './routerHelper'
 
-const updateRoute = (value, key) => (route) => {
+type TRouteValue = (route: TScreenModule) => void | StackNavigatorConfig | Function
+const updateRoute = (value: TRouteValue, key: string) => (route: TScreenModule) => {
 	return {
 		...route,
-		navigationOptions: ({ navigationOptions }) => ({
+		navigationOptions: ({ navigationOptions }: StackNavigatorConfig) => ({
 			...route.navigationOptions,
 			[key]: isFunction(value) ? value(route) : value,
 			...navigationOptions,
