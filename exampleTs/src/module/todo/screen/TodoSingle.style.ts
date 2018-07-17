@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 
 export const styles = (theme: TThemeStyle) => {
 	console.log('Theme', theme)
-	const { appStyle, palette } = theme
+	const { appStyle } = theme
 	return StyleSheet.create({
 		container: appStyle.container.padding,
 	})
