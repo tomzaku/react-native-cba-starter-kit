@@ -54,8 +54,11 @@ const Login = ({ navigation, login, styles }: LoginPropsIn) => {
 		</View>
 	)
 }
-const mapActionToProps = (dispatch: Dispatch) => ({
-	login: (username: string, password: string) => dispatch(login(username, password)),
+const mapActionToProps = (dispatch: Dispatch, ownProps) => ({
+	login: (username: string, password: string) => {
+		 dispatch(login(username, password))
+		 ownProps.navigation.navigate('Loading')
+		},
 })
 
 const withRedux = connect(undefined, mapActionToProps)

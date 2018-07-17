@@ -1,20 +1,18 @@
-import { TTheme } from '@module/setting/logic.redux/initalState'
-import { tabBuilder } from '@router/helper/tabBuilder'
-import { createStackNavigator } from 'react-navigation'
-import { getNavigationOptionsDefault, getRoutes } from './helper/routerHelper'
-import { getStackRoute } from './helper/stackBuilder'
+import { createSwitchNavigator } from 'react-navigation'
+import { setupAuthRoute } from './authenticationRoute'
+import { getRoutes } from './helper/routerHelper'
+import { setupMainRoute } from './mainRoute'
+
 export const setupRoute = () => {
-	const listScreen = getRoutes()
-	const MainRoute = createStackNavigator(
+	const listRoute = getRoutes()
+	return createSwitchNavigator(
 		{
-			MainTab: tabBuilder([['Todo', 'TodoSingle'], ['Setting', 'SelectTheme']]),
-			// ...listScreen,
-			...getStackRoute(listScreen),
+			Auth: setupAuthRoute(),
+			Loading: listRoute['LoadingStartup'],
+			Main: setupMainRoute(),
 		},
 		{
-			initialRouteKey: 'MainTab',
-			navigationOptions: getNavigationOptionsDefault(),
+			initialRouteName: 'Loading',
 		},
-	)
-	return MainRoute
+)
 }

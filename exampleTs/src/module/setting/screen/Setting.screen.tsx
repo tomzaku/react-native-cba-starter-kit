@@ -55,10 +55,13 @@ const Setting = ({ changeLanguage, navigation, styles, logout }: SettingScreenPr
 	)
 }
 
-const mapActionToProps = (dispatch: Dispatch) => ({
+const mapActionToProps = (dispatch: Dispatch, ownProps) => ({
 	changeTheme: () => dispatch(changeTheme()),
 	changeLanguage: (code: string) => () => dispatch(changeLanguage(code)),
-	logout: () => dispatch(logout()),
+	logout: () => {
+		dispatch(logout())
+		ownProps.navigation.navigate('Loading')
+	},
 })
 
 const withRedux = connect(undefined, mapActionToProps)

@@ -1,9 +1,8 @@
-import { TTheme } from '@module/setting/logic.redux/initalState'
 import { pick } from 'ramda'
 import { createStackNavigator } from 'react-navigation'
 import { getNavigationOptionsDefault, getRoutes } from './helper/routerHelper'
 
-import { getStackRoute } from './helper/stackBuilder'
+import { getStackRoute } from '@router/helper/stackBuilder'
 export const setupAuthRoute = () => {
 	const listScreen = getRoutes()
 	const authenticationRoute = pick(['Login', 'Register'])(listScreen)
@@ -14,7 +13,6 @@ export const setupAuthRoute = () => {
 		{
 			initialRouteKey: 'Login',
 			navigationOptions: getNavigationOptionsDefault(),
-			// navigationOptions: 'a'
 		},
 	)
 	return MainRoute

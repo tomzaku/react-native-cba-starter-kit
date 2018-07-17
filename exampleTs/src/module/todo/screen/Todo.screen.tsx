@@ -5,7 +5,7 @@ import React from 'react'
 import { Text, View } from 'react-native'
 import { Button } from 'react-native-elements'
 import { NavigationInjectedProps } from 'react-navigation'
-import { compose, getContext, withContext } from 'recompose'
+import { compose, getContext, pure, withContext } from 'recompose'
 import { styles } from './Todo.style'
 
 interface ITodoPropsOut {
@@ -25,4 +25,4 @@ const Todo = ({ styles, navigation }: ITodoPropsIn) => {
 	)
 }
 
-export const TodoScreen = compose<ITodoPropsIn, ITodoPropsOut>(withStyles(styles))(Todo)
+export const TodoScreen = compose<ITodoPropsIn, ITodoPropsOut>(withStyles(styles), pure)(Todo)

@@ -1,14 +1,13 @@
 import { getScreenList } from '@module/helper/moduleHelper'
-import { TNavigationOptionsModule, TScreenLayoutModule } from '@module/module'
+import { TNavigationOptionsModule, TScreenLayoutModule, TScreenModule } from '@module/module'
+import { AppHeader } from '@tpl/AppHeader/AppHeader'
 import { AppText } from '@tpl/AppText'
+import { isFunction } from '@util/type'
 import { compose, filter, isNil, mapObjIndexed, merge, mergeAll, path, values } from 'ramda'
 import React from 'react'
 import { isTablet } from 'react-native-device-info'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { HeaderProps, NavigationScreenConfig, NavigationScreenProp, NavigationScreenProps, StackNavigatorConfig } from 'react-navigation'
-import { TScreenModule } from '../../module/module'
-import { AppHeader } from '../../tpl/AppHeader/AppHeader'
-import { isFunction } from '../../util/type'
 
 export const getNavigationOptionsDefault = (navigationOptionsOverride?: NavigationScreenConfig<any>) => {
 	return (navigationConfig: NavigationScreenProps) => {

@@ -1,7 +1,8 @@
-import { authentication } from './authentication/authentication'
-import { calendar } from './calendar/todo'
-import { setting } from './setting/setting'
-import { todo } from './todo/todo'
+import { authentication } from '@module/authentication/authentication'
+import { calendar } from '@module/calendar/todo'
+import { setting } from '@module/setting/setting'
+import { todo } from '@module/todo/todo'
+import { loading } from './loading/loading'
 
 export interface TReduxModule {
 	reducer?: any
@@ -40,4 +41,5 @@ export const module = {
 	todo,
 	calendar,
 	authentication,
+	loading,
 }

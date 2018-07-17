@@ -1,6 +1,3 @@
-import { TTheme } from '@module/setting/logic.redux/initalState'
-import { getHeaderTitle, getNavigationOptionsDefault, getRoutes, getTabNavigationOptionsDefault } from './routerHelper'
-
 import { AppBottomTabBar } from '@tpl/AppBottomTabBar/AppBottomTabBar'
 import {
 	addIndex,
@@ -12,6 +9,7 @@ import {
 	pick,
 	} from 'ramda'
 import { createBottomTabNavigator, createStackNavigator, NavigationNavigatorProps } from 'react-navigation'
+import { getHeaderTitle, getNavigationOptionsDefault, getRoutes, getTabNavigationOptionsDefault } from './routerHelper'
 const mapIndexed = addIndex(map)
 
 const addStackNavigation = (keyRoute: string | string[], index: number) => {
