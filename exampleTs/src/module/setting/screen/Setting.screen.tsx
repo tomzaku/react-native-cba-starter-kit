@@ -1,12 +1,10 @@
 import { logout } from '@module/authentication/logic.redux/action'
 import { changeLanguage, changeTheme } from '@module/setting/logic.redux/action'
 import { withStyles, WithStyles } from '@theme/helper/context'
-import { getTheme } from '@theme/themeHelper'
 import { AppText } from '@tpl/AppText'
 import React from 'react'
-import { Text, View } from 'react-native'
-import { Avatar, Button } from 'react-native-elements'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import { View } from 'react-native'
+import { Button } from 'react-native-elements'
 import { NavigationInjectedProps } from 'react-navigation'
 import { connect } from 'react-redux'
 import { compose } from 'recompose'
@@ -25,7 +23,7 @@ interface SettingScreenPropsIn extends WithStyles<typeof styles>, SettingScreenP
 
 }
 
-const Setting = ({ changeTheme, changeLanguage, navigation, styles, logout }: SettingScreenPropsIn) => {
+const Setting = ({ changeLanguage, navigation, styles, logout }: SettingScreenPropsIn) => {
 	return (
 		<View style={styles.container}>
 			{/* <Button title={'Change Theme'} raised onPress={changeTheme}/> */}

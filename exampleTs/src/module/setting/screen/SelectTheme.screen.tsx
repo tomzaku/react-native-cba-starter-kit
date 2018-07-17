@@ -1,6 +1,5 @@
 import { TRootState } from '@conf/redux/reducer'
 import { withStyles, WithStyles } from '@theme/helper/context'
-import { getTheme } from '@theme/themeHelper'
 import React from 'react'
 import { View } from 'react-native'
 import { Button } from 'react-native-elements'
@@ -14,7 +13,6 @@ import { styles } from './SelectTheme.style'
 interface SelectThemePropsOut {
 
 }
-
 interface SelectThemeStateProps {
 	themeType: TTheme
 }

@@ -1,7 +1,7 @@
-import { TThemeStyle } from '@theme/themeHelper'
+import { TStyle } from '@theme/light/light'
 import { StyleSheet } from 'react-native'
 
-export const styles = (theme: TThemeStyle) => {
+export const styles = (theme: TStyle) => {
 	const { appStyle, palette, spacing } = theme
 	return StyleSheet.create({
 		container: appStyle.container.padding,
