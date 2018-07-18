@@ -8,11 +8,13 @@ export const setupRoute = () => {
 	return createSwitchNavigator(
 		{
 			Auth: setupAuthRoute(),
-			Loading: listRoute['LoadingStartup'],
-			Main: setupMainRoute(),
+			Loading: listRoute['LoadingAuthentication'],
+			Main: setupMainRoute({
+				// initialRouteName: 'Calendar',
+			}),
 		},
 		{
 			initialRouteName: 'Loading',
 		},
-)
+	)
 }

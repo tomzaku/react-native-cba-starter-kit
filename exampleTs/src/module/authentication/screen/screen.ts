@@ -1,4 +1,5 @@
 import { TScreensModule } from '@module/module'
+import { LoadingAuthenticationScreen } from './LoadingAuthentication.screen'
 import { LoginScreen } from './Login.screen'
 import { RegisterScreen } from './Register.screen'
 
@@ -17,6 +18,11 @@ export const screen: TScreensModule = {
 			navigationOptions: {
 				title: 'RegisterScreen',
 			},
+		},
+	},
+	LoadingAuthentication: {
+		phone: {
+			screen: LoadingAuthenticationScreen,
 		},
 	},
 }

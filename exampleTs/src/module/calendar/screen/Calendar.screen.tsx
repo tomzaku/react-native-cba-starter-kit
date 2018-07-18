@@ -1,30 +1,46 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import { compose, pure, setStatic } from 'recompose'
+import { Button } from 'react-native-elements'
+import { compose, pure, setStatic, shouldUpdate, withState, withStateHandlers } from 'recompose'
 
-const Calendar = () => (
+const TestButton = ({ onPress }) => {
+	console.log('Render?')
+	return (
+		<Button title={'Increase'} onPress={onPress} />
+	)
+}
+const willRender = shouldUpdate(props => false)
+const EnhanceTestButton = compose(willRender)(TestButton)
+const Calendar = ({ incrementOn, counter }) => (
 	<View>
 		<Text>
 			Calendar
 		</Text>
+		<Text>
+			{counter}
+		</Text>
+		<EnhanceTestButton onPress={incrementOn}/>
 	</View>
 )
-const withStatic = setStatic(
-	'navigationOptions',
+
+const createState = withStateHandlers(
+	({ initialCounter = 0 }) => ({
+		counter: initialCounter,
+	}),
 	{
-		headerTitle: 'abc',
+		incrementOn: ({ counter }) => () => ({
+			counter: counter + 1,
+		}),
+		decrementOn: ({ counter }) => () => ({
+			counter: counter - 1,
+		}),
+		resetCounter: (_, { initialCounter = 0 }) => () => ({
+			counter: initialCounter,
+		}),
 	},
-	// (navigation) => {
-	// 	return {
-	// 		// headerTitle: 'ABC',
-	// 		// header: null,
-	// 		navigationOptions: {
-	// 			title: 'ABC',
-	// 		},
-	// 	}
-	// },
-)
+  )
+
 export const CalendarScreen = compose(
-	// withStatic,
+	createState,
 	pure,
-	)(Calendar)
+)(Calendar)

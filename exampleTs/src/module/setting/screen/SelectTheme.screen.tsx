@@ -37,6 +37,7 @@ const mapStateToProps = (state: TRootState) => ({
 })
 
 const mapActionToProps = (dispatch: Dispatch) => ({
+	// When apply changeTheme it will render all screen that in reactnavigation's stack (including tab: That will cause performance)
 	changeTheme: () => dispatch(changeTheme()),
 })
 

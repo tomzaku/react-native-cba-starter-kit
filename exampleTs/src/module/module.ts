@@ -1,5 +1,5 @@
 import { authentication } from '@module/authentication/authentication'
-import { calendar } from '@module/calendar/todo'
+import { calendar } from '@module/calendar/calendar'
 import { setting } from '@module/setting/setting'
 import { todo } from '@module/todo/todo'
 import { loading } from './loading/loading'

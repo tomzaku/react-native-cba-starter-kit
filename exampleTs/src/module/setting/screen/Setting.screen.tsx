@@ -26,6 +26,7 @@ interface SettingScreenPropsIn extends WithStyles<typeof styles>, SettingScreenP
 const Setting = ({ changeLanguage, navigation, styles, logout }: SettingScreenPropsIn) => {
 	return (
 		<View style={styles.container}>
+
 			{/* <Button title={'Change Theme'} raised onPress={changeTheme}/> */}
 			<Button
 				title={<AppText text="SettingTheme.changeTheme" />}

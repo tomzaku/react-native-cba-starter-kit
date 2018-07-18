@@ -1,8 +1,8 @@
 import { tabBuilder } from '@router/helper/tabBuilder'
-import { createStackNavigator } from 'react-navigation'
+import { createStackNavigator, StackNavigatorConfig } from 'react-navigation'
 import { getNavigationOptionsDefault, getRoutes } from './helper/routerHelper'
 import { getStackRoute } from './helper/stackBuilder'
-export const setupMainRoute = () => {
+export const setupMainRoute = (stackConfig?: StackNavigatorConfig) => {
 	const listScreen = getRoutes()
 	const MainRoute = createStackNavigator(
 		{
@@ -11,8 +11,9 @@ export const setupMainRoute = () => {
 			...getStackRoute(listScreen),
 		},
 		{
-			initialRouteKey: 'MainTab',
+			// initialRouteKey: 'Sett',
 			navigationOptions: getNavigationOptionsDefault(),
+			...stackConfig,
 		},
 	)
 	return MainRoute
