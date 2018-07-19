@@ -1,34 +1,53 @@
 {
-	"compilerOptions": {
-		"module": "es6",
-		"target": "es6",
-		"lib": ["es6", "dom"],
-		"sourceMap": true,
-		"allowJs": true,
-		"allowSyntheticDefaultImports": true,
-		"esModuleInterop": true,
-		"jsx": "react-native",
-		"moduleResolution": "node",
-		"noEmit": true,
-		"experimentalDecorators": true,
-		"forceConsistentCasingInFileNames": true,
-		"noImplicitReturns": true,
-		"noImplicitThis": true,
-		"noImplicitAny": true,
-		"strictNullChecks": true,
-		"suppressImplicitAnyIndexErrors": true,
-		"noUnusedLocals": false,
-		"baseUrl": "./src",
-		"paths": {
-			"@conf/*": ["./conf/*"],
-			"@i18n/*": ["./i18n/*"],
-			"@module/*": ["./module/*"],
-			"@router/*": ["./router/*"],
-			"@theme/*": ["./theme/*"],
-			"@tpl/*": ["./tpl/*"],
-			"@util/*": ["./util/*"]
-		}
-		
-	},
-	"exclude": ["node_modules"]
+    "compilerOptions": {
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "./src",
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "jsx": "react-native",
+        "lib": [
+            "es6",
+            "dom"
+        ],
+        "module": "es6",
+        "moduleResolution": "node",
+        "noEmit": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "paths": {
+            "@conf/*": [
+                "./conf/*"
+            ],
+            "@i18n/*": [
+                "./i18n/*"
+            ],
+            "@module/*": [
+                "./module/*"
+            ],
+            "@router/*": [
+                "./router/*"
+            ],
+            "@theme/*": [
+                "./theme/*"
+            ],
+            "@tpl/*": [
+                "./tpl/*"
+            ],
+            "@util/*": [
+                "./util/*"
+            ]
+        },
+        "sourceMap": true,
+        "strict": true,
+        "strictNullChecks": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "target": "es6"
+    },
+    "exclude": [
+        "node_modules"
+    ]
 }

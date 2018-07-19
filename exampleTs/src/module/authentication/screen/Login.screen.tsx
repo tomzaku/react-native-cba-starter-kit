@@ -11,14 +11,14 @@ import { Dispatch } from 'redux'
 import { login } from '../logic.redux/action'
 import { style } from './Login.style'
 
-interface LoginPropsOut {
+interface LoginPropsOut extends NavigationInjectedProps{
 
 }
 
 interface LoginActionProps {
 	login: (username: string, password: string) => () => void
 }
-interface LoginPropsIn extends LoginPropsOut, LoginActionProps, NavigationInjectedProps, WithStyles<typeof style> {
+interface LoginPropsIn extends LoginPropsOut, LoginActionProps, WithStyles<typeof style> {
 
 }
 
@@ -54,7 +54,7 @@ const Login = ({ navigation, login, styles }: LoginPropsIn) => {
 		</View>
 	)
 }
-const mapActionToProps = (dispatch: Dispatch, ownProps) => ({
+const mapActionToProps = (dispatch: Dispatch, ownProps: LoginPropsOut) => ({
 	login: (username: string, password: string) => {
 		 dispatch(login(username, password))
 		 ownProps.navigation.navigate('Loading')

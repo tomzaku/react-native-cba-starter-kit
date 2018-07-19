@@ -11,7 +11,7 @@ import { compose } from 'recompose'
 import { Dispatch } from 'redux'
 import { styles } from './Setting.style'
 
-interface SettingScreenPropsOut {
+interface SettingScreenPropsOut extends NavigationInjectedProps{
 
 }
 interface SettingScreenActionProps {
@@ -19,7 +19,7 @@ interface SettingScreenActionProps {
 	changeLanguage: (code: string) => () => void
 	logout: () => void
 }
-interface SettingScreenPropsIn extends WithStyles<typeof styles>, SettingScreenPropsOut, NavigationInjectedProps, SettingScreenActionProps{
+interface SettingScreenPropsIn extends WithStyles<typeof styles>, SettingScreenPropsOut, SettingScreenActionProps{
 
 }
 
@@ -56,7 +56,7 @@ const Setting = ({ changeLanguage, navigation, styles, logout }: SettingScreenPr
 	)
 }
 
-const mapActionToProps = (dispatch: Dispatch, ownProps) => ({
+const mapActionToProps = (dispatch: Dispatch, ownProps: SettingScreenPropsOut) => ({
 	changeTheme: () => dispatch(changeTheme()),
 	changeLanguage: (code: string) => () => dispatch(changeLanguage(code)),
 	logout: () => {
