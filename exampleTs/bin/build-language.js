@@ -1,10 +1,12 @@
+#!/usr/bin/env node
+
 const fs = require('fs')
 const { sync } = require('glob')
 const { mergeDeepRight } = require('ramda')
 
 
-const filePattern = './src/**/*.lang.json'
-const outputLanguageDataDir = './src/i18n/'
+const filePattern = `${__dirname}/../src/**/*.lang.json`
+const outputLanguageDataDir = `${__dirname}/../src/i18n/`
 
 const generateData = async () => {
 	const defaultMessages = sync(filePattern)
@@ -16,4 +18,7 @@ const generateData = async () => {
 		)
 	await fs.writeFileSync(outputLanguageDataDir + 'i18n.__generate__.json', `${JSON.stringify(defaultMessages, null, 2)}`)
 }
-generateData()
+
+generateData().then(() => {
+	console.log('Generate done')
+})
