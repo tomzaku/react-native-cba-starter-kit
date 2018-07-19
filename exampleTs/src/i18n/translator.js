@@ -14,6 +14,6 @@ const generateData = async () => {
 			(collection, descriptors) => mergeDeepRight(collection, descriptors),
 			{},
 		)
-	await fs.writeFileSync(outputLanguageDataDir + 'language._generate.json', `${JSON.stringify(defaultMessages, null, 2)}`)
+	await fs.writeFileSync(outputLanguageDataDir + 'i18n.__generate__.json', `${JSON.stringify(defaultMessages, null, 2)}`)
 }
 generateData()
