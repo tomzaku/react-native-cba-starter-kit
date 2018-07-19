@@ -1,5 +1,4 @@
 import { withStyles, WithStyles, withTheme } from '@theme/helper/context'
-import { getTheme } from '@theme/themeHelper'
 import { AppText } from '@tpl/AppText'
 import React from 'react'
 import { Text, View } from 'react-native'

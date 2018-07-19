@@ -12,4 +12,4 @@ export const light = {
 	typography,
 }
 
-export type TStyle = typeof light
+export type TTheme = typeof light

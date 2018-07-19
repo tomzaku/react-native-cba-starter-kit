@@ -7,14 +7,14 @@ import { connect } from 'react-redux'
 import { compose, pure } from 'recompose'
 import { Dispatch } from 'redux'
 import { changeTheme } from '../logic.redux/action'
-import { TTheme } from '../logic.redux/initalState'
+import { TPaletteType } from '../logic.redux/initalState'
 import { styles } from './SelectTheme.style'
 
 interface SelectThemePropsOut {
 
 }
 interface SelectThemeStateProps {
-	themeType: TTheme
+	themeType: TPaletteType
 }
 interface SelectThemeActionsProps {
 	changeTheme: () => void

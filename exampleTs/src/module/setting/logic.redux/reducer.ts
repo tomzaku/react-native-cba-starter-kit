@@ -2,9 +2,9 @@ import { cond, T } from 'ramda'
 import { StatusBar } from 'react-native'
 import { IAppAction } from './action'
 import actionType from './actionType'
-import { initialState, TAppState, TTheme } from './initalState'
+import { initialState, TAppState, TPaletteType } from './initalState'
 
-const isLight = (paletteType: TTheme) => paletteType === 'light'
+const isLight = (paletteType: TPaletteType) => paletteType === 'light'
 const reducer = (state: TAppState = initialState, action: IAppAction<any>) => {
   switch (action.type) {
 	case actionType.CHANGE_THEME: {

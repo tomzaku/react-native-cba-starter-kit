@@ -15,6 +15,7 @@ const TodoSingle = ({ styles }: ToDoSinglePropsIn) => (
 		<Text>
 			Todo Single
 		</Text>
+
 	</View>
 )
 

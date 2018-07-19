@@ -4,14 +4,14 @@ import { getTheme } from '@theme/themeHelper'
 import React from 'react'
 import { connect } from 'react-redux'
 import { compose, pure } from 'recompose'
-import { TTheme } from './module/setting/logic.redux/initalState'
+import { TPaletteType } from './module/setting/logic.redux/initalState'
 import { ThemeContext } from './theme/helper/context'
 
 interface AppThemePropsOut {
 
 }
 interface AppThemeStateProps {
-	theme: TTheme
+	theme: TPaletteType
 }
 interface AppThemePropsIn extends AppThemePropsOut, AppThemeStateProps {
 
