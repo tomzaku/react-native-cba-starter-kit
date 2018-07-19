@@ -1,4 +1,4 @@
-import { withTheme } from '@theme/helper/context'
+import { withTheme } from '@theme/theme'
 import { path } from 'ramda'
 import React from 'react'
 import { Header } from 'react-navigation'

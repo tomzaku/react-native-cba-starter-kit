@@ -1,4 +1,4 @@
-import { withStyles, WithStyles } from '@theme/helper/context'
+import { withStyles, WithStyles  } from '@theme/theme'
 import React from 'react'
 import { Text, TextInput, View } from 'react-native'
 import { Button } from 'react-native-elements'

@@ -1,11 +1,11 @@
 import { TRootState } from '@conf/redux/reducer'
 import { AppRouter } from '@router/router'
-import { getTheme } from '@theme/themeHelper'
+import { getTheme } from '@theme/theme'
 import React from 'react'
 import { connect } from 'react-redux'
 import { compose, pure } from 'recompose'
 import { TPaletteType } from './module/setting/logic.redux/initalState'
-import { ThemeContext } from './theme/helper/context'
+import { ThemeContext } from './theme/theme'
 
 interface AppThemePropsOut {
 

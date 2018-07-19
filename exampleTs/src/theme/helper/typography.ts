@@ -1,4 +1,3 @@
-import { isIOS } from '@util/platform'
 import { TextStyle } from 'react-native'
 
 type Tem = (value: number) => number

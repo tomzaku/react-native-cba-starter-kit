@@ -1,4 +1,4 @@
-import { withTheme } from '@theme/helper/context'
+import { withTheme } from '@theme/theme'
 import React from 'react'
 import { BottomTabBar } from 'react-navigation-tabs'
 import { compose, withProps } from 'recompose'

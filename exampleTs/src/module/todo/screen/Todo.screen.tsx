@@ -1,4 +1,4 @@
-import { withStyles, WithStyles, withTheme } from '@theme/helper/context'
+import { WithStyles, withStyles } from '@theme/theme'
 import { AppText } from '@tpl/AppText'
 import React from 'react'
 import { Text, View } from 'react-native'

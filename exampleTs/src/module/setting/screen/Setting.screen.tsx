@@ -1,6 +1,6 @@
 import { logout } from '@module/authentication/logic.redux/action'
 import { changeLanguage, changeTheme } from '@module/setting/logic.redux/action'
-import { withStyles, WithStyles } from '@theme/helper/context'
+import { WithStyles, withStyles } from '@theme/theme'
 import { AppText } from '@tpl/AppText'
 import React from 'react'
 import { View } from 'react-native'

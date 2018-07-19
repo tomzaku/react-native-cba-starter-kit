@@ -1,4 +1,4 @@
-import { TTheme } from '@theme/themeHelper'
+import { TTheme } from '@theme/theme'
 import { StyleSheet } from 'react-native'
 
 export const styles = ({ appStyle, palette }: TTheme) => StyleSheet.create({

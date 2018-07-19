@@ -1,5 +1,4 @@
 
-import { isIOS } from '@util/platform'
 import { Platform, ViewStyle } from 'react-native'
 import { TMetric } from '../light/metric'
 import { Tpalette } from '../light/palette'
