@@ -2,7 +2,7 @@ import { pick } from 'ramda'
 import { createStackNavigator } from 'react-navigation'
 import { getNavigationOptionsDefault, getRoutes } from './helper/routerHelper'
 
-import { getStackRoute } from '@router/helper/stackBuilder'
+import { getStackRoute } from './helper/stackBuilder'
 export const setupAuthRoute = () => {
 	const listScreen = getRoutes()
 	const authenticationRoute = pick(['Login', 'Register'])(listScreen)

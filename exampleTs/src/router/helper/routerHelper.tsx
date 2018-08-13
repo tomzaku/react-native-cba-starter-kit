@@ -3,7 +3,7 @@ import { TNavigationOptionsModule, TScreenLayoutModule, TScreenModule } from  '@
 import { AppHeader } from '@com/AppHeader/AppHeader'
 import { AppText } from '@com/AppText'
 import { isFunction } from '@util/type'
-import { compose, filter, flatten, isNil, mapObjIndexed, merge, mergeAll, path, values } from 'ramda'
+import { compose, filter, isNil, mapObjIndexed, merge, mergeAll, path, values } from 'ramda'
 import React from 'react'
 import { isTablet } from 'react-native-device-info'
 import Ionicons from 'react-native-vector-icons/Ionicons'
@@ -89,7 +89,6 @@ const extendPhoneAndTabletRoute = (route: TScreenLayoutModule, key: string) => {
 }
 export const getRoutes = () => {
 	const screenList = getRouteList()
-	console.log('screenList', screenList)
 	const routeExtend = mapObjIndexed(extendPhoneAndTabletRoute)(screenList)
 	const routePhoneAndTablet = compose(mergeAll, values)(routeExtend) // include {KeyPhone and KeyTablet} for route contain 'tablet' props
 	if (isTablet()) {

@@ -4,7 +4,7 @@ import { getTheme } from '@theme/theme'
 import React from 'react'
 import { connect } from 'react-redux'
 import { compose, pure } from 'recompose'
-import { TPaletteType } from './module/setting/redux/initalState'
+import { TPaletteType } from './app/setting/redux/initalState'
 import { ThemeContext } from './theme/theme'
 
 interface AppThemePropsOut {
