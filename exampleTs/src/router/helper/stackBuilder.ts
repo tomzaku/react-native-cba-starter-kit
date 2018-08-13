@@ -1,4 +1,4 @@
-import { TScreenModule, TScreensModule } from '@module/module'
+import { TScreenModule, TScreensModule } from  '@app/index'
 import { isFunction } from '@util/type'
 import { compose, mapObjIndexed } from 'ramda'
 import { StackNavigatorConfig } from 'react-navigation'

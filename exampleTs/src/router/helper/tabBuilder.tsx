@@ -1,4 +1,4 @@
-import { AppBottomTabBar } from '@tpl/AppBottomTabBar/AppBottomTabBar'
+import { AppBottomTabBar } from '@com/AppBottomTabBar/AppBottomTabBar'
 import {
 	addIndex,
 	compose,

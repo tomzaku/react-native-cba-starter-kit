@@ -1,4 +1,4 @@
-import { TPaletteType } from '@module/setting/logic.redux/initalState'
+import { TPaletteType } from '@app/setting/redux/initalState'
 import { dark } from '../dark/dark'
 import { light } from '../light/light'
 

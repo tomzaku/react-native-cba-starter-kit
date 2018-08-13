@@ -2,8 +2,6 @@ import { TRootState } from '@conf/redux/reducer'
 import React from 'react'
 import { connect } from 'react-redux'
 import { compose, pure, shouldUpdate } from 'recompose'
-import { setupAuthRoute } from './authenticationRoute'
-import { setupMainRoute  } from './mainRoute'
 import { setupRoute } from './setupRoute'
 
 interface RouterAppPropsOut {}

@@ -1,13 +1,14 @@
-import { TAuthenticationState } from '@module/authentication/logic.redux/initialState'
-import { getSpecificModuleRedux } from '@module/helper/moduleHelper'
-import { TAppState } from '@module/setting/logic.redux/initalState'
-import { TTodoState } from '@module/todo/logic.redux/initialState'
+import { TAuthenticationState } from '@app/authentication/redux/initialState'
+import { getReduxModule } from '@app/helper'
+import { TAppState } from '@app/setting/redux/initalState'
+import { TTodoState } from '@app/todo/redux/initialState'
 import { combineReducers } from 'redux'
 import { persistReducer } from 'redux-persist'
 import { PERSIST_CONFIG } from './persist'
 
 
-const moduleReducer = getSpecificModuleRedux('reducer')
+const moduleReducer = getReduxModule('reducer')
+console.log('>>>>moduleReducer', moduleReducer)
 const reducer = combineReducers({
 	...moduleReducer,
 })
