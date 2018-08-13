@@ -8,8 +8,8 @@ import { NavigationInjectedProps } from 'react-navigation'
 import { connect } from 'react-redux'
 import { compose, pure, setStatic } from 'recompose'
 import { Dispatch } from 'redux'
+import { style } from '../jss/login'
 import { login } from '../redux/action'
-import { style } from './Login.style'
 
 interface LoginPropsOut extends NavigationInjectedProps{
 

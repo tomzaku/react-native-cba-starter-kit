@@ -1,7 +1,7 @@
 import { TScreensModule } from '@app/index'
-import { SelectThemeScreen } from '../screen/SelectTheme.screen'
-import { SettingScreen } from '../screen/Setting.screen'
-import { SettingTabletScreen } from '../screen/Setting.tablet.screen'
+import { SelectThemeScreen } from '../screen/selectTheme'
+import { SettingScreen } from '../screen/setting'
+import { SettingTabletScreen } from '../screen/setting.table'
 
 export const route: TScreensModule = {
 	Setting: {

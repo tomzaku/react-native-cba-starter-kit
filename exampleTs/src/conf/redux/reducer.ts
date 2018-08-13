@@ -8,7 +8,6 @@ import { PERSIST_CONFIG } from './persist'
 
 
 const moduleReducer = getReduxModule('reducer')
-console.log('>>>>moduleReducer', moduleReducer)
 const reducer = combineReducers({
 	...moduleReducer,
 })

@@ -1,11 +1,11 @@
-import { WithStyles, withStyles } from '@theme/theme'
 import { AppText } from '@com/AppText'
+import { WithStyles, withStyles } from '@theme/theme'
 import React from 'react'
 import { Text, View } from 'react-native'
 import { Button } from 'react-native-elements'
 import { NavigationInjectedProps } from 'react-navigation'
 import { compose, getContext, pure, withContext } from 'recompose'
-import { styles } from './Todo.style'
+import { styles } from '../jss/todo'
 
 interface ITodoPropsOut {
 

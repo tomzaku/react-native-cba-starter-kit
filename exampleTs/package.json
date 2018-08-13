@@ -49,6 +49,7 @@
     "jest": "23.3.0",
     "react-native-typescript-transformer": "^1.2.10",
     "react-test-renderer": "16.4.1",
+    "reselect": "^3.0.1",
     "ts-jest": "^23.0.0",
     "tslint-config-airbnb": "^5.9.2",
     "typescript": "^2.9.2"

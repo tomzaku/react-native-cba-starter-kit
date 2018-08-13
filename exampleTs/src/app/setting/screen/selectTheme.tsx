@@ -6,9 +6,9 @@ import { Button } from 'react-native-elements'
 import { connect } from 'react-redux'
 import { compose, pure } from 'recompose'
 import { Dispatch } from 'redux'
+import { styles } from '../jss/settingTheme'
 import { changeTheme } from '../redux/action'
 import { TPaletteType } from '../redux/initalState'
-import { styles } from './SelectTheme.style'
 
 interface SelectThemePropsOut {
 

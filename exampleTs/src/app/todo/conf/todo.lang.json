@@ -1,8 +1,10 @@
 {
 	"en": {
+		"Todo.todo": "Todo",
 		"TodoSingle.detail": "Detail"
 	},
 	"vi": {
+		"Todo.todo": "Tác vụ",
 		"TodoSingle.detail": "Chi tiết"
 	}
 }

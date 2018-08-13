@@ -13,8 +13,9 @@ type TAppType = 'dict' | 'flatten' | 'dict-flatten'
 
 
 const removeUndefinedItem = filter((item: any) => !isNil(item))
+type TGetSpecificData = (appList: typeof app, pathList: string[], type?: TAppType) => any
 
-const getSpecificData = (appList: typeof app, pathList: string[], type: TAppType= 'dict') => {
+const getSpecificData:TGetSpecificData = (appList, pathList, type = 'dict') => {
 	const getSpecificDataList = compose(
 		// Remove items which undefined
 		removeUndefinedItem,

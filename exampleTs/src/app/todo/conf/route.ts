@@ -1,5 +1,5 @@
-import { TodoScreen } from '../screen/Todo.screen'
-import { TodoSingleScreen } from '../screen/TodoSingle.screen'
+import { TodoScreen } from '../screen/todo'
+import { TodoSingleScreen } from '../screen/todoSingle'
 
 export const route = {
 	Todo: {

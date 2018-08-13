@@ -3,7 +3,6 @@ import { Text, TextProps } from 'react-native'
 import { connect } from 'react-redux'
 import { compose, pure } from 'recompose'
 
-import { settingI18n } from '@conf/i18n/i18n'
 import { TRootState } from '@conf/redux/reducer'
 import { EnhanceI18n } from '@i18n/index'
 interface IAppTextPropsOut extends TextProps{

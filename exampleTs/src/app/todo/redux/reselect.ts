@@ -15,7 +15,7 @@ export const getTagId = (state: TRootState, ownProps: ITabReduxConnectedExtended
 export const getTasksByTag = createSelector(
   [getTasks, getTagId],
   (tasks, tagId) => {
-	const filterTask = filter((task:TTask) => task.tags[0] === tagId)
+	const filterTask = filter((task: TTask) => task.tags[0] === tagId)
 	return compose(keys, filterTask)(tasks)
   },
 )

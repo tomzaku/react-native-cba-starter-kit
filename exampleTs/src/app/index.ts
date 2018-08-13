@@ -1,8 +1,7 @@
-import { authentication } from './authentication/'
-import { calendar } from './calendar/'
-import { loading } from './loading/'
-import { setting } from './setting/'
-import { todo } from './todo'
+import authentication from './authentication/'
+import loading from './loading/'
+import setting from './setting/'
+import todo from './todo'
 
 export interface TReduxModule {
 	reducer?: any
@@ -15,7 +14,7 @@ export interface TNavigationOptionsModule {
 	tabBarIcon?: any
 }
 export interface TScreenModule {
-	screen: React.ComponentClass<{}>
+	screen: React.ComponentClass<any>
 	navigationOptions?: TNavigationOptionsModule
 }
 
@@ -39,7 +38,6 @@ export type ReduxKey = 'reducer' | 'action' | 'saga'
 export default {
 	setting,
 	todo,
-	calendar,
 	authentication,
 	loading,
 }

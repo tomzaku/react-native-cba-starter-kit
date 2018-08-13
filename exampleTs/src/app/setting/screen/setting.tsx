@@ -9,7 +9,7 @@ import { NavigationInjectedProps } from 'react-navigation'
 import { connect } from 'react-redux'
 import { compose } from 'recompose'
 import { Dispatch } from 'redux'
-import { styles } from './Setting.style'
+import { styles } from '../jss/setting'
 
 interface SettingScreenPropsOut extends NavigationInjectedProps{
 

@@ -1,4 +1,4 @@
 import { route } from './conf/route'
-export const loading = {
+export default {
 	route,
 }

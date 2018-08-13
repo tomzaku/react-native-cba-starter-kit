@@ -1,7 +1,7 @@
 import { TScreensModule } from  '@app/index'
-import { LoadingAuthenticationScreen } from '../screen/LoadingAuthentication.screen'
-import { LoginScreen } from '../screen/Login.screen'
-import { RegisterScreen } from '../screen/Register.screen'
+import { LoadingAuthenticationScreen } from '../screen/loadingAuthentication'
+import { LoginScreen } from '../screen/login'
+import { RegisterScreen } from '../screen/register'
 
 export const route: TScreensModule = {
 	Login: {

@@ -3,7 +3,7 @@ import * as action from './redux/action'
 import reducer from './redux/reducer'
 import { redux } from './redux/redux'
 
-export const authentication = {
+export default {
 	// Config
 	route,
 

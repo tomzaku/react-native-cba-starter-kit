@@ -1,5 +1,5 @@
 import { TScreensModule } from '../../index'
-import { SampleScreen } from '../screen/Sample.screen'
+import { SampleScreen } from '../screen/sample'
 
 export const route: TScreensModule = {
 	Calendar: {
