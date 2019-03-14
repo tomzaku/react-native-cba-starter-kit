@@ -4,6 +4,7 @@ const pe = new PrettyError()
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 var fs = require('fs');
+var cs = require('change-case')
 
 const localIps = require('./helper/getIp')
 const check = require('./check')
@@ -194,7 +195,7 @@ async function init(name) {
   try {
     const isInstalledDependence = await check()
     if (!name) throw 'Please fill your name app. For ex: zkrn init myApp'
-    const nameProject = makeGetModuleName(name).getAction() // Camel Case
+    const nameProject = cs.camelCase(name) 
     // log(chalk.yellow(`FILE BIN: ${__dirname}`))
     // log(chalk.cyan('FILE BIN ' + __dirname))
     // log(chalk.cyan('DEFAULT FOLDER ' + process.cwd()))
