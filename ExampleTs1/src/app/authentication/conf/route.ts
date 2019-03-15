@@ -4,7 +4,12 @@ import * as routeUtil from '@router/util/make'
 
 export default routeUtil.make({
     AuthLogin: {
-        phone: AuthLoginScreen,
+        phone: {
+            screen: AuthLoginScreen,
+            navigationOptions: () => ({
+                title: 'Login'
+            })
+        }
     },
     AuthLoading: {
         phone: AuthLoadingScreen

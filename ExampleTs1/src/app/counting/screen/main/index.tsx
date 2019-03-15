@@ -12,5 +12,8 @@ const MainCounter = () => {
         </View>
     )
 }
-
+MainCounter.navigationOptions =  {
+    // headerTitle: <Text>sdasdasd</Text> 
+    header: null
+}
 export default MainCounter
