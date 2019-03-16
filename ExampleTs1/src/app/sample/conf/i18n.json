@@ -1,0 +1,24 @@
+{
+    "en": {
+        "appName": "Blitz Reading",
+        "navigation": {
+          "home": "Home",
+          "highScores": "High Scores",
+          "settings": "Settings"
+        },
+        "home": {
+          "welcome": "Welcome to %{appName}3!"
+        }
+    },
+    "de": {
+        "appName": "Blitzlesen",
+        "navigation": {
+          "home": "Startseite",
+          "highScores": "Highscores",
+          "settings": "Einstellungen"
+        },
+        "home": {
+          "welcome": "Willkommen im %{appName}!"
+        }
+    }
+}

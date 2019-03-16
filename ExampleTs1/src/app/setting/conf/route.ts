@@ -1,12 +1,12 @@
-import SampleScreen from '../screen/main'
+import SettingScreen from '../screen/main'
 import * as routeUtil from '@router/util/make'
 
 export default routeUtil.make({
-    SampleMain: {
+    SettingMain: {
         phone: {
-            screen: SampleScreen,
+            screen: SettingScreen,
             navigationOptions: () => ({
-                title: 'Sample Header',
+                title: 'Setting',
             })
         }
     }

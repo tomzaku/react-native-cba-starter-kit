@@ -1,6 +1,12 @@
 import * as ramda from 'ramda'
 import objectUtil from '@util/object'
 
+type RegisterModule<R, RO, C> = {
+	redux?: R,
+	route?: RO,
+	com?: C,
+}
+
 function registerModule<C, RO, R>(routeConfig?: RO, component?: C, redux?: R) {
 	return {
 		redux,
@@ -23,14 +29,6 @@ const isDuplicatedKey = (keys: string[]) => {
     return false
 }
 
-type RegisterModule<R, RO, C> = {
-	redux?: R,
-	route?: RO,
-	com?: C,
-}
-// type Modules = {
-// 	[key: string]: ReturnType<typeof registerModule>
-// }
 const getPart = <R,
 				RO,
 				C,
@@ -49,7 +47,7 @@ const combine = <R, RO extends object, C, T extends {[N in keyof T]: RegisterMod
 	const routeCollection = ramda.values(appRoute) as {[key: string]: RegisterModule<R, RO, C>}[]
 	const routeKeys = ramda.flatten(routeCollection.map(item => ramda.keys(item))) as string[]
 	isDuplicatedKey(routeKeys)
-	const route = ramda.mergeAll(routeCollection) as any
+	const route = ramda.mergeAll(routeCollection)
 	const redux = getPart('redux', modules)
 	const com = getPart('com', modules)
 	return {
@@ -58,10 +56,6 @@ const combine = <R, RO extends object, C, T extends {[N in keyof T]: RegisterMod
 		com
 	}
 }
-
-
-// }
-// const getRoute = (app:)
 
 export {
 	registerModule,

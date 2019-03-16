@@ -10,6 +10,7 @@ const make = reduxUtil.make({
 	makeActionType: actionType.make,
 	makeAction: action.make,
 	makeReducer: reducer.make,
+	makeSaga: () => {  },
 	makeSelector: selector.make,
 })
 

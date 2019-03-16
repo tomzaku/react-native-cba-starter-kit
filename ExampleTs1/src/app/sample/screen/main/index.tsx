@@ -1,7 +1,10 @@
 import * as React from "react"
 import { View, Text, Button } from "react-native";
+import { NavigationScreenProps } from "react-navigation";
 
-const MainSample = () => {
+type Props = NavigationScreenProps & {}
+
+const MainSample = (props: Props) => {
     const [count, setCount] = React.useState(0)
     return (
         <View>
