@@ -31,7 +31,7 @@
     "change-case": "^3.0.2",
     "commander": "^2.15.1",
     "gluegun": "^2.0.0-beta.10",
-    "lodash": "^4.17.11",
+    "lodash": ">=4.17.11",
     "minimist": "^1.2.0",
     "pretty-error": "^2.1.1",
     "ramda": "^0.25.0",
