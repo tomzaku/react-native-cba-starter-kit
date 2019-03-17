@@ -6,23 +6,28 @@ import settingRedux from '@app/setting/redux'
 import { connect } from 'react-redux'
 import i18n from './i18n'
 import { SettingIntialState } from '@app/setting/redux/reducer';
+import { ThemeProvider } from 'react-native-elements';
+import * as theme from '@theme/index'
 
 type StorageProps = {
-    languageTag: SettingIntialState['languageTag']
+    languageTag: SettingIntialState['languageTag'],
+    themeMode: SettingIntialState['themeMode']
 }
 type Props = StorageProps & {}
 
 const Context = (props: Props) => {
     i18n.locale = props.languageTag
     return (
-        <View style={{flex: 1}}>
+        <ThemeProvider theme={props.themeMode === 'light' && theme.light || theme.dark}>
             <AppRouter />
-        </View>
+        </ThemeProvider>
     )
 }
 
 const mapStateToProps = createStructuredSelector({
-    languageTag: settingRedux.selector.getLanguageTag
+    languageTag: settingRedux.selector.getLanguageTag,
+    themeMode: settingRedux.selector.getThemeMode,
+
 })
 
 export default connect(mapStateToProps)(Context)

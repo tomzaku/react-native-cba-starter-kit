@@ -6,7 +6,7 @@ import { ReducerAction } from 'typings/redux';
 
 export type SettingIntialState = {
     languageTag: string,
-    themeMode: string
+    themeMode: 'light' | 'dark'
 }
 const initialState = {
     languageTag: 'en',
