@@ -13,7 +13,7 @@ const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
 
 // ------------
-const moduleLibDir = `${__dirname}/../../module`
+const moduleLibDir = `${__dirname}/../../module/react-native`
 const baseLibDir = `${__dirname}/../../base`
 const log = console.log;
 
@@ -51,34 +51,29 @@ const renameLogic = async (moduleName) => {
   await updateFile(moduleName, logicFiles.action)
   await updateFile(moduleName, logicFiles.actionType)
   await updateFile(moduleName, logicFiles.reducer)
-  await updateFile(moduleName, logicFiles.saga)
+  await updateFile(moduleName, logicFiles.selector)
+  // await updateFile(moduleName, logicFiles.saga)
 }
 
 const makeModuleDir = async (moduleName) => {
   const getModulePath = makeGetModulePath(moduleName);
 
   log(chalk.blue(`Copy ${moduleLibDir} > ${getModulePath.getModuleDir()}`))
-  await exec(`cp -r ${moduleLibDir} ${getModulePath.getModuleDir()}`)
+  await exec(`mkdir ${getModulePath.getModuleDir()}`)
+  await exec(`cp -r ${moduleLibDir}/* ${getModulePath.getModuleDir()}`)
 }
-const getReplaceData = (type, moduleName) => {
+const getReplaceData = (moduleName) => {
   const getModuleName = makeGetModuleName(moduleName)
   const dirName = getModuleName.getDir()
   const actionName = getModuleName.getAction()
-  switch (type) {
-    case 'index': return `import ${actionName} from './${dirName}'\n\nexport default {
-  ${actionName},`
-    case 'action': return `import { action as ${actionName} } from './${dirName}/logic.redux'\n\nexport {
-  ${actionName},`
-    case 'reselect': return `import { reselect as ${actionName} } from './${dirName}/logic.redux'\n\nexport {
-  ${actionName},`
-    default: return ``
-  }
+  return `import ${actionName} from './${dirName}'\n\nconst app = {
+    ${actionName},`
 }
 const updateImportModuleFile = async (file, moduleName, fileType) => {
-  const replacedData = getReplaceData(fileType, moduleName)
+  const replacedData = getReplaceData(moduleName)
   const rawText = await readFile(file, {encoding: 'utf-8'})
 
-  const filePhoneRenamed = rawText.replace(/\nexport.*/, replacedData)
+  const filePhoneRenamed = rawText.replace(/\nconst app.*/, replacedData)
   // Save
   await writeFile(file, filePhoneRenamed)
 }
@@ -86,19 +81,9 @@ const updateImportModuleFile = async (file, moduleName, fileType) => {
 const updateImportModule = async (moduleName) => {
   // index.js
   const getModulePath = makeGetModulePath(moduleName);
-
   const indexModulePath = getModulePath.getAppIndex()
-  const appActionPath = getModulePath.getAppAction()
-  const appReselectPath = getModulePath.getAppReselect()
   log(chalk.blue(`Update ${indexModulePath}`))
-  await updateImportModuleFile(indexModulePath, moduleName, 'index')
-  // action
-  log(chalk.blue(`Update ${appActionPath}`))
-  await updateImportModuleFile(appActionPath, moduleName, 'action')
-  //reselect
-  log(chalk.blue(`Update ${appReselectPath}`))
-  await updateImportModuleFile(appReselectPath, moduleName, 'reselect')
-
+  await updateImportModuleFile(indexModulePath, moduleName)
 }
 
 const create = async (moduleName) => {
@@ -126,4 +111,5 @@ const create = async (moduleName) => {
     log(chalk.red.bold(pe.render(err)))
   }
 }
+
 module.exports = create

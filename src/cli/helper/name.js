@@ -13,7 +13,7 @@ const getActionTypeName = (moduleName) => {
 const makeGetModuleName = (moduleName) => {
   // const getFileScreen = (isTablet) => getModuleScreenFileName(moduleName, isTablet)
   const getActionType = () => cs.constantCase(moduleName)
-  const getDir = () => cs.snakeCase(moduleName)
+  const getDir = () => cs.paramCase(moduleName)
   const getClassName = () => cs.pascalCase(moduleName)
   const getAction = () => cs.camelCase(moduleName)
   return {

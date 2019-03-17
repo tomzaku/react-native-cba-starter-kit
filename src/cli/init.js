@@ -10,7 +10,7 @@ const localIps = require('./helper/getIp')
 const check = require('./check')
 const appDir = (nameProject) => `${process.cwd()}/${nameProject}`
 const libDir = `../../`
-const baseDir = `${__dirname}/../base`
+const baseDir = `${__dirname}/../base/react-native`
 const log = console.log
 const localIp = localIps.length > 0 ? localIps[0] : '192.168.100.122'
 
@@ -63,15 +63,29 @@ async function copyAppDelegate(nameProject) {
 
 async function linkingPackage(nameProject) {
   // Linking crash at here. may be some package in list have problem
-  exec(`cd ${appDir(nameProject)} && react-native link`)
+  const linkPackages = [
+    'react-native-localize',
+    'react-native-device-info',
+    'react-native-gesture-handler',
+    'react-native-vector-icons',
+
+
+  ]
+  for (let package of linkPackages) {
+    await exec(`cd ${appDir(nameProject)} && react-native link ${package}`)
+  }
 }
 async function copyIndexFile(nameProject) {
   log(chalk.blue('Copy index.js file'))
-  const indexFile  = `import { AppRegistry } from 'react-native';
-  import App from './src/mobile';
-  
-  AppRegistry.registerComponent('${nameProject}', () => App);
-  `
+  const indexFile  = `/**
+  * @format
+  */
+ 
+ import {AppRegistry} from 'react-native';
+ import App from './src/index';
+ import {name as appName} from './app.json';
+ 
+ AppRegistry.registerComponent(appName, () => App);`
   await exec(`echo "${indexFile}\" > ${appDir(nameProject)}/index.js`)
 
 }
@@ -84,11 +98,11 @@ async function copyZkrnConfig(nameProject) {
 
 
 async function copyBaseToProject(nameProject) {
-  await exec(`cp -r ${baseDir}/src ${appDir(nameProject)}/src` );
+  await exec(`cp -r ${baseDir}/* ${appDir(nameProject)}/` );
 
   // Copy Index file
   await copyIndexFile(nameProject)
-  await copyAppDelegate(nameProject)
+  // await copyAppDelegate(nameProject)
   await copyBin(nameProject)
   await copyZkrnConfig(nameProject)
 }
@@ -101,41 +115,28 @@ async function installPackage(nameProject, namePackage) {
 async function installPackageDependence(nameProject) {
   const dependences = [
     // GENERAL
-    'uuid',
     'ramda',
-    'axios',
-    'moment',
-    'randomcolor',
+    'i18n-js',
+    'react-native-localize',
+    'react-native-device-info',
+    'react-native-gesture-handler',
     // REDUX
     'redux',
-    'normalizr',
     'react-redux',
-    'redux-saga',
-    'redux-thunk',
     'reselect',
-    'seamless-immutable',
     'redux-persist',
-    'redux-form',
+    'redux-packaged',
+    'typesafe-actions',
     // UI
-    'react-native-vector-icons',
-    'react-consola',
-    'react-native-animatable',
-    'react-native-modal-datetime-picker',
-    'react-native-shimmer-placeholder',
-    'react-native-spinkit',
-    'react-native-device-info',
-    'react-native-keyboard-aware-scroll-view',
-    'react-native-orientation',
-    'react-native-image-picker',
-    'react-native-circular-action-menu',
-    'react-native-action-button',
     'react-native-elements',
     'react-navigation',
-    'react-native-scrollable-tab-view',
-    'react-native-datepicker',
-    'react-native-linear-gradient',
-    'react-native-material-bottom-navigation-performance',
-    'react-native-i18n',
+    'react-native-vector-icons',
+    // Type
+    '@types/i18n-js',
+    '@types/react-native-vector-icons',
+    '@types/react-navigation',
+    '@types/react-redux',
+
   ]
   for (let package of dependences) {
     await installPackage(nameProject, package);
@@ -164,8 +165,8 @@ f.write(content_new)
 
 print('Change IP to ' + ip + ' successfuly')
   `
-  await exec(`mkdir ${appDir(nameProject)}/bin && echo "${changeIp}" > ${appDir(nameProject)}/bin/x-change-ip && chmod +x ${appDir(nameProject)}/bin/x-change-ip`)
-  await exec(`cp  ${baseDir}/Makefile ${appDir(nameProject)}/`)
+  await exec(`echo "${changeIp}" > ${appDir(nameProject)}/bin/x-change-ip && chmod +x ${appDir(nameProject)}/bin/x-change-ip`)
+  // await exec(`cp  ${baseDir}/Makefile ${appDir(nameProject)}/`)
 }
 
 async function installReactNative(nameProject) {
@@ -182,7 +183,7 @@ async function installReactNative(nameProject) {
       // }
       return false;
     } else {
-      await exec(`react-native init ${nameProject}`);
+      await exec(`react-native init ${nameProject} --template typescript`);
       return true;
     }
   } catch (err) {
@@ -205,10 +206,10 @@ async function init(name) {
     if (!status) {
       throw 'See error on top'
     }
-    log(chalk.green(`Creating react-native successfully`))
+    log(chalk.green(`Initial react-native successfully`))
 
     log(chalk.cyan("==============================================="))
-    log(chalk.blue(`Now install dependence package`))
+    log(chalk.blue(`Now install alternative package`))
     await installPackageDependence(nameProject)
     log(chalk.green(`Installed lib successfully`))
  

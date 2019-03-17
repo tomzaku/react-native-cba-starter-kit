@@ -22,14 +22,11 @@ const removeModuleDir = async (moduleName) => {
 }
 
 const updateAppFile = async (moduleName, file) => {
-  const getModuleName = makeGetModuleName(moduleName)
-  const moduleActionName = getModuleName.getAction()
 
   const rawText = await readFile(file, {encoding: 'utf-8'})
   regrex = new RegExp(`\n.*${moduleName}.*`,'g')
   const filePhoneRenamed = rawText.replace(regrex,'')
   // Save
-  // console.log('>>>filePhoneRenamed', filePhoneRenamed)
   await writeFile(file, filePhoneRenamed)
 }
 
@@ -37,14 +34,8 @@ const updateImportModule = async (moduleName) => {
   const getModulePath = makeGetModulePath(moduleName);
 
   const indexModulePath = getModulePath.getAppIndex()
-  const appActionPath = getModulePath.getAppAction()
-  const appReselectPath = getModulePath.getAppReselect()
   log(chalk.blue(`Removing ${indexModulePath}`))
   await updateAppFile(moduleName, indexModulePath)
-  log(chalk.blue(`Removing ${appActionPath}`))
-  await updateAppFile(moduleName, appActionPath)
-  log(chalk.blue(`Removing ${appReselectPath}`))
-  await updateAppFile(moduleName, appReselectPath)
 }
 
 const Remove = async (moduleName) => {

@@ -11,12 +11,12 @@ const log = console.log;
 const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
 
-const setRoute = async (routeName = 'Main') => {
+const setRoute = async (routeName = 'MainTab') => {
   try {
     const mainScreenPath = mainScreenRouterPath;
     const rawText = await readFile(mainScreenPath, {encoding: 'utf-8'})
     const getModuleName = makeGetModuleName(routeName)
-    const rawTextAppliedModule = rawText.replace(new RegExp(`getStackNavigator\\(.*`), `getStackNavigator('${getModuleName.getClassName()}');`)
+    const rawTextAppliedModule = rawText.replace(new RegExp(`initialRouteKey:.*`), `initialRouteKey: '${getModuleName.getClassName()}',`)
     await writeFile(mainScreenPath, rawTextAppliedModule)
   } catch(err) {
     log(chalk.red('ERR SetRoute: '))
