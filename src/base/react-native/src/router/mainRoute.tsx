@@ -37,7 +37,7 @@ const setupMainRoute = (stackConfig?: StackNavigatorConfig) => {
             ...app.route
         },
         {
-            // initialRouteName: 'MainTab',
+            initialRouteName: 'MainTab',
             ...stackConfig
         }
     )
