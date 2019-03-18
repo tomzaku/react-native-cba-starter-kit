@@ -17,7 +17,7 @@ ________   __   ___   _______   _____  ___
    /  ___/ |    __/  |_____/   )|: \.   \\  |   Starter Kit
   //  \__  (// _  \   //      / |.  \    \. |
  (:   / "\ |: | \  \ |:  __   \ |    \    \ |   Author: Zaku
-  \_______)(__|  \__)|__|  \___) \___|\____\)   Vers: 1.0.8
+  \_______)(__|  \__)|__|  \___) \___|\____\)   Vers: 1.0.24
 
 
   Usage: zkrn [command] <method/ appName ...>
@@ -38,9 +38,9 @@ ________   __   ___   _______   _____  ___
 #### Feature
 
   + Set default route easily: `react route [routeName]`
-  + Support multi language & automaticly built
+  + Support multi language & build automatically
   + Support theme inspired by Material
-  + Init application just single line `react init [appName]
+  + Init application just single line `react init [appName]`
   + Typescript supported
   + Redux supported
   + Dark & Light Theme Mode
