@@ -1,24 +1,8 @@
 {
   "en": {
-      "appName": "Zaku",
-      "navigation": {
-        "home": "Home",
-        "highScores": "High Scores",
-        "settings": "Settings"
-      },
-      "home": {
-        "welcome": "Welcome to %{appName}3!"
-      }
+      "greeting": "Hello"
   },
-  "de": {
-      "appName": "Zaku",
-      "navigation": {
-        "home": "Startseite",
-        "highScores": "Highscores",
-        "settings": "Einstellungen"
-      },
-      "home": {
-        "welcome": "Willkommen im %{appName}!"
-      }
+  "vi": {
+      "greeting": "Xin chào"
   }
 }

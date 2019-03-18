@@ -1,0 +1,6 @@
+{
+  "appName": "Zaku",
+  "home": {
+    "welcome": "Chào mừng đến với %{appName}!"
+  }
+}

@@ -28,31 +28,25 @@ const updateFile = async (moduleName, file) => {
 
 const renameScreen = async (moduleName) => {
   const getModulePath = makeGetModulePath(moduleName);
-
   const sandBoxPath= getModulePath.getScreenFile('SandBox')
-  const screenFilePath= getModulePath.getScreenFile(moduleName)
-
-  await updateFile(moduleName, sandBoxPath.phone)
-  await updateFile(moduleName, sandBoxPath.tablet)
-  await updateFile(moduleName, getModulePath.getIndexScreenFile())
-
-  // Rename file
-  const renamePhone = await exec(`mv ${sandBoxPath.phone} ${screenFilePath.phone}`)
-  
-  const renameTablet = await exec(`mv ${sandBoxPath.tablet} ${screenFilePath.tablet}`)
-
-  const sandBoxStylePath = getModulePath.getStyleFile('SandBox')
-  const moduleStylePath = getModulePath.getStyleFile(moduleName)
-  const renameStyle = await exec(`mv ${sandBoxStylePath} ${moduleStylePath}`)
+  await updateListPath(moduleName, Object.values(sandBoxPath))
 }
 
+const updateListPath = async (moduleName, paths) => {
+  for (let logicPath of paths) {
+    log('Updating: ', logicPath)
+    await updateFile(moduleName, logicPath)
+  }
+}
 const renameLogic = async (moduleName) => {
   const logicFiles = makeGetModulePath(moduleName).getLogicFiles();
-  await updateFile(moduleName, logicFiles.action)
-  await updateFile(moduleName, logicFiles.actionType)
-  await updateFile(moduleName, logicFiles.reducer)
-  await updateFile(moduleName, logicFiles.selector)
-  // await updateFile(moduleName, logicFiles.saga)
+  const paths = Object.values(logicFiles)
+  await updateListPath(moduleName, paths)
+}
+
+const renameConfig = async (moduleName) => {
+  const configFiles = makeGetModulePath(moduleName).getConfigFile();
+  await updateListPath(moduleName, Object.values(configFiles))
 }
 
 const makeModuleDir = async (moduleName) => {
@@ -94,17 +88,19 @@ const create = async (moduleName) => {
       throw `Module called \'${moduleName}\'is existed`
     }
     log(chalk.cyan("==============================================="))
-    log(chalk.blue(`Copy screen & logic from sand to your app`))
+    log(chalk.blue(`> Copy screen & logic from sand to your app`))
     await makeModuleDir(moduleName)
     log(chalk.cyan("==============================================="))
-    log(chalk.blue('Renaming screen...'))
+    // log(chalk.blue('Renaming screen...'))
     await renameScreen(moduleName)
-    log(chalk.blue('Renaming logic...'))
+    // log(chalk.blue('Renaming logic...'))
     await renameLogic(moduleName)
-    log(chalk.blue('Update import module'))
+    // log(chalk.blue('Renaming config...'))
+    await renameConfig(moduleName)
+    log(chalk.blue('> Update import module'))
     await updateImportModule(moduleName)
     await setRoute(moduleName)
-    log(chalk.blue('Create successfully!'))
+    log(chalk.yellowBright('Create successfully!'))
 
   } catch (err) {
     log(chalk.red.bold('ERR Create: '))

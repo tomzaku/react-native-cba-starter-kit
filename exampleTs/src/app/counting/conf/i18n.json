@@ -1,0 +1,14 @@
+{
+  "en": {
+      "appName": "Zaku",
+      "home": {
+        "welcome": "Welcome to %{appName}!"
+      }
+  },
+  "vi": {
+      "appName": "Zaku",
+      "home": {
+        "welcome": "Chào mừng đến với %{appName}!"
+      }
+  }
+}

@@ -11,13 +11,14 @@ const writeFile = util.promisify(fs.writeFile);
 const exec = util.promisify(require('child_process').exec);
 var { makeGetModulePath } = require('../helper/path')
 var { makeGetModuleName } = require('../helper/name')
+const setRoute = require('../route/set')
 
 const log = console.log;
 const pe = new PrettyError()
 
 const removeModuleDir = async (moduleName) => {
   const getModulePath = makeGetModulePath(moduleName);
-  log(chalk.blue(`>>> Removing ${getModulePath.getModuleDir()}`))
+  log(chalk.blue(`Removing ${getModulePath.getModuleDir()}`))
   await exec(`rm -rf ${getModulePath.getModuleDir()}`)
 }
 
@@ -49,6 +50,8 @@ const Remove = async (moduleName) => {
     await removeModuleDir(moduleName)
     log(chalk.blue('> Remove import module'))
     await updateImportModule(moduleName)
+    await setRoute()
+    log(chalk.yellowBright('Remove successfully!'))
 
   } catch (err) {
     log(chalk.red.bold('ERR Create: '))

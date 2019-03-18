@@ -1,0 +1,54 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "./src",
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "jsx": "react-native",
+        "lib": [
+            "es6",
+            "dom"
+        ],
+        "module": "es6",
+        "moduleResolution": "node",
+        "noEmit": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "resolveJsonModule": true,
+        "paths": {
+            "@conf/*": [
+                "./conf/*"
+            ],
+            "@i18n/*": [
+                "./i18n/*"
+            ],
+            "@app/*": [
+                "./app/*"
+            ],
+            "@router/*": [
+                "./router/*"
+            ],
+            "@theme/*": [
+                "./theme/*"
+            ],
+            "@com/*": [
+                "./com/*"
+            ],
+            "@util/*": [
+                "./util/*"
+            ]
+        },
+        "sourceMap": true,
+        "strict": true,
+        "strictNullChecks": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "target": "es6"
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}

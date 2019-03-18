@@ -52,6 +52,15 @@ const getLogicDir = (moduleName) => {
   const modulePath = getModule(moduleName)
   return path.join(modulePath, 'redux')
 }
+const getModuleConfigFile = (moduleName) => {
+  const modulePath = getModule(moduleName)
+  const confDir = path.join(modulePath, 'conf')
+  return {
+    lang: path.join(confDir, 'i18n.json'),
+    redux: path.join(confDir, `redux${extension}`),
+    route: path.join(confDir, `route${extension}`),
+  }
+}
 const getModuleLogicFiles = (moduleName) => {
   const logicDir = getLogicDir(moduleName)
   return {
@@ -71,6 +80,7 @@ const makeGetModulePath = (moduleName) => {
   const getScreenFile = (fileName) => getScreenFilePath(moduleName, fileName)
   const isExist = () => isExistedModule(moduleName)
   const getLogicFiles = () => getModuleLogicFiles(moduleName)
+  const  getConfigFile = () => getModuleConfigFile(moduleName)
   return {
     getModuleDir,
     getScreenDir,
@@ -80,6 +90,7 @@ const makeGetModulePath = (moduleName) => {
     isExist,
     getLogicFiles,
     getAppIndex,
+    getConfigFile,
   }
 }
 

@@ -16,8 +16,10 @@ const setRoute = async (routeName = 'MainTab') => {
     const mainScreenPath = mainScreenRouterPath;
     const rawText = await readFile(mainScreenPath, {encoding: 'utf-8'})
     const getModuleName = makeGetModuleName(routeName)
-    const rawTextAppliedModule = rawText.replace(new RegExp(`initialRouteKey:.*`), `initialRouteKey: '${getModuleName.getClassName()}',`)
+    const rawTextAppliedModule = rawText.replace(new RegExp(`initialRouteName:.*`), `initialRouteName: '${getModuleName.getClassName()}',`)
     await writeFile(mainScreenPath, rawTextAppliedModule)
+    log(chalk.yellowBright('Set route successfully!'))
+
   } catch(err) {
     log(chalk.red('ERR SetRoute: '))
     log(chalk.red(pe.render(err)))

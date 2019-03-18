@@ -8,7 +8,7 @@ type Route = {
 }
 
 const make = <T extends { [key: string]: Route}>(routes: T) => {
-   return ramda.mapObjIndexed((item) => DeviceInfo.isTablet() && item.tablet || item.phone, routes) as  Record<keyof T, NavigationRouteConfigMap>
+   return ramda.mapObjIndexed((item) => DeviceInfo.isTablet() && item.tablet && ramda.mergeDeepRight(item.tablet, item.phone) || item.phone, routes) as  Record<keyof T, NavigationRouteConfigMap>
 }
 
 export {

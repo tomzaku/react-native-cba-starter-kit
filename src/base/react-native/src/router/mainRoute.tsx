@@ -25,22 +25,19 @@ const setupMainRoute = (stackConfig?: StackNavigatorConfig) => {
                     })
                 },
                 {
-                    routeKeys: ['SampleMain'],
-                    navigationOptions: () => ({
-                        title: 'SampleMain',
-                    })
-                },
-                {
                     routeKeys: ['MainProfile'],
                     navigationOptions: () => ({
                         title: 'Profile',
+                        tabBarIcon: (iconProps: IconProps) => {
+                            return  <Icon name="user" size={30} color={iconProps.tintColor}/>
+                        }
                     })
                 }
             ]),
             ...app.route
         },
         {
-            initialRouteKey: 'MainTab',
+            // initialRouteName: 'MainTab',
             ...stackConfig
         }
     )

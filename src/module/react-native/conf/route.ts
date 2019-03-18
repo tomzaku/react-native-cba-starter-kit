@@ -3,7 +3,7 @@ import SandBoxTabletScreen from '../screen/main'
 import * as routeUtil from '@router/util/make'
 
 export default routeUtil.make({
-    SandBoxMain: {
+    SandBox: {
         phone: {
             screen: SandBoxScreen,
             navigationOptions: () => ({

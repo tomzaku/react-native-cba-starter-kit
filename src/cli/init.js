@@ -68,8 +68,6 @@ async function linkingPackage(nameProject) {
     'react-native-device-info',
     'react-native-gesture-handler',
     'react-native-vector-icons',
-
-
   ]
   for (let package of linkPackages) {
     await exec(`cd ${appDir(nameProject)} && react-native link ${package}`)
@@ -98,7 +96,7 @@ async function copyZkrnConfig(nameProject) {
 
 
 async function copyBaseToProject(nameProject) {
-  await exec(`cp -r ${baseDir}/* ${appDir(nameProject)}/` );
+  await exec(`cp -rf ${baseDir}/* ${appDir(nameProject)}/` );
 
   // Copy Index file
   await copyIndexFile(nameProject)
@@ -192,6 +190,11 @@ async function installReactNative(nameProject) {
   }
 }
 
+const printDivider = () => {
+  log(chalk.cyan("==============================================="))
+
+}
+
 async function init(name) {
   try {
     const isInstalledDependence = await check()
@@ -200,30 +203,34 @@ async function init(name) {
     // log(chalk.yellow(`FILE BIN: ${__dirname}`))
     // log(chalk.cyan('FILE BIN ' + __dirname))
     // log(chalk.cyan('DEFAULT FOLDER ' + process.cwd()))
-    log(chalk.cyan("==============================================="))
-    log(chalk.blue(`Creating new react-native called ${nameProject}... Will take 5 minutes`))
+    printDivider()
+    log(chalk.blueBright(`Creating new react-native called ${nameProject}... Will take 5 minutes`))
     const status = await installReactNative(nameProject)
     if (!status) {
       throw 'See error on top'
     }
     log(chalk.green(`Initial react-native successfully`))
 
-    log(chalk.cyan("==============================================="))
-    log(chalk.blue(`Now install alternative package`))
+    printDivider()
+    log(chalk.blueBright(`Now install alternative package`))
     await installPackageDependence(nameProject)
     log(chalk.green(`Installed lib successfully`))
  
-    log(chalk.cyan("==============================================="))
-    log(chalk.blue('Copying base component'))
+    printDivider()
+    log(chalk.blueBright('Copying base component'))
     await copyBaseToProject(nameProject)
      // Link package
-    log(chalk.cyan("==============================================="))
-    log(chalk.blue('Linking package...'))
+    printDivider()
+    log(chalk.blueBright('Linking package...'))
     await linkingPackage(nameProject)
-
-    log(chalk.green('Done!. Have a nice day!'))
+    printDivider()
     log(chalk.cyan(`> cd ${nameProject}`))
-    log(chalk.cyan(`> make build-ios`))
+    log('Runing ios')
+    log(chalk.cyan(`> make ios`))
+    log('Or android')
+    log(chalk.cyan(`> make android`))
+    printDivider()
+    log(chalk.green('Done!. Have a nice day!'))
   } catch(err) {
     log(chalk.red(pe.render(err)))
   }
