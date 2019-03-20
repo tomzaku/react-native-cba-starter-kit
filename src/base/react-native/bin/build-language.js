@@ -2,26 +2,21 @@
 
 const fs = require('fs')
 const { sync } = require('glob')
-const { mergeDeepRight, mapObjIndexed } = require('ramda')
+const { mergeDeepRight } = require('ramda')
 
 
-const filePattern = `${__dirname}/../src/**/i18n.json`
-const outputLanguageDataDir = `${__dirname}/../src/i18n/locales.__generate__`
+const filePattern = `${__dirname}/../src/**/*.lang.json`
+const outputLanguageDataDir = `${__dirname}/../src/i18n/`
 
 const generateData = async () => {
-	const messages = sync(filePattern)
+	const defaultMessages = sync(filePattern)
 		.map(filename => fs.readFileSync(filename, 'utf8'))
 		.map(file => JSON.parse(file))
 		.reduce(
 			(collection, descriptors) => mergeDeepRight(collection, descriptors),
 			{},
 		)
-	const keys = Object.keys(messages)
-	for (let index=0; index< keys.length; index++) {
-		const path = `${outputLanguageDataDir}/${keys[index]}.json`
-		console.log('> ',path)
-		await fs.writeFileSync(path, `${JSON.stringify(messages[keys[index]], null, 2)}`)
-	}
+	await fs.writeFileSync(outputLanguageDataDir + 'i18n.__generate__.json', `${JSON.stringify(defaultMessages, null, 2)}`)
 }
 
 generateData().then(() => {

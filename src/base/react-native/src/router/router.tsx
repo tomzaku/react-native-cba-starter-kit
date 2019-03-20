@@ -4,20 +4,21 @@ import { connect } from 'react-redux'
 import { createSwitchNavigator, createStackNavigator, createAppContainer } from 'react-navigation'
 import AuthRoute from './authRoute'
 import MainRoute from './mainRoute'
-import app from '@app/index';
+import authRedux from '@app/authentication/redux'
 import { View, Text } from 'react-native'
+import { createStructuredSelector } from 'reselect';
+import { AuthenticationState } from '@app/authentication/redux/reducer';
 
 type OwnProps = {}
 type StorageProps = {
-    isAuthenticated: boolean,
+    isAuthenticated: AuthenticationState['isAuthentication'],
 }
 type Props = OwnProps & StorageProps
 
-const RouterScreen = (props: Props): any => {
+const RouterScreen = (props: Props) => {
     const Router = createAppContainer(createSwitchNavigator(
         {
             Auth: AuthRoute,
-            // Loading: app.route.AuthLoading,
             Main: MainRoute
         },
         {
@@ -30,8 +31,8 @@ const RouterScreen = (props: Props): any => {
         </View>
     )
 }
-const mapStateToProps = (state: TRootState) => ({
-    isAuthenticated: state.authentication.isAuthentication
+const mapStateToProps = createStructuredSelector({
+    isAuthenticated: authRedux.selector.isAuthenticated,
 })
 
 export default connect(mapStateToProps)(RouterScreen)
