@@ -10,7 +10,9 @@ Base on Component-Based Architecture
 
 # Zkrn CLI
 Inspired by [Ignite CLI](https://github.com/infinitered/ignite)
+
 You can see the demo at here: https://www.loom.com/share/e1d145658f2f4ce291c22e04a63bf5ae
+
 ```
 ________   __   ___   _______   _____  ___
 ("      "\ |/"| /  ") /"      \ (\"   \|"  \
